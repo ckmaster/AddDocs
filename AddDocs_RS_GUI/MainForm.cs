@@ -23,8 +23,8 @@ namespace AddDocs_RS_GUI
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
-            RestCall rest = new RestCall();
-            string hash = rest.GetSessionHash();
+            Controller control = new Controller();
+            control.Initialize();
             string[] files = Directory.GetFiles("C:\\Import");
             foreach (string file in files)
             {
@@ -37,9 +37,7 @@ namespace AddDocs_RS_GUI
                 string f5 = uxField5_TextBox.Text;
                 string dt = uxDocType_TextBox.Text;
                 INOW_Doc doc = new INOW_Doc(n, d, f1, f2, f3, f4, f5, dt);
-
-                string docid = rest.PostDoc(doc, hash);
-                rest.PostDocPage(docid, file, hash);
+                control.PostDoc(doc, file);
             }
             ClearUI();
             MessageBox.Show("Documents created and pages added");
