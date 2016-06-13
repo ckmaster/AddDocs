@@ -9,11 +9,11 @@ namespace AddDocs_RS_GUI
 {
     public class LocalOp
     {
-        public IS_Info LoadConfig ()
+        public IS_Info LoadServerConfig ()
         {
             IS_Info intServer = new IS_Info();
             List<string> lines = new List<string>();
-            using (StreamReader sr = new StreamReader(".\\config.txt"))
+            using (StreamReader sr = new StreamReader(".\\server.txt"))
             {
                 while (!sr.EndOfStream)
                 {
@@ -43,6 +43,30 @@ namespace AddDocs_RS_GUI
             }
             return intServer;
         }
-        //end LoadConfig
+        //end LoadServerConfig
+
+        public string LoadFileConfig()
+        {
+            string location = "";
+            using (StreamReader sr = new StreamReader(".\\files.txt"))
+            {
+                while(!sr.EndOfStream)
+                {
+                    location = sr.ReadLine();
+                }
+            }
+            return location;
+        }
+        //end LoadFileConfig
+
+        public void SaveFileConfig(string location)
+        {
+            using (StreamWriter sw = new StreamWriter(".\\files.txt", false))
+            {
+                sw.WriteLine(location);
+            }
+        }
+        //end SaveFileConfig
+
     }
 }

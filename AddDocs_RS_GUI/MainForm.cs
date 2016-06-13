@@ -16,10 +16,10 @@ namespace AddDocs_RS_GUI
         public MainForm ()
         {
             InitializeComponent();
-            this.uxDrawer_TextBox.Text = "Default";
-            this.uxDocType_TextBox.Text = "Default";
         }
         //end MainForm
+
+        public Controller control = new Controller();
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
@@ -30,7 +30,6 @@ namespace AddDocs_RS_GUI
             string f4 = uxField4_TextBox.Text;
             string f5 = uxField5_TextBox.Text;
             string dt = uxDocType_TextBox.Text;
-            Controller control = new Controller();
             control.DoWork(d, f1, f2, f3, f4, f5, dt);
             ClearUI();
             MessageBox.Show("Documents created and pages added");
@@ -43,10 +42,34 @@ namespace AddDocs_RS_GUI
             this.uxField1_TextBox.Clear();
             this.uxField2_TextBox.Clear();
             this.uxField3_TextBox.Clear();
-            this.uxField4_TextBox.Clear();
-            this.uxField5_TextBox.Clear();
+            //this.uxField4_TextBox.Clear();
+            //this.uxField5_TextBox.Clear();
             this.uxDocType_TextBox.Text = "Default";
         }
         //end ClearUI
+
+        private void uxHelp_MenuItem_Click (object sender, EventArgs e)
+        {
+            MessageBox.Show("corey.kidd@lexmark.com");
+        }
+
+        private void uxServerInfo_MenuItem_Click (object sender, EventArgs e)
+        {
+            ServerInfo form = new ServerInfo();
+            form.Show();
+        }
+
+        private void fileDirectoryToolStripMenuItem_Click (object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                string path = fbd.SelectedPath;
+                control.fileLocation = path;
+                LocalOp local = new LocalOp();
+                local.SaveFileConfig(path);
+                MessageBox.Show("Default upload directory has been updated");
+            }
+        }
     }
 }

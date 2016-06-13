@@ -43,12 +43,13 @@
             this.uxField3_TextBox = new System.Windows.Forms.TextBox();
             this.uxDocType_TextBox = new System.Windows.Forms.TextBox();
             this.uxSubmit_Button = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serverInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serverInfoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.uxFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxHelp_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxEdit_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxServerInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -108,7 +109,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 186);
+            this.label8.Location = new System.Drawing.Point(4, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 7;
@@ -117,13 +118,16 @@
             // uxDrawer_TextBox
             // 
             this.uxDrawer_TextBox.Location = new System.Drawing.Point(67, 27);
+            this.uxDrawer_TextBox.MaxLength = 40;
             this.uxDrawer_TextBox.Name = "uxDrawer_TextBox";
             this.uxDrawer_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxDrawer_TextBox.TabIndex = 8;
+            this.uxDrawer_TextBox.Text = "Default";
             // 
             // uxField1_TextBox
             // 
             this.uxField1_TextBox.Location = new System.Drawing.Point(67, 53);
+            this.uxField1_TextBox.MaxLength = 40;
             this.uxField1_TextBox.Name = "uxField1_TextBox";
             this.uxField1_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField1_TextBox.TabIndex = 9;
@@ -131,6 +135,7 @@
             // uxField2_TextBox
             // 
             this.uxField2_TextBox.Location = new System.Drawing.Point(67, 79);
+            this.uxField2_TextBox.MaxLength = 40;
             this.uxField2_TextBox.Name = "uxField2_TextBox";
             this.uxField2_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField2_TextBox.TabIndex = 10;
@@ -138,20 +143,27 @@
             // uxField5_TextBox
             // 
             this.uxField5_TextBox.Location = new System.Drawing.Point(67, 157);
+            this.uxField5_TextBox.MaxLength = 40;
             this.uxField5_TextBox.Name = "uxField5_TextBox";
+            this.uxField5_TextBox.ReadOnly = true;
             this.uxField5_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField5_TextBox.TabIndex = 13;
+            this.uxField5_TextBox.Text = "Unique ID";
             // 
             // uxField4_TextBox
             // 
             this.uxField4_TextBox.Location = new System.Drawing.Point(67, 131);
+            this.uxField4_TextBox.MaxLength = 40;
             this.uxField4_TextBox.Name = "uxField4_TextBox";
+            this.uxField4_TextBox.ReadOnly = true;
             this.uxField4_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField4_TextBox.TabIndex = 12;
+            this.uxField4_TextBox.Text = "File Name";
             // 
             // uxField3_TextBox
             // 
             this.uxField3_TextBox.Location = new System.Drawing.Point(67, 105);
+            this.uxField3_TextBox.MaxLength = 40;
             this.uxField3_TextBox.Name = "uxField3_TextBox";
             this.uxField3_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField3_TextBox.TabIndex = 11;
@@ -159,9 +171,11 @@
             // uxDocType_TextBox
             // 
             this.uxDocType_TextBox.Location = new System.Drawing.Point(67, 183);
+            this.uxDocType_TextBox.MaxLength = 40;
             this.uxDocType_TextBox.Name = "uxDocType_TextBox";
             this.uxDocType_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxDocType_TextBox.TabIndex = 14;
+            this.uxDocType_TextBox.Text = "Default";
             // 
             // uxSubmit_Button
             // 
@@ -173,44 +187,54 @@
             this.uxSubmit_Button.UseVisualStyleBackColor = true;
             this.uxSubmit_Button.Click += new System.EventHandler(this.uxSubmit_Button_Click);
             // 
-            // menuStrip1
+            // uxMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(281, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "exMenuStrip";
+            this.uxMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxFile_MenuItem,
+            this.uxEdit_MenuItem});
+            this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.uxMenuStrip.Name = "uxMenuStrip";
+            this.uxMenuStrip.Size = new System.Drawing.Size(281, 24);
+            this.uxMenuStrip.TabIndex = 16;
+            this.uxMenuStrip.Text = "exMenuStrip";
             // 
-            // fileToolStripMenuItem
+            // uxFile_MenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serverInfoToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.uxFile_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxHelp_MenuItem});
+            this.uxFile_MenuItem.Name = "uxFile_MenuItem";
+            this.uxFile_MenuItem.Size = new System.Drawing.Size(37, 20);
+            this.uxFile_MenuItem.Text = "File";
             // 
-            // serverInfoToolStripMenuItem
+            // uxHelp_MenuItem
             // 
-            this.serverInfoToolStripMenuItem.Name = "serverInfoToolStripMenuItem";
-            this.serverInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.serverInfoToolStripMenuItem.Text = "Help";
+            this.uxHelp_MenuItem.Name = "uxHelp_MenuItem";
+            this.uxHelp_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxHelp_MenuItem.Text = "Help";
+            this.uxHelp_MenuItem.Click += new System.EventHandler(this.uxHelp_MenuItem_Click);
             // 
-            // editToolStripMenuItem
+            // uxEdit_MenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serverInfoToolStripMenuItem1});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.uxEdit_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxServerInfo_MenuItem,
+            this.fileDirectoryToolStripMenuItem});
+            this.uxEdit_MenuItem.Name = "uxEdit_MenuItem";
+            this.uxEdit_MenuItem.Size = new System.Drawing.Size(39, 20);
+            this.uxEdit_MenuItem.Text = "Edit";
             // 
-            // serverInfoToolStripMenuItem1
+            // uxServerInfo_MenuItem
             // 
-            this.serverInfoToolStripMenuItem1.Name = "serverInfoToolStripMenuItem1";
-            this.serverInfoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.serverInfoToolStripMenuItem1.Text = "Server Info";
+            this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxServerInfo_MenuItem.Text = "Server Info";
+            this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
+            // 
+            // fileDirectoryToolStripMenuItem
+            // 
+            this.fileDirectoryToolStripMenuItem.Name = "fileDirectoryToolStripMenuItem";
+            this.fileDirectoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileDirectoryToolStripMenuItem.Text = "File Directory";
+            this.fileDirectoryToolStripMenuItem.Click += new System.EventHandler(this.fileDirectoryToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -232,12 +256,12 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.uxMenuStrip);
+            this.MainMenuStrip = this.uxMenuStrip;
             this.Name = "MainForm";
             this.Text = "AddDocs";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.uxMenuStrip.ResumeLayout(false);
+            this.uxMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,11 +284,12 @@
         private System.Windows.Forms.TextBox uxField3_TextBox;
         private System.Windows.Forms.TextBox uxDocType_TextBox;
         private System.Windows.Forms.Button uxSubmit_Button;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem serverInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem serverInfoToolStripMenuItem1;
+        private System.Windows.Forms.MenuStrip uxMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem uxFile_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uxHelp_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uxEdit_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uxServerInfo_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileDirectoryToolStripMenuItem;
     }
 }
 

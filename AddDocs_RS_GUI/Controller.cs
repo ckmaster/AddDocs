@@ -10,17 +10,19 @@ namespace AddDocs_RS_GUI
     public class Controller
     {
         public IS_Info intServer = new IS_Info();
+        public string fileLocation { get; set; }
 
         public void Initialize()
         {
             LocalOp local = new LocalOp();
-            intServer = local.LoadConfig();
+            intServer = local.LoadServerConfig();
+            fileLocation = local.LoadFileConfig();
         }
 
         public void GetConnection()
         {
             string uri = "http://" + intServer.server + ":" + intServer.port + "/integrationserver/connection/";
-            RestCall rest = new RestCall(intServer.username, intServer.password, uri, RestSharp.Method.GET, "application/xml");
+            RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.GET, "application/xml");
             intServer.sessionHash = rest.GetConnection();
         }
 
@@ -43,10 +45,15 @@ namespace AddDocs_RS_GUI
         {
             Initialize();
             GetConnection();
-            string[] files = Directory.GetFiles("C:\\Import");
+            string[] files = Directory.GetFiles(fileLocation);
             foreach(string s in files)
             {
-                INOW_Doc doc = new INOW_Doc("", d, f1, f2, f3, f4, Path.GetFileName(s), dt);
+                string temp = Path.GetFileName(s);
+                if (temp.Length > 40)
+                {
+                    temp = temp.Substring(0, 39);
+                }
+                INOW_Doc doc = new INOW_Doc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
                 string docid = PostDoc(doc);
                 PostDocPages(docid, s);
             }              

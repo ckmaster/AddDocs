@@ -24,16 +24,6 @@ namespace AddDocs_RS_GUI
             request.AddHeader("x-integrationserver-session-hash", hash);
         }
 
-        public RestCall (string user, string pw, string uri, Method httpMethod, string contentType)
-        {
-            client = new RestClient(uri);
-            request = new RestRequest(httpMethod);
-            request.AddHeader("content-type", contentType);
-            request.AddHeader("x-integrationserver-password", pw);
-            request.AddHeader("x-integrationserver-username", user);
-            //request.AddHeader("x-integrationserver-session-hash", hash);
-        }
-
         public string GetConnection()
         {
             response = client.Execute(request);
@@ -47,13 +37,27 @@ namespace AddDocs_RS_GUI
             string location = response.Headers[3].Value.ToString();
             string[] delims = { "document/" };
             string[] parts = location.Split(delims, StringSplitOptions.None);
-            string docid = parts[1];
+            string docid = "";
+            //After 50 documents have been added (100 operations on the same session hash)
+            //A header gets added to response, Connection=close
+            //The try catch handles that, may be a better way though
+            try
+            {
+                docid = parts[1];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                location = response.Headers[4].Value.ToString();
+                parts = location.Split(delims, StringSplitOptions.None);
+                docid = parts[1];
+            }
+            
             return docid;
         }
 
         public void PostDocPage(string docid, string file)
         {
-            request.AddHeader("x-integrationserver-resource-name", "dwa.tif");
+            request.AddHeader("x-integrationserver-resource-name", Path.GetFileName(file));
             byte[] fileBytes = File.ReadAllBytes(file);
             request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
