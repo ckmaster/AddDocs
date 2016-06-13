@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="GetConnection.cs" />
     <Compile Include="INOW_Doc.cs" />
     <Compile Include="IS_Info.cs" />
     <Compile Include="LocalOp.cs" />
@@ -61,8 +60,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostDoc.cs" />
-    <Compile Include="PostDocPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestCall.cs" />

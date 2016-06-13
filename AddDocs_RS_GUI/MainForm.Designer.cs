@@ -195,7 +195,7 @@
             // serverInfoToolStripMenuItem
             // 
             this.serverInfoToolStripMenuItem.Name = "serverInfoToolStripMenuItem";
-            this.serverInfoToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.serverInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.serverInfoToolStripMenuItem.Text = "Help";
             // 
             // editToolStripMenuItem
@@ -209,7 +209,7 @@
             // serverInfoToolStripMenuItem1
             // 
             this.serverInfoToolStripMenuItem1.Name = "serverInfoToolStripMenuItem1";
-            this.serverInfoToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.serverInfoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.serverInfoToolStripMenuItem1.Text = "Server Info";
             // 
             // MainForm

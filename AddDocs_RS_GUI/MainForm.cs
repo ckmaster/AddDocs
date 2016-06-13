@@ -23,22 +23,15 @@ namespace AddDocs_RS_GUI
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
+            string d = uxDrawer_TextBox.Text;
+            string f1 = uxField1_TextBox.Text;
+            string f2 = uxField2_TextBox.Text;
+            string f3 = uxField3_TextBox.Text;
+            string f4 = uxField4_TextBox.Text;
+            string f5 = uxField5_TextBox.Text;
+            string dt = uxDocType_TextBox.Text;
             Controller control = new Controller();
-            control.Initialize();
-            string[] files = Directory.GetFiles("C:\\Import");
-            foreach (string file in files)
-            {
-                string n = "";
-                string d = uxDrawer_TextBox.Text;
-                string f1 = Path.GetFileName(file);
-                string f2 = uxField2_TextBox.Text;
-                string f3 = uxField3_TextBox.Text;
-                string f4 = uxField4_TextBox.Text;
-                string f5 = uxField5_TextBox.Text;
-                string dt = uxDocType_TextBox.Text;
-                INOW_Doc doc = new INOW_Doc(n, d, f1, f2, f3, f4, f5, dt);
-                control.PostDoc(doc, file);
-            }
+            control.DoWork(d, f1, f2, f3, f4, f5, dt);
             ClearUI();
             MessageBox.Show("Documents created and pages added");
         }
