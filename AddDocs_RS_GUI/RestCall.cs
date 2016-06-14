@@ -28,6 +28,11 @@ namespace AddDocs_RS_GUI
         public string GetConnection()
         {
             response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                MessageBox.Show("An error has occurred, failed to get connection:\r\n\r\n" + response.Content);
+                System.Environment.Exit(1);
+            }
             return response.Headers[0].Value.ToString();
         }
 
@@ -35,15 +40,15 @@ namespace AddDocs_RS_GUI
         {
             request.AddParameter("application/xml", doc.CreatePostDocXML(), ParameterType.RequestBody);
             response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                MessageBox.Show("An error has occurred, while creating the document:\r\n\r\n" + response.Content);
+                return null;
+            }
             string location = response.Headers[3].Value.ToString();
             string[] delims = { "document/" };
             string[] parts = location.Split(delims, StringSplitOptions.None);
             string docid = "";
-            if (response.StatusCode != System.Net.HttpStatusCode.Created)
-            {
-                //need to put in an actual exception to handle this
-                MessageBox.Show(response.Content + "\r\n\r\nProgram will now crash");
-            }
             //After 50 documents have been added (100 operations on the same session hash)
             //A header gets added to response, Connection=close
             //The try catch handles that, may be a better way though
@@ -60,17 +65,27 @@ namespace AddDocs_RS_GUI
             return docid;
         }
 
-        public void PostDocPage(string docid, string file)
+        public bool PostDocPage(string docid, string file)
         {
             request.AddHeader("x-integrationserver-resource-name", Path.GetFileName(file));
             byte[] fileBytes = File.ReadAllBytes(file);
             request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
+                return false;
+            }
+            return true;
         }
 
         public void DeleteConnection()
         {
             response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                MessageBox.Show("Error deleting session\r\nBy default session will expire in 1 hour");
+            }
         }
     }
 }

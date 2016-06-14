@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AddDocs_RS_GUI
 {
@@ -61,7 +62,10 @@ namespace AddDocs_RS_GUI
                 }
                 INOW_Doc doc = new INOW_Doc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
                 string docid = PostDoc(doc);
-                PostDocPages(docid, s);
+                if (docid != null)
+                {
+                    PostDocPages(docid, s);
+                }
             }
             DeleteConnection();
         }                  
