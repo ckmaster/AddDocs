@@ -1,0 +1,12 @@
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Release\AddDocs_RS_GUI.exe.config
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Release\AddDocs_RS_GUI.exe
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Release\AddDocs_RS_GUI.pdb
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Release\RestSharp.dll
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Release\RestSharp.xml
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.csprojResolveAssemblyReference.cache
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.MainForm.resources
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.Properties.Resources.resources
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.ServerInfo.resources
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.csproj.GenerateResource.Cache
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.exe
+c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Release\AddDocs_RS_GUI.pdb

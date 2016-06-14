@@ -30,8 +30,7 @@ namespace AddDocs_RS_GUI
         {
             string uri = "http://" + intServer.server + ":" + intServer.port + "/integrationserver/document/";
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.POST, "application/xml");
-            string docid = rest.PostDoc(doc);
-            return docid;
+            return rest.PostDoc(doc);    
         }
 
         public void PostDocPages(string docid, string file)
@@ -39,6 +38,13 @@ namespace AddDocs_RS_GUI
             string uri = "http://" + intServer.server + ":" + intServer.port + "/integrationserver/document/" + docid + "/page";
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
             rest.PostDocPage(docid, file);
+        }
+
+        public void DeleteConnection()
+        {
+            string uri = "http://" + intServer.server + ":" + intServer.port + "/integrationserver/connection/";
+            RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.DELETE, "application/xml");
+            rest.DeleteConnection();
         }
 
         public void DoWork(string d, string f1, string f2, string f3, string f4, string f5, string dt)
@@ -56,7 +62,8 @@ namespace AddDocs_RS_GUI
                 INOW_Doc doc = new INOW_Doc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
                 string docid = PostDoc(doc);
                 PostDocPages(docid, s);
-            }              
+            }
+            DeleteConnection();
         }                  
     }                      
 }                          

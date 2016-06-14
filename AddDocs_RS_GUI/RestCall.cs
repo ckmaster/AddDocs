@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AddDocs_RS_GUI
 {
@@ -38,6 +39,11 @@ namespace AddDocs_RS_GUI
             string[] delims = { "document/" };
             string[] parts = location.Split(delims, StringSplitOptions.None);
             string docid = "";
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                //need to put in an actual exception to handle this
+                MessageBox.Show(response.Content + "\r\n\r\nProgram will now crash");
+            }
             //After 50 documents have been added (100 operations on the same session hash)
             //A header gets added to response, Connection=close
             //The try catch handles that, may be a better way though
@@ -51,7 +57,6 @@ namespace AddDocs_RS_GUI
                 parts = location.Split(delims, StringSplitOptions.None);
                 docid = parts[1];
             }
-            
             return docid;
         }
 
@@ -61,6 +66,11 @@ namespace AddDocs_RS_GUI
             byte[] fileBytes = File.ReadAllBytes(file);
             request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+        }
+
+        public void DeleteConnection()
+        {
+            response = client.Execute(request);
         }
     }
 }

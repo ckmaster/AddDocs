@@ -209,7 +209,7 @@
             // uxHelp_MenuItem
             // 
             this.uxHelp_MenuItem.Name = "uxHelp_MenuItem";
-            this.uxHelp_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxHelp_MenuItem.Size = new System.Drawing.Size(99, 22);
             this.uxHelp_MenuItem.Text = "Help";
             this.uxHelp_MenuItem.Click += new System.EventHandler(this.uxHelp_MenuItem_Click);
             // 
@@ -225,14 +225,14 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(143, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
             // fileDirectoryToolStripMenuItem
             // 
             this.fileDirectoryToolStripMenuItem.Name = "fileDirectoryToolStripMenuItem";
-            this.fileDirectoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileDirectoryToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.fileDirectoryToolStripMenuItem.Text = "File Directory";
             this.fileDirectoryToolStripMenuItem.Click += new System.EventHandler(this.fileDirectoryToolStripMenuItem_Click);
             // 
