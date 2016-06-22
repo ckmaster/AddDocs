@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddDocs_RS_GUI
 {
-    public class IS_Info
+    public class IntegrationServer
     {
         public string server { get; set; }
         public string port { get; set; }
@@ -14,6 +14,6 @@ namespace AddDocs_RS_GUI
         public string password { get; set; }
         public string sessionHash { get; set; }
 
-        public IS_Info(){ }
+        public IntegrationServer(){ }
     }
 }

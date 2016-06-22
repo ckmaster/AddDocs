@@ -18,11 +18,11 @@ namespace AddDocs_RS_GUI
             InitializeComponent();
         }
 
-        IS_Info intServer = new IS_Info();
+        IntegrationServer intServer = new IntegrationServer();
 
         private void ServerInfo_Load (object sender, EventArgs e)
         {
-            LocalOp local = new LocalOp();
+            InputOutput local = new InputOutput();
             intServer = local.LoadServerConfig();
             uxServer_TextBox.Text = intServer.server;
             uxPort_TextBox.Text = intServer.port;

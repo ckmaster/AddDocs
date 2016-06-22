@@ -24,6 +24,7 @@ namespace AddDocs_RS_GUI
             request.AddHeader("x-integrationserver-username", user);
             request.AddHeader("x-integrationserver-session-hash", hash);
         }
+        //end RestCall constructor
 
         public string GetConnection()
         {
@@ -35,8 +36,9 @@ namespace AddDocs_RS_GUI
             }
             return response.Headers[0].Value.ToString();
         }
+        //end GetConnection
 
-        public string PostDoc(INOW_Doc doc)
+        public string PostDoc(ImageNowDoc doc)
         {
             request.AddParameter("application/xml", doc.CreatePostDocXML(), ParameterType.RequestBody);
             response = client.Execute(request);
@@ -64,6 +66,7 @@ namespace AddDocs_RS_GUI
             }
             return docid;
         }
+        //end PostDoc
 
         public bool PostDocPage(string docid, string file)
         {
@@ -78,6 +81,7 @@ namespace AddDocs_RS_GUI
             }
             return true;
         }
+        //end PostDocPage
 
         public void DeleteConnection()
         {
@@ -87,5 +91,6 @@ namespace AddDocs_RS_GUI
                 MessageBox.Show("Error deleting session\r\nBy default session will expire in 1 hour");
             }
         }
+        //end DeleteConnection
     }
 }

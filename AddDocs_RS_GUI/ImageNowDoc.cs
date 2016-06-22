@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddDocs_RS_GUI
 {
-    public class INOW_Doc
+    public class ImageNowDoc
     {
         public string name { get; set; }
         public string drawer { get; set; }
@@ -17,7 +17,7 @@ namespace AddDocs_RS_GUI
         public string field5 { get; set; }
         public string docType { get; set; }
 
-        public INOW_Doc(string n, string d, string f1, string f2, string f3, string f4, string f5, string dt)
+        public ImageNowDoc(string n, string d, string f1, string f2, string f3, string f4, string f5, string dt)
         {
             name = n;
             drawer = d;

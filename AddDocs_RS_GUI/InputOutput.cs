@@ -7,11 +7,11 @@ using System.IO;
 
 namespace AddDocs_RS_GUI
 {
-    public class LocalOp
+    public class InputOutput
     {
-        public IS_Info LoadServerConfig ()
+        public IntegrationServer LoadServerConfig()
         {
-            IS_Info intServer = new IS_Info();
+            IntegrationServer intServer = new IntegrationServer();
             List<string> lines = new List<string>();
             using (StreamReader sr = new StreamReader(".\\server.txt"))
             {

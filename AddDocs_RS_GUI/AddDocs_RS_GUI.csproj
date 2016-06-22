@@ -51,9 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="INOW_Doc.cs" />
-    <Compile Include="IS_Info.cs" />
-    <Compile Include="LocalOp.cs" />
+    <Compile Include="ImageNowDoc.cs" />
+    <Compile Include="IntegrationServer.cs" />
+    <Compile Include="InputOutput.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
