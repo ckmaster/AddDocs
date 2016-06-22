@@ -51,26 +51,28 @@
             this.uxEdit_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxServerInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.uxFolderFile_TextBox = new System.Windows.Forms.TextBox();
+            this.uxDocMode_GroupBox = new System.Windows.Forms.GroupBox();
+            this.uxMulti_RadioButton = new System.Windows.Forms.RadioButton();
+            this.uxSingle_RadioButton = new System.Windows.Forms.RadioButton();
+            this.uxFileMode_GroupBox = new System.Windows.Forms.GroupBox();
+            this.uxRapidFire_RadioButton = new System.Windows.Forms.RadioButton();
+            this.uxDefault_RadioButton = new System.Windows.Forms.RadioButton();
+            this.uxSimple_RadioButton = new System.Windows.Forms.RadioButton();
+            this.uxFolder_TextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.uxToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uxImageNow_GroupBox = new System.Windows.Forms.GroupBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.uxError_PictureBox = new System.Windows.Forms.PictureBox();
+            this.uxHelp_PictureBox = new System.Windows.Forms.PictureBox();
             this.uxMenuStrip.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.uxDocMode_GroupBox.SuspendLayout();
+            this.uxFileMode_GroupBox.SuspendLayout();
             this.uxImageNow_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxError_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uxHelp_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -230,7 +232,7 @@
             // uxHelp_MenuItem
             // 
             this.uxHelp_MenuItem.Name = "uxHelp_MenuItem";
-            this.uxHelp_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxHelp_MenuItem.Size = new System.Drawing.Size(99, 22);
             this.uxHelp_MenuItem.Text = "Help";
             this.uxHelp_MenuItem.Click += new System.EventHandler(this.uxHelp_MenuItem_Click);
             // 
@@ -246,92 +248,109 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(143, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
             // fileDirectoryToolStripMenuItem
             // 
             this.fileDirectoryToolStripMenuItem.Name = "fileDirectoryToolStripMenuItem";
-            this.fileDirectoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileDirectoryToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.fileDirectoryToolStripMenuItem.Text = "File Directory";
             this.fileDirectoryToolStripMenuItem.Click += new System.EventHandler(this.fileDirectoryToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // uxDocMode_GroupBox
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(26, 19);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(125, 90);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Doc Mode";
+            this.uxDocMode_GroupBox.Controls.Add(this.uxMulti_RadioButton);
+            this.uxDocMode_GroupBox.Controls.Add(this.uxSingle_RadioButton);
+            this.uxDocMode_GroupBox.Location = new System.Drawing.Point(26, 19);
+            this.uxDocMode_GroupBox.Name = "uxDocMode_GroupBox";
+            this.uxDocMode_GroupBox.Size = new System.Drawing.Size(125, 90);
+            this.uxDocMode_GroupBox.TabIndex = 17;
+            this.uxDocMode_GroupBox.TabStop = false;
+            this.uxDocMode_GroupBox.Text = "Doc Mode";
             // 
-            // radioButton2
+            // uxMulti_RadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 17);
-            this.radioButton2.TabIndex = 19;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Multi";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.uxMulti_RadioButton.AutoSize = true;
+            this.uxMulti_RadioButton.Location = new System.Drawing.Point(6, 27);
+            this.uxMulti_RadioButton.Name = "uxMulti_RadioButton";
+            this.uxMulti_RadioButton.Size = new System.Drawing.Size(47, 17);
+            this.uxMulti_RadioButton.TabIndex = 19;
+            this.uxMulti_RadioButton.TabStop = true;
+            this.uxMulti_RadioButton.Text = "Multi";
+            this.uxToolTip.SetToolTip(this.uxMulti_RadioButton, "Create multiple documents in ImageNow");
+            this.uxMulti_RadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // uxSingle_RadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(54, 17);
-            this.radioButton1.TabIndex = 18;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Single";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.uxSingle_RadioButton.AutoSize = true;
+            this.uxSingle_RadioButton.Location = new System.Drawing.Point(6, 50);
+            this.uxSingle_RadioButton.Name = "uxSingle_RadioButton";
+            this.uxSingle_RadioButton.Size = new System.Drawing.Size(54, 17);
+            this.uxSingle_RadioButton.TabIndex = 18;
+            this.uxSingle_RadioButton.TabStop = true;
+            this.uxSingle_RadioButton.Text = "Single";
+            this.uxToolTip.SetToolTip(this.uxSingle_RadioButton, "Add pages to a document in ImageNow");
+            this.uxSingle_RadioButton.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // uxFileMode_GroupBox
             // 
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Location = new System.Drawing.Point(162, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(125, 90);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "File Mode";
+            this.uxFileMode_GroupBox.Controls.Add(this.uxRapidFire_RadioButton);
+            this.uxFileMode_GroupBox.Controls.Add(this.uxDefault_RadioButton);
+            this.uxFileMode_GroupBox.Controls.Add(this.uxSimple_RadioButton);
+            this.uxFileMode_GroupBox.Location = new System.Drawing.Point(162, 19);
+            this.uxFileMode_GroupBox.Name = "uxFileMode_GroupBox";
+            this.uxFileMode_GroupBox.Size = new System.Drawing.Size(125, 90);
+            this.uxFileMode_GroupBox.TabIndex = 18;
+            this.uxFileMode_GroupBox.TabStop = false;
+            this.uxFileMode_GroupBox.Text = "File Mode";
             // 
-            // radioButton3
+            // uxRapidFire_RadioButton
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(59, 17);
-            this.radioButton3.TabIndex = 21;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Default";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.uxRapidFire_RadioButton.AutoSize = true;
+            this.uxRapidFire_RadioButton.Location = new System.Drawing.Point(6, 65);
+            this.uxRapidFire_RadioButton.Name = "uxRapidFire_RadioButton";
+            this.uxRapidFire_RadioButton.Size = new System.Drawing.Size(73, 17);
+            this.uxRapidFire_RadioButton.TabIndex = 22;
+            this.uxRapidFire_RadioButton.TabStop = true;
+            this.uxRapidFire_RadioButton.Text = "Rapid Fire";
+            this.uxToolTip.SetToolTip(this.uxRapidFire_RadioButton, "No physical objects will be used, will create 0 byte pages in single mode, or doc" +
+        "uments without pages in multi mode");
+            this.uxRapidFire_RadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // uxDefault_RadioButton
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 42);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(56, 17);
-            this.radioButton4.TabIndex = 20;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Simple";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.uxDefault_RadioButton.AutoSize = true;
+            this.uxDefault_RadioButton.Location = new System.Drawing.Point(6, 19);
+            this.uxDefault_RadioButton.Name = "uxDefault_RadioButton";
+            this.uxDefault_RadioButton.Size = new System.Drawing.Size(59, 17);
+            this.uxDefault_RadioButton.TabIndex = 21;
+            this.uxDefault_RadioButton.TabStop = true;
+            this.uxDefault_RadioButton.Text = "Default";
+            this.uxToolTip.SetToolTip(this.uxDefault_RadioButton, "Grab all the files in a directory");
+            this.uxDefault_RadioButton.UseVisualStyleBackColor = true;
             // 
-            // uxFolderFile_TextBox
+            // uxSimple_RadioButton
             // 
-            this.uxFolderFile_TextBox.Location = new System.Drawing.Point(58, 115);
-            this.uxFolderFile_TextBox.MaxLength = 500;
-            this.uxFolderFile_TextBox.Name = "uxFolderFile_TextBox";
-            this.uxFolderFile_TextBox.ReadOnly = true;
-            this.uxFolderFile_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxFolderFile_TextBox.TabIndex = 20;
+            this.uxSimple_RadioButton.AutoSize = true;
+            this.uxSimple_RadioButton.Location = new System.Drawing.Point(6, 42);
+            this.uxSimple_RadioButton.Name = "uxSimple_RadioButton";
+            this.uxSimple_RadioButton.Size = new System.Drawing.Size(56, 17);
+            this.uxSimple_RadioButton.TabIndex = 20;
+            this.uxSimple_RadioButton.TabStop = true;
+            this.uxSimple_RadioButton.Text = "Simple";
+            this.uxToolTip.SetToolTip(this.uxSimple_RadioButton, "Use a single file");
+            this.uxSimple_RadioButton.UseVisualStyleBackColor = true;
+            // 
+            // uxFolder_TextBox
+            // 
+            this.uxFolder_TextBox.Location = new System.Drawing.Point(58, 115);
+            this.uxFolder_TextBox.MaxLength = 500;
+            this.uxFolder_TextBox.Name = "uxFolder_TextBox";
+            this.uxFolder_TextBox.ReadOnly = true;
+            this.uxFolder_TextBox.Size = new System.Drawing.Size(229, 20);
+            this.uxFolder_TextBox.TabIndex = 20;
             // 
             // label3
             // 
@@ -344,7 +363,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(266, 115);
+            this.button1.Location = new System.Drawing.Point(293, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 20);
             this.button1.TabIndex = 21;
@@ -375,39 +394,15 @@
             this.uxImageNow_GroupBox.TabStop = false;
             this.uxImageNow_GroupBox.Text = "ImageNow Info";
             // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(6, 65);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(73, 17);
-            this.radioButton5.TabIndex = 22;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Rapid Fire";
-            this.uxToolTip.SetToolTip(this.radioButton5, "No physical objects will be used, will create 0 byte pages in single mode, or doc" +
-        "uments without pages in multi mode");
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(293, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Controls.Add(this.pictureBox1);
-            this.groupBox3.Controls.Add(this.groupBox2);
+            this.groupBox3.Controls.Add(this.uxError_PictureBox);
+            this.groupBox3.Controls.Add(this.uxDocMode_GroupBox);
+            this.groupBox3.Controls.Add(this.uxHelp_PictureBox);
+            this.groupBox3.Controls.Add(this.uxFileMode_GroupBox);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.uxFolderFile_TextBox);
+            this.groupBox3.Controls.Add(this.uxFolder_TextBox);
             this.groupBox3.Location = new System.Drawing.Point(12, 31);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(330, 143);
@@ -415,11 +410,36 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "File Setup";
             // 
+            // uxError_PictureBox
+            // 
+            this.uxError_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("uxError_PictureBox.Image")));
+            this.uxError_PictureBox.InitialImage = null;
+            this.uxError_PictureBox.Location = new System.Drawing.Point(293, 69);
+            this.uxError_PictureBox.Name = "uxError_PictureBox";
+            this.uxError_PictureBox.Size = new System.Drawing.Size(30, 30);
+            this.uxError_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.uxError_PictureBox.TabIndex = 24;
+            this.uxError_PictureBox.TabStop = false;
+            this.uxError_PictureBox.Click += new System.EventHandler(this.uxError_PictureBox_Click);
+            // 
+            // uxHelp_PictureBox
+            // 
+            this.uxHelp_PictureBox.Image = ((System.Drawing.Image)(resources.GetObject("uxHelp_PictureBox.Image")));
+            this.uxHelp_PictureBox.ImageLocation = "";
+            this.uxHelp_PictureBox.InitialImage = null;
+            this.uxHelp_PictureBox.Location = new System.Drawing.Point(293, 33);
+            this.uxHelp_PictureBox.Name = "uxHelp_PictureBox";
+            this.uxHelp_PictureBox.Size = new System.Drawing.Size(30, 30);
+            this.uxHelp_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.uxHelp_PictureBox.TabIndex = 23;
+            this.uxHelp_PictureBox.TabStop = false;
+            this.uxHelp_PictureBox.Click += new System.EventHandler(this.uxHelp_PictureBox_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 426);
+            this.ClientSize = new System.Drawing.Size(353, 425);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.uxImageNow_GroupBox);
             this.Controls.Add(this.uxMenuStrip);
@@ -428,15 +448,16 @@
             this.Text = "AddDocs";
             this.uxMenuStrip.ResumeLayout(false);
             this.uxMenuStrip.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.uxDocMode_GroupBox.ResumeLayout(false);
+            this.uxDocMode_GroupBox.PerformLayout();
+            this.uxFileMode_GroupBox.ResumeLayout(false);
+            this.uxFileMode_GroupBox.PerformLayout();
             this.uxImageNow_GroupBox.ResumeLayout(false);
             this.uxImageNow_GroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxError_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uxHelp_PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,20 +486,21 @@
         private System.Windows.Forms.ToolStripMenuItem uxEdit_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxServerInfo_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileDirectoryToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox uxFolderFile_TextBox;
+        private System.Windows.Forms.GroupBox uxDocMode_GroupBox;
+        private System.Windows.Forms.RadioButton uxMulti_RadioButton;
+        private System.Windows.Forms.RadioButton uxSingle_RadioButton;
+        private System.Windows.Forms.GroupBox uxFileMode_GroupBox;
+        private System.Windows.Forms.TextBox uxFolder_TextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton uxDefault_RadioButton;
+        private System.Windows.Forms.RadioButton uxSimple_RadioButton;
         private System.Windows.Forms.ToolTip uxToolTip;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton uxRapidFire_RadioButton;
         private System.Windows.Forms.GroupBox uxImageNow_GroupBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.PictureBox uxError_PictureBox;
+        private System.Windows.Forms.PictureBox uxHelp_PictureBox;
     }
 }
 

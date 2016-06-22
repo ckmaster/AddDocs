@@ -13,12 +13,19 @@ namespace AddDocs_RS_GUI
         {
             IntegrationServer intServer = new IntegrationServer();
             List<string> lines = new List<string>();
-            using (StreamReader sr = new StreamReader(".\\server.txt"))
+
+            try
             {
-                while (!sr.EndOfStream)
+                using (StreamReader sr = new StreamReader(".\\server.txt"))
                 {
-                    lines.Add(sr.ReadLine());
+                    while (!sr.EndOfStream)
+                    {
+                        lines.Add(sr.ReadLine());
+                    }
                 }
+            } catch(FileNotFoundException)
+            {
+                return null;
             }
 
             string[] delims = { ": " };
@@ -43,7 +50,6 @@ namespace AddDocs_RS_GUI
             }
             return intServer;
         }
-        //end LoadServerConfig
 
         public string LoadFileConfig()
         {
@@ -57,7 +63,6 @@ namespace AddDocs_RS_GUI
             }
             return location;
         }
-        //end LoadFileConfig
 
         public void SaveFileConfig(string location)
         {
@@ -66,7 +71,5 @@ namespace AddDocs_RS_GUI
                 sw.WriteLine(location);
             }
         }
-        //end SaveFileConfig
-
     }
 }

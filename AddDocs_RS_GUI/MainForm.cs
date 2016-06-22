@@ -19,9 +19,8 @@ namespace AddDocs_RS_GUI
         {
             InitializeComponent();
             control.Initialize();
-            uxFolderFile_TextBox.Text = control.fileLocation;
+            uxFolder_TextBox.Text = control.fileLocation;
         }
-        //end MainForm
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
@@ -36,7 +35,6 @@ namespace AddDocs_RS_GUI
             ClearUI();
             MessageBox.Show("Documents created and pages added");
         }
-        //end uxSubmit_Button_Click
 
         public void ClearUI ()
         {
@@ -48,20 +46,17 @@ namespace AddDocs_RS_GUI
             //this.uxField5_TextBox.Clear();
             this.uxDocType_TextBox.Text = "Default";
         }
-        //end ClearUI
 
         private void uxHelp_MenuItem_Click (object sender, EventArgs e)
         {
             MessageBox.Show("corey.kidd@lexmark.com");
         }
-        //end uxHelp_MenuItem_Click
 
         private void uxServerInfo_MenuItem_Click (object sender, EventArgs e)
         {
             ServerInfo form = new ServerInfo();
             form.Show();
         }
-        //end uxServerInfo_MenuItem_Click
 
         private void fileDirectoryToolStripMenuItem_Click (object sender, EventArgs e)
         {
@@ -71,17 +66,21 @@ namespace AddDocs_RS_GUI
             {
                 string path = fbd.SelectedPath;
                 control.fileLocation = path;
-                uxFolderFile_TextBox.Text = control.fileLocation;
+                uxFolder_TextBox.Text = control.fileLocation;
                 InputOutput local = new InputOutput();
                 local.SaveFileConfig(path);
                 MessageBox.Show("Default upload directory has been updated");
             }
         }
 
-        private void pictureBox1_Click (object sender, EventArgs e)
+        private void uxHelp_PictureBox_Click (object sender, EventArgs e)
         {
             MessageBox.Show("You clicked the button");
         }
-        //end fileDirectoryToolStripMenuItem_Click
+
+        private void uxError_PictureBox_Click (object sender, EventArgs e)
+        {
+            MessageBox.Show("You clicked the other button");
+        }
     }
 }

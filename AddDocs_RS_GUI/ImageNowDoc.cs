@@ -28,7 +28,6 @@ namespace AddDocs_RS_GUI
             field5 = f5;
             docType = dt;
         }
-        //end INOW_Doc Constructor
 
         public string CreatePostDocXML()
         {
@@ -50,6 +49,5 @@ namespace AddDocs_RS_GUI
             "</document>";
             return xmlBody;
         }
-        //end CreatePostDocXML
     }
 }

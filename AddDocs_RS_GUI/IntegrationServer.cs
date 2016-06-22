@@ -13,7 +13,5 @@ namespace AddDocs_RS_GUI
         public string username { get; set; }
         public string password { get; set; }
         public string sessionHash { get; set; }
-
-        public IntegrationServer(){ }
     }
 }

@@ -17,9 +17,12 @@ namespace AddDocs_RS_GUI
         {
             InputOutput local = new InputOutput();
             intServer = local.LoadServerConfig();
+            if (intServer == null)
+            {
+                MessageBox.Show("Config file was not found");
+            }
             fileLocation = local.LoadFileConfig();
         }
-        //end Initialize
 
         public void GetConnection()
         {
@@ -27,7 +30,6 @@ namespace AddDocs_RS_GUI
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.GET, "application/xml");
             intServer.sessionHash = rest.GetConnection();
         }
-        //end GetConnection
 
         public string PostDoc(ImageNowDoc doc)
         {
@@ -35,7 +37,6 @@ namespace AddDocs_RS_GUI
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.POST, "application/xml");
             return rest.PostDoc(doc);
         }
-        //end PostDoc
 
         public void PostDocPages(string docid, string file)
         {
@@ -43,7 +44,6 @@ namespace AddDocs_RS_GUI
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
             rest.PostDocPage(docid, file);
         }
-        //end PostDocPages
 
         public void DeleteConnection()
         {
@@ -51,7 +51,6 @@ namespace AddDocs_RS_GUI
             RestCall rest = new RestCall(intServer.sessionHash, intServer.username, intServer.password, uri, RestSharp.Method.DELETE, "application/xml");
             rest.DeleteConnection();
         }
-        //end DeleteConnection
 
         public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt)
         {
@@ -72,7 +71,6 @@ namespace AddDocs_RS_GUI
                 }
             }
             DeleteConnection();
-        }
-        //end MultiDocMultiFile                  
+        }               
     }                      
 }                       
