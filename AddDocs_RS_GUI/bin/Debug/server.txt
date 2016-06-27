@@ -1,4 +1,0 @@
-SERVER: localhost
-PORT: 8080
-USERNAME: ckidd
-PASSWORD: dwa

@@ -13,38 +13,39 @@ namespace AddDocs_RS_GUI
 {
     public partial class ServerInfo : Form
     {
-        public ServerInfo ()
+
+        Controller control;
+        Config conf;
+
+        public ServerInfo (Controller c)
         {
             InitializeComponent();
+            control = c;
+            conf = control.conf;
         }
-
-        IntegrationServer intServer = new IntegrationServer();
 
         private void ServerInfo_Load (object sender, EventArgs e)
         {
-            InputOutput local = new InputOutput();
-            intServer = local.LoadServerConfig();
-            uxServer_TextBox.Text = intServer.server;
-            uxPort_TextBox.Text = intServer.port;
-            uxUsername_TextBox.Text = intServer.username;
-            uxPassword_Textbox.Text = intServer.password;
+            uxServer_TextBox.Text = conf.intServer.hostname;
+            uxPort_TextBox.Text = conf.intServer.port;
+            uxUsername_TextBox.Text = conf.intServer.username;
+            uxPassword_Textbox.Text = conf.intServer.password;
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
-            if (!(uxServer_TextBox.Text.Trim().Equals(intServer.server)) ||
-               !(uxPort_TextBox.Text.Trim().Equals(intServer.port)) ||
-               !(uxUsername_TextBox.Text.Trim().Equals(intServer.username)) ||
-               !(uxPassword_Textbox.Text.Trim().Equals(intServer.password)))
+            if (!(uxServer_TextBox.Text.Trim().Equals(conf.intServer.hostname)) ||
+               !(uxPort_TextBox.Text.Trim().Equals(conf.intServer.port)) ||
+               !(uxUsername_TextBox.Text.Trim().Equals(conf.intServer.username)) ||
+               !(uxPassword_Textbox.Text.Trim().Equals(conf.intServer.password)))
             {
                 MessageBox.Show("Change in settings detected, making adjustments now");
-                using (StreamWriter sw = new StreamWriter(".\\server.txt", false))
-                {
-                    sw.WriteLine("SERVER: " + uxServer_TextBox.Text.Trim());
-                    sw.WriteLine("PORT: " + uxPort_TextBox.Text.Trim());
-                    sw.WriteLine("USERNAME: " + uxUsername_TextBox.Text.Trim());
-                    sw.WriteLine("PASSWORD: " + uxPassword_Textbox.Text.Trim());
-                }    
+                conf.intServer.hostname = uxServer_TextBox.Text.Trim();
+                conf.intServer.port = uxPort_TextBox.Text.Trim();
+                conf.intServer.username = uxUsername_TextBox.Text.Trim();
+                conf.intServer.password = uxPassword_Textbox.Text.Trim();
+                LocalOp local = new LocalOp();
+                local.SaveConfig(conf); 
             }
             else
             {

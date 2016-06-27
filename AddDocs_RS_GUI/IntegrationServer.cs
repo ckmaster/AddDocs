@@ -8,7 +8,7 @@ namespace AddDocs_RS_GUI
 {
     public class IntegrationServer
     {
-        public string server { get; set; }
+        public string hostname { get; set; }
         public string port { get; set; }
         public string username { get; set; }
         public string password { get; set; }

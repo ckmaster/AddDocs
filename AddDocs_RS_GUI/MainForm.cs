@@ -19,7 +19,7 @@ namespace AddDocs_RS_GUI
         {
             InitializeComponent();
             control.Initialize();
-            uxFolder_TextBox.Text = control.fileLocation;
+            uxFolder_TextBox.Text = control.conf.folderPath;
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace AddDocs_RS_GUI
             string f4 = uxField4_TextBox.Text;
             string f5 = uxField5_TextBox.Text;
             string dt = uxDocType_TextBox.Text;
-            control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt);
+            control.DoWork(d, f1, f2, f3, f4, f5, dt);
             ClearUI();
             MessageBox.Show("Documents created and pages added");
         }
@@ -54,21 +54,21 @@ namespace AddDocs_RS_GUI
 
         private void uxServerInfo_MenuItem_Click (object sender, EventArgs e)
         {
-            ServerInfo form = new ServerInfo();
+            ServerInfo form = new ServerInfo(control);
             form.Show();
         }
 
         private void fileDirectoryToolStripMenuItem_Click (object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = control.fileLocation;
+            fbd.SelectedPath = control.conf.folderPath;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 string path = fbd.SelectedPath;
-                control.fileLocation = path;
-                uxFolder_TextBox.Text = control.fileLocation;
-                InputOutput local = new InputOutput();
-                local.SaveFileConfig(path);
+                control.conf.folderPath = path;
+                uxFolder_TextBox.Text = control.conf.folderPath;
+                LocalOp local = new LocalOp();
+                local.SaveConfig(control.conf);
                 MessageBox.Show("Default upload directory has been updated");
             }
         }
@@ -81,6 +81,21 @@ namespace AddDocs_RS_GUI
         private void uxError_PictureBox_Click (object sender, EventArgs e)
         {
             MessageBox.Show("You clicked the other button");
+        }
+
+        private void button1_Click (object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = control.conf.folderPath;
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                string path = fbd.SelectedPath;
+                control.conf.folderPath = path;
+                uxFolder_TextBox.Text = control.conf.folderPath;
+                LocalOp local = new LocalOp();
+                local.SaveConfig(control.conf);
+                MessageBox.Show("Default upload directory has been updated");
+            }
         }
     }
 }
