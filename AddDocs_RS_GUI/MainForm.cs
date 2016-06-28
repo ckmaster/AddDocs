@@ -85,16 +85,82 @@ namespace AddDocs_RS_GUI
 
         private void button1_Click (object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = control.conf.folderPath;
-            if (fbd.ShowDialog() == DialogResult.OK)
+            if (uxMulti_RadioButton.Checked == true)
             {
-                string path = fbd.SelectedPath;
-                control.conf.folderPath = path;
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.SelectedPath = control.conf.folderPath;
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    control.conf.folderPath = fbd.SelectedPath;
+                    uxFolder_TextBox.Text = control.conf.folderPath;
+                    new LocalOp().SaveConfig(control.conf);
+                    MessageBox.Show("Default upload directory has been updated");
+                }
+            }
+            else if (uxSingle_RadioButton.Checked == true)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.InitialDirectory = control.conf.filePath;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    control.conf.filePath = ofd.FileName;
+                    uxFolder_TextBox.Text = control.conf.filePath;
+                    new LocalOp().SaveConfig(control.conf);
+                    MessageBox.Show("Default upload file has been updated");
+                }
+            }
+            
+        }
+
+        private void uxMulti_RadioButton_CheckedChanged (object sender, EventArgs e)
+        {
+            if (uxMulti_RadioButton.Checked == true)
+            {
+                this.Height = 464;
+                uxImageNowMulti_GroupBox.Visible = true;
+                uxImageNowMulti_GroupBox.Enabled = true;
+                uxFolder_Label.Text = "Folder:";
+                uxImageNowSingle_GroupBox.Visible = false;
+                uxImageNowSingle_GroupBox.Enabled = false;
                 uxFolder_TextBox.Text = control.conf.folderPath;
-                LocalOp local = new LocalOp();
-                local.SaveConfig(control.conf);
-                MessageBox.Show("Default upload directory has been updated");
+            }
+        }
+
+        private void uxSingle_RadioButton_CheckedChanged (object sender, EventArgs e)
+        {
+            if (uxSingle_RadioButton.Checked == true)
+            {
+                this.Height = 297;
+                uxImageNowMulti_GroupBox.Visible = false;
+                uxImageNowMulti_GroupBox.Enabled = false;
+                uxFolder_Label.Text = "File:";
+                uxImageNowSingle_GroupBox.Enabled = true;
+                uxImageNowSingle_GroupBox.Visible = true;
+                uxFolder_TextBox.Text = control.conf.filePath;
+            }
+        }
+
+        private void uxFolder_RadioButton_CheckedChanged (object sender, EventArgs e)
+        {
+            if (uxFolder_RadioButton.Checked == true)
+            {
+
+            }
+        }
+
+        private void uxFile_RadioButton_CheckedChanged (object sender, EventArgs e)
+        {
+            if (uxFile_RadioButton.Checked == true)
+            {
+
+            }
+        }
+
+        private void uxRapidFire_RadioButton_CheckedChanged (object sender, EventArgs e)
+        {
+            if (uxRapidFire_RadioButton.Checked == true)
+            {
+
             }
         }
     }

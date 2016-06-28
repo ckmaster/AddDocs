@@ -34,6 +34,8 @@ namespace AddDocs_RS_GUI
                 {
                     using (JsonWriter jw = new JsonTextWriter(sw))
                     {
+                        //Since the IntegrationServer objects holds session hash the hash gets written out and picked up on next run
+                        //However the next run disregards it as an invalid session
                         serializer.Serialize(jw, conf);
                     }
                 }
