@@ -44,7 +44,7 @@
             this.uxField4_TextBox = new System.Windows.Forms.TextBox();
             this.uxField3_TextBox = new System.Windows.Forms.TextBox();
             this.uxDocType_TextBox = new System.Windows.Forms.TextBox();
-            this.uxSubmit_Button = new System.Windows.Forms.Button();
+            this.uxSubmitMulti_Button = new System.Windows.Forms.Button();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxHelp_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,16 +60,20 @@
             this.uxFile_RadioButton = new System.Windows.Forms.RadioButton();
             this.uxFolder_TextBox = new System.Windows.Forms.TextBox();
             this.uxFolder_Label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.uxFileBrowse_Button = new System.Windows.Forms.Button();
             this.uxToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uxImageNowMulti_GroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.uxError_PictureBox = new System.Windows.Forms.PictureBox();
             this.uxHelp_PictureBox = new System.Windows.Forms.PictureBox();
             this.uxImageNowSingle_GroupBox = new System.Windows.Forms.GroupBox();
-            this.uxDocID_Label = new System.Windows.Forms.Label();
+            this.uxAmountSingle_NumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uxSubmitSingle_Button = new System.Windows.Forms.Button();
+            this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxDocID_TextBox = new System.Windows.Forms.TextBox();
-            this.uxSingleSubmit_Button = new System.Windows.Forms.Button();
+            this.uxDocID_Label = new System.Windows.Forms.Label();
+            this.uxAmountMulti_NumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.uxAmountMulti_Label = new System.Windows.Forms.Label();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -78,12 +82,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.uxError_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uxHelp_PictureBox)).BeginInit();
             this.uxImageNowSingle_GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxAmountSingle_NumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uxAmountMulti_NumUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // uxDrawer_Label
             // 
             this.uxDrawer_Label.AutoSize = true;
-            this.uxDrawer_Label.Location = new System.Drawing.Point(35, 22);
+            this.uxDrawer_Label.Location = new System.Drawing.Point(39, 48);
             this.uxDrawer_Label.Name = "uxDrawer_Label";
             this.uxDrawer_Label.Size = new System.Drawing.Size(44, 13);
             this.uxDrawer_Label.TabIndex = 0;
@@ -92,7 +98,7 @@
             // uxField1_Label
             // 
             this.uxField1_Label.AutoSize = true;
-            this.uxField1_Label.Location = new System.Drawing.Point(35, 48);
+            this.uxField1_Label.Location = new System.Drawing.Point(39, 74);
             this.uxField1_Label.Name = "uxField1_Label";
             this.uxField1_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField1_Label.TabIndex = 1;
@@ -101,7 +107,7 @@
             // uxField2_Label
             // 
             this.uxField2_Label.AutoSize = true;
-            this.uxField2_Label.Location = new System.Drawing.Point(35, 74);
+            this.uxField2_Label.Location = new System.Drawing.Point(39, 100);
             this.uxField2_Label.Name = "uxField2_Label";
             this.uxField2_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField2_Label.TabIndex = 3;
@@ -110,7 +116,7 @@
             // uxField3_Label
             // 
             this.uxField3_Label.AutoSize = true;
-            this.uxField3_Label.Location = new System.Drawing.Point(35, 100);
+            this.uxField3_Label.Location = new System.Drawing.Point(39, 126);
             this.uxField3_Label.Name = "uxField3_Label";
             this.uxField3_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField3_Label.TabIndex = 4;
@@ -119,7 +125,7 @@
             // uxField4_Label
             // 
             this.uxField4_Label.AutoSize = true;
-            this.uxField4_Label.Location = new System.Drawing.Point(35, 126);
+            this.uxField4_Label.Location = new System.Drawing.Point(39, 152);
             this.uxField4_Label.Name = "uxField4_Label";
             this.uxField4_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField4_Label.TabIndex = 5;
@@ -128,7 +134,7 @@
             // uxField5_Label
             // 
             this.uxField5_Label.AutoSize = true;
-            this.uxField5_Label.Location = new System.Drawing.Point(35, 152);
+            this.uxField5_Label.Location = new System.Drawing.Point(39, 178);
             this.uxField5_Label.Name = "uxField5_Label";
             this.uxField5_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField5_Label.TabIndex = 6;
@@ -137,7 +143,7 @@
             // uxDocType_Label
             // 
             this.uxDocType_Label.AutoSize = true;
-            this.uxDocType_Label.Location = new System.Drawing.Point(22, 178);
+            this.uxDocType_Label.Location = new System.Drawing.Point(26, 204);
             this.uxDocType_Label.Name = "uxDocType_Label";
             this.uxDocType_Label.Size = new System.Drawing.Size(54, 13);
             this.uxDocType_Label.TabIndex = 7;
@@ -145,7 +151,7 @@
             // 
             // uxDrawer_TextBox
             // 
-            this.uxDrawer_TextBox.Location = new System.Drawing.Point(85, 19);
+            this.uxDrawer_TextBox.Location = new System.Drawing.Point(89, 45);
             this.uxDrawer_TextBox.MaxLength = 40;
             this.uxDrawer_TextBox.Name = "uxDrawer_TextBox";
             this.uxDrawer_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -154,7 +160,7 @@
             // 
             // uxField1_TextBox
             // 
-            this.uxField1_TextBox.Location = new System.Drawing.Point(85, 45);
+            this.uxField1_TextBox.Location = new System.Drawing.Point(89, 71);
             this.uxField1_TextBox.MaxLength = 40;
             this.uxField1_TextBox.Name = "uxField1_TextBox";
             this.uxField1_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -162,7 +168,7 @@
             // 
             // uxField2_TextBox
             // 
-            this.uxField2_TextBox.Location = new System.Drawing.Point(85, 71);
+            this.uxField2_TextBox.Location = new System.Drawing.Point(89, 97);
             this.uxField2_TextBox.MaxLength = 40;
             this.uxField2_TextBox.Name = "uxField2_TextBox";
             this.uxField2_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -170,7 +176,7 @@
             // 
             // uxField5_TextBox
             // 
-            this.uxField5_TextBox.Location = new System.Drawing.Point(85, 149);
+            this.uxField5_TextBox.Location = new System.Drawing.Point(89, 175);
             this.uxField5_TextBox.MaxLength = 40;
             this.uxField5_TextBox.Name = "uxField5_TextBox";
             this.uxField5_TextBox.ReadOnly = true;
@@ -180,7 +186,7 @@
             // 
             // uxField4_TextBox
             // 
-            this.uxField4_TextBox.Location = new System.Drawing.Point(85, 123);
+            this.uxField4_TextBox.Location = new System.Drawing.Point(89, 149);
             this.uxField4_TextBox.MaxLength = 40;
             this.uxField4_TextBox.Name = "uxField4_TextBox";
             this.uxField4_TextBox.ReadOnly = true;
@@ -190,7 +196,7 @@
             // 
             // uxField3_TextBox
             // 
-            this.uxField3_TextBox.Location = new System.Drawing.Point(85, 97);
+            this.uxField3_TextBox.Location = new System.Drawing.Point(89, 123);
             this.uxField3_TextBox.MaxLength = 40;
             this.uxField3_TextBox.Name = "uxField3_TextBox";
             this.uxField3_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -198,22 +204,22 @@
             // 
             // uxDocType_TextBox
             // 
-            this.uxDocType_TextBox.Location = new System.Drawing.Point(85, 175);
+            this.uxDocType_TextBox.Location = new System.Drawing.Point(89, 201);
             this.uxDocType_TextBox.MaxLength = 40;
             this.uxDocType_TextBox.Name = "uxDocType_TextBox";
             this.uxDocType_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxDocType_TextBox.TabIndex = 14;
             this.uxDocType_TextBox.Text = "Default";
             // 
-            // uxSubmit_Button
+            // uxSubmitMulti_Button
             // 
-            this.uxSubmit_Button.Location = new System.Drawing.Point(85, 201);
-            this.uxSubmit_Button.Name = "uxSubmit_Button";
-            this.uxSubmit_Button.Size = new System.Drawing.Size(202, 23);
-            this.uxSubmit_Button.TabIndex = 15;
-            this.uxSubmit_Button.Text = "Submit";
-            this.uxSubmit_Button.UseVisualStyleBackColor = true;
-            this.uxSubmit_Button.Click += new System.EventHandler(this.uxSubmit_Button_Click);
+            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 227);
+            this.uxSubmitMulti_Button.Name = "uxSubmitMulti_Button";
+            this.uxSubmitMulti_Button.Size = new System.Drawing.Size(202, 23);
+            this.uxSubmitMulti_Button.TabIndex = 15;
+            this.uxSubmitMulti_Button.Text = "Submit";
+            this.uxSubmitMulti_Button.UseVisualStyleBackColor = true;
+            this.uxSubmitMulti_Button.Click += new System.EventHandler(this.uxSubmit_Button_Click);
             // 
             // uxMenuStrip
             // 
@@ -222,7 +228,7 @@
             this.uxEdit_MenuItem});
             this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(353, 24);
+            this.uxMenuStrip.Size = new System.Drawing.Size(355, 24);
             this.uxMenuStrip.TabIndex = 16;
             this.uxMenuStrip.Text = "exMenuStrip";
             // 
@@ -273,7 +279,7 @@
             this.uxDocMode_GroupBox.Size = new System.Drawing.Size(125, 90);
             this.uxDocMode_GroupBox.TabIndex = 17;
             this.uxDocMode_GroupBox.TabStop = false;
-            this.uxDocMode_GroupBox.Text = "Doc Mode";
+            this.uxDocMode_GroupBox.Text = "ImageNow Mode";
             // 
             // uxMulti_RadioButton
             // 
@@ -320,7 +326,6 @@
             this.uxRapidFire_RadioButton.Name = "uxRapidFire_RadioButton";
             this.uxRapidFire_RadioButton.Size = new System.Drawing.Size(73, 17);
             this.uxRapidFire_RadioButton.TabIndex = 22;
-            this.uxRapidFire_RadioButton.TabStop = true;
             this.uxRapidFire_RadioButton.Text = "Rapid Fire";
             this.uxToolTip.SetToolTip(this.uxRapidFire_RadioButton, "No physical objects will be used, will create 0 byte pages in single mode, or doc" +
         "uments without pages in multi mode");
@@ -348,7 +353,6 @@
             this.uxFile_RadioButton.Name = "uxFile_RadioButton";
             this.uxFile_RadioButton.Size = new System.Drawing.Size(41, 17);
             this.uxFile_RadioButton.TabIndex = 20;
-            this.uxFile_RadioButton.TabStop = true;
             this.uxFile_RadioButton.Text = "File";
             this.uxToolTip.SetToolTip(this.uxFile_RadioButton, "Use a single file");
             this.uxFile_RadioButton.UseVisualStyleBackColor = true;
@@ -372,19 +376,21 @@
             this.uxFolder_Label.TabIndex = 19;
             this.uxFolder_Label.Text = "Folder:";
             // 
-            // button1
+            // uxFileBrowse_Button
             // 
-            this.button1.Location = new System.Drawing.Point(293, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 20);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.uxFileBrowse_Button.Location = new System.Drawing.Point(293, 115);
+            this.uxFileBrowse_Button.Name = "uxFileBrowse_Button";
+            this.uxFileBrowse_Button.Size = new System.Drawing.Size(30, 20);
+            this.uxFileBrowse_Button.TabIndex = 21;
+            this.uxFileBrowse_Button.Text = "...";
+            this.uxFileBrowse_Button.UseVisualStyleBackColor = true;
+            this.uxFileBrowse_Button.Click += new System.EventHandler(this.button1_Click);
             // 
             // uxImageNowMulti_GroupBox
             // 
-            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxSubmit_Button);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_NumUpDown);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxSubmitMulti_Button);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDocType_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField5_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField4_TextBox);
@@ -401,7 +407,7 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_Label);
             this.uxImageNowMulti_GroupBox.Location = new System.Drawing.Point(12, 180);
             this.uxImageNowMulti_GroupBox.Name = "uxImageNowMulti_GroupBox";
-            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 236);
+            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 264);
             this.uxImageNowMulti_GroupBox.TabIndex = 22;
             this.uxImageNowMulti_GroupBox.TabStop = false;
             this.uxImageNowMulti_GroupBox.Text = "ImageNow Info";
@@ -413,7 +419,7 @@
             this.groupBox3.Controls.Add(this.uxHelp_PictureBox);
             this.groupBox3.Controls.Add(this.uxFileMode_GroupBox);
             this.groupBox3.Controls.Add(this.uxFolder_Label);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.uxFileBrowse_Button);
             this.groupBox3.Controls.Add(this.uxFolder_TextBox);
             this.groupBox3.Location = new System.Drawing.Point(12, 31);
             this.groupBox3.Name = "groupBox3";
@@ -449,47 +455,94 @@
             // 
             // uxImageNowSingle_GroupBox
             // 
-            this.uxImageNowSingle_GroupBox.Controls.Add(this.uxSingleSubmit_Button);
+            this.uxImageNowSingle_GroupBox.Controls.Add(this.uxAmountSingle_NumUpDown);
+            this.uxImageNowSingle_GroupBox.Controls.Add(this.uxSubmitSingle_Button);
             this.uxImageNowSingle_GroupBox.Controls.Add(this.uxDocID_TextBox);
             this.uxImageNowSingle_GroupBox.Controls.Add(this.uxDocID_Label);
+            this.uxImageNowSingle_GroupBox.Controls.Add(this.uxAmountSingle_Label);
             this.uxImageNowSingle_GroupBox.Location = new System.Drawing.Point(12, 180);
             this.uxImageNowSingle_GroupBox.Name = "uxImageNowSingle_GroupBox";
-            this.uxImageNowSingle_GroupBox.Size = new System.Drawing.Size(330, 71);
+            this.uxImageNowSingle_GroupBox.Size = new System.Drawing.Size(330, 104);
             this.uxImageNowSingle_GroupBox.TabIndex = 25;
             this.uxImageNowSingle_GroupBox.TabStop = false;
             this.uxImageNowSingle_GroupBox.Text = "ImageNow Info";
             this.uxImageNowSingle_GroupBox.Visible = false;
             // 
+            // uxAmountSingle_NumUpDown
+            // 
+            this.uxAmountSingle_NumUpDown.Enabled = false;
+            this.uxAmountSingle_NumUpDown.Location = new System.Drawing.Point(89, 19);
+            this.uxAmountSingle_NumUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.uxAmountSingle_NumUpDown.Name = "uxAmountSingle_NumUpDown";
+            this.uxAmountSingle_NumUpDown.Size = new System.Drawing.Size(202, 20);
+            this.uxAmountSingle_NumUpDown.TabIndex = 27;
+            // 
+            // uxSubmitSingle_Button
+            // 
+            this.uxSubmitSingle_Button.Location = new System.Drawing.Point(89, 71);
+            this.uxSubmitSingle_Button.Name = "uxSubmitSingle_Button";
+            this.uxSubmitSingle_Button.Size = new System.Drawing.Size(202, 23);
+            this.uxSubmitSingle_Button.TabIndex = 26;
+            this.uxSubmitSingle_Button.Text = "Submit";
+            this.uxSubmitSingle_Button.UseVisualStyleBackColor = true;
+            this.uxSubmitSingle_Button.Click += new System.EventHandler(this.uxSubmitSingle_Button_Click);
+            // 
+            // uxAmountSingle_Label
+            // 
+            this.uxAmountSingle_Label.AutoSize = true;
+            this.uxAmountSingle_Label.Location = new System.Drawing.Point(38, 21);
+            this.uxAmountSingle_Label.Name = "uxAmountSingle_Label";
+            this.uxAmountSingle_Label.Size = new System.Drawing.Size(45, 13);
+            this.uxAmountSingle_Label.TabIndex = 26;
+            this.uxAmountSingle_Label.Text = "Repeat:";
+            // 
+            // uxDocID_TextBox
+            // 
+            this.uxDocID_TextBox.Location = new System.Drawing.Point(89, 45);
+            this.uxDocID_TextBox.Name = "uxDocID_TextBox";
+            this.uxDocID_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxDocID_TextBox.TabIndex = 1;
+            // 
             // uxDocID_Label
             // 
             this.uxDocID_Label.AutoSize = true;
-            this.uxDocID_Label.Location = new System.Drawing.Point(35, 16);
+            this.uxDocID_Label.Location = new System.Drawing.Point(39, 48);
             this.uxDocID_Label.Name = "uxDocID_Label";
             this.uxDocID_Label.Size = new System.Drawing.Size(44, 13);
             this.uxDocID_Label.TabIndex = 0;
             this.uxDocID_Label.Text = "Doc ID:";
             // 
-            // uxDocID_TextBox
+            // uxAmountMulti_NumUpDown
             // 
-            this.uxDocID_TextBox.Location = new System.Drawing.Point(85, 13);
-            this.uxDocID_TextBox.Name = "uxDocID_TextBox";
-            this.uxDocID_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxDocID_TextBox.TabIndex = 1;
+            this.uxAmountMulti_NumUpDown.Enabled = false;
+            this.uxAmountMulti_NumUpDown.Location = new System.Drawing.Point(89, 19);
+            this.uxAmountMulti_NumUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.uxAmountMulti_NumUpDown.Name = "uxAmountMulti_NumUpDown";
+            this.uxAmountMulti_NumUpDown.Size = new System.Drawing.Size(202, 20);
+            this.uxAmountMulti_NumUpDown.TabIndex = 29;
             // 
-            // uxSingleSubmit_Button
+            // uxAmountMulti_Label
             // 
-            this.uxSingleSubmit_Button.Location = new System.Drawing.Point(85, 39);
-            this.uxSingleSubmit_Button.Name = "uxSingleSubmit_Button";
-            this.uxSingleSubmit_Button.Size = new System.Drawing.Size(202, 23);
-            this.uxSingleSubmit_Button.TabIndex = 26;
-            this.uxSingleSubmit_Button.Text = "Submit";
-            this.uxSingleSubmit_Button.UseVisualStyleBackColor = true;
+            this.uxAmountMulti_Label.AutoSize = true;
+            this.uxAmountMulti_Label.Location = new System.Drawing.Point(38, 21);
+            this.uxAmountMulti_Label.Name = "uxAmountMulti_Label";
+            this.uxAmountMulti_Label.Size = new System.Drawing.Size(45, 13);
+            this.uxAmountMulti_Label.TabIndex = 28;
+            this.uxAmountMulti_Label.Text = "Repeat:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 425);
+            this.ClientSize = new System.Drawing.Size(355, 455);
             this.Controls.Add(this.uxImageNowSingle_GroupBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.uxImageNowMulti_GroupBox);
@@ -511,6 +564,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.uxHelp_PictureBox)).EndInit();
             this.uxImageNowSingle_GroupBox.ResumeLayout(false);
             this.uxImageNowSingle_GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxAmountSingle_NumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uxAmountMulti_NumUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,7 +587,7 @@
         private System.Windows.Forms.TextBox uxField4_TextBox;
         private System.Windows.Forms.TextBox uxField3_TextBox;
         private System.Windows.Forms.TextBox uxDocType_TextBox;
-        private System.Windows.Forms.Button uxSubmit_Button;
+        private System.Windows.Forms.Button uxSubmitMulti_Button;
         private System.Windows.Forms.MenuStrip uxMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem uxFile_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxHelp_MenuItem;
@@ -545,7 +600,7 @@
         private System.Windows.Forms.GroupBox uxFileMode_GroupBox;
         private System.Windows.Forms.TextBox uxFolder_TextBox;
         private System.Windows.Forms.Label uxFolder_Label;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button uxFileBrowse_Button;
         private System.Windows.Forms.RadioButton uxFolder_RadioButton;
         private System.Windows.Forms.RadioButton uxFile_RadioButton;
         private System.Windows.Forms.ToolTip uxToolTip;
@@ -557,7 +612,11 @@
         private System.Windows.Forms.GroupBox uxImageNowSingle_GroupBox;
         private System.Windows.Forms.TextBox uxDocID_TextBox;
         private System.Windows.Forms.Label uxDocID_Label;
-        private System.Windows.Forms.Button uxSingleSubmit_Button;
+        private System.Windows.Forms.Button uxSubmitSingle_Button;
+        private System.Windows.Forms.NumericUpDown uxAmountSingle_NumUpDown;
+        private System.Windows.Forms.Label uxAmountSingle_Label;
+        private System.Windows.Forms.NumericUpDown uxAmountMulti_NumUpDown;
+        private System.Windows.Forms.Label uxAmountMulti_Label;
     }
 }
 

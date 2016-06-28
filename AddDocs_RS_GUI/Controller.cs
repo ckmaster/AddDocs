@@ -50,7 +50,7 @@ namespace AddDocs_RS_GUI
             rest.DeleteConnection();
         }
 
-        public void DoWork(string d, string f1, string f2, string f3, string f4, string f5, string dt)
+        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt)
         {
             GetConnection();
             string[] files = Directory.GetFiles(conf.folderPath);
@@ -69,6 +69,36 @@ namespace AddDocs_RS_GUI
                 }
             }
             DeleteConnection();
-        }             
+        }
+        
+        public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
+        {
+            GetConnection();
+            string temp = Path.GetFileName(conf.filePath);
+            if (temp.Length > 40)
+            {
+                temp = temp.Substring(0, 39);
+            }
+            for (int i = 0; i < repeat; i++)
+            {   
+                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
+                string docid = PostDoc(doc);
+                if (docid != null)
+                {
+                    PostDocPages(docid, conf.filePath);
+                }
+            }
+            DeleteConnection();
+        }
+
+        public void SingleDocSingleFile (string docid, int repeat)
+        {
+            GetConnection();
+            for (int i = 0; i < repeat; i++)
+            {
+                PostDocPages(docid, conf.filePath);
+            }
+            DeleteConnection();
+        }
     }                      
 }                       

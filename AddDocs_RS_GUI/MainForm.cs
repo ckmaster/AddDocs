@@ -31,7 +31,16 @@ namespace AddDocs_RS_GUI
             string f4 = uxField4_TextBox.Text;
             string f5 = uxField5_TextBox.Text;
             string dt = uxDocType_TextBox.Text;
-            control.DoWork(d, f1, f2, f3, f4, f5, dt);
+            int repeat = (int)uxAmountMulti_NumUpDown.Value;
+            if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
+            {
+                control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt);
+            }
+            else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
+            {
+                control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
+            }
+            
             ClearUI();
             MessageBox.Show("Documents created and pages added");
         }
@@ -85,7 +94,7 @@ namespace AddDocs_RS_GUI
 
         private void button1_Click (object sender, EventArgs e)
         {
-            if (uxMulti_RadioButton.Checked == true)
+            if (uxFolder_RadioButton.Checked == true)
             {
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
                 fbd.SelectedPath = control.conf.folderPath;
@@ -97,7 +106,7 @@ namespace AddDocs_RS_GUI
                     MessageBox.Show("Default upload directory has been updated");
                 }
             }
-            else if (uxSingle_RadioButton.Checked == true)
+            else if (uxFile_RadioButton.Checked == true || uxRapidFire_RadioButton.Checked == true)
             {
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.InitialDirectory = control.conf.filePath;
@@ -116,13 +125,9 @@ namespace AddDocs_RS_GUI
         {
             if (uxMulti_RadioButton.Checked == true)
             {
-                this.Height = 464;
+                this.Height = 494;
                 uxImageNowMulti_GroupBox.Visible = true;
-                uxImageNowMulti_GroupBox.Enabled = true;
-                uxFolder_Label.Text = "Folder:";
                 uxImageNowSingle_GroupBox.Visible = false;
-                uxImageNowSingle_GroupBox.Enabled = false;
-                uxFolder_TextBox.Text = control.conf.folderPath;
             }
         }
 
@@ -130,13 +135,9 @@ namespace AddDocs_RS_GUI
         {
             if (uxSingle_RadioButton.Checked == true)
             {
-                this.Height = 297;
+                this.Height = 332;
                 uxImageNowMulti_GroupBox.Visible = false;
-                uxImageNowMulti_GroupBox.Enabled = false;
-                uxFolder_Label.Text = "File:";
-                uxImageNowSingle_GroupBox.Enabled = true;
                 uxImageNowSingle_GroupBox.Visible = true;
-                uxFolder_TextBox.Text = control.conf.filePath;
             }
         }
 
@@ -144,7 +145,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxFolder_RadioButton.Checked == true)
             {
-
+                uxAmountSingle_NumUpDown.Enabled = false;
+                uxAmountMulti_NumUpDown.Enabled = false;
+                uxFolder_Label.Text = "Folder:";
+                uxFolder_TextBox.Text = control.conf.folderPath;
             }
         }
 
@@ -152,7 +156,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxFile_RadioButton.Checked == true)
             {
-
+                uxAmountSingle_NumUpDown.Enabled = true;
+                uxAmountMulti_NumUpDown.Enabled = true;
+                uxFolder_Label.Text = "File:";
+                uxFolder_TextBox.Text = control.conf.filePath;
             }
         }
 
@@ -160,7 +167,21 @@ namespace AddDocs_RS_GUI
         {
             if (uxRapidFire_RadioButton.Checked == true)
             {
+                uxAmountSingle_NumUpDown.Enabled = true;
+                uxAmountMulti_NumUpDown.Enabled = true;
+                uxFolder_Label.Text = "File:";
+                uxFolder_TextBox.Text = control.conf.filePath;
+            }
+        }
 
+        private void uxSubmitSingle_Button_Click (object sender, EventArgs e)
+        {
+            int repeat = (int)uxAmountSingle_NumUpDown.Value;
+            string docid = uxDocID_TextBox.Text;
+            if (uxSingle_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
+            {
+                control.SingleDocSingleFile(docid, repeat);
+                MessageBox.Show("Pages added to the document: " + docid);
             }
         }
     }
