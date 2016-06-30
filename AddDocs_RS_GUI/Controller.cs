@@ -36,7 +36,7 @@ namespace AddDocs_RS_GUI
             return rest.PostDoc(doc);
         }
 
-        public void PostDocPages(string docid, string file)
+        public void PostDocPage(string docid, string file)
         {
             string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/document/" + docid + "/page";
             RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
@@ -65,7 +65,7 @@ namespace AddDocs_RS_GUI
                 string docid = PostDoc(doc);
                 if (docid != null)
                 {
-                    PostDocPages(docid, s);
+                    PostDocPage(docid, s);
                 }
             }
             DeleteConnection();
@@ -85,7 +85,7 @@ namespace AddDocs_RS_GUI
                 string docid = PostDoc(doc);
                 if (docid != null)
                 {
-                    PostDocPages(docid, conf.filePath);
+                    PostDocPage(docid, conf.filePath);
                 }
             }
             DeleteConnection();
@@ -96,7 +96,23 @@ namespace AddDocs_RS_GUI
             GetConnection();
             for (int i = 0; i < repeat; i++)
             {
-                PostDocPages(docid, conf.filePath);
+                PostDocPage(docid, conf.filePath);
+            }
+            DeleteConnection();
+        }
+
+        public void SingleDocMultiFile(string docid)
+        {
+            GetConnection();
+            string[] files = Directory.GetFiles(conf.folderPath);
+            foreach(string s in files)
+            {
+                string temp = Path.GetFileName(s);
+                if (temp.Length > 40)
+                {
+                    temp = temp.Substring(0, 39);
+                }
+                PostDocPage(docid, s);
             }
             DeleteConnection();
         }

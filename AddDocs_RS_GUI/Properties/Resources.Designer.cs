@@ -59,25 +59,5 @@ namespace AddDocs_RS_GUI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BlueCircleQuestionMark {
-            get {
-                object obj = ResourceManager.GetObject("BlueCircleQuestionMark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap YellowTriangleExclamation {
-            get {
-                object obj = ResourceManager.GetObject("YellowTriangleExclamation", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

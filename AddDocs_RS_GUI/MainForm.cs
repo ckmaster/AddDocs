@@ -67,60 +67,6 @@ namespace AddDocs_RS_GUI
             form.Show();
         }
 
-        private void fileDirectoryToolStripMenuItem_Click (object sender, EventArgs e)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = control.conf.folderPath;
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                string path = fbd.SelectedPath;
-                control.conf.folderPath = path;
-                uxFolder_TextBox.Text = control.conf.folderPath;
-                LocalOp local = new LocalOp();
-                local.SaveConfig(control.conf);
-                MessageBox.Show("Default upload directory has been updated");
-            }
-        }
-
-        private void uxHelp_PictureBox_Click (object sender, EventArgs e)
-        {
-            MessageBox.Show("You clicked the button");
-        }
-
-        private void uxError_PictureBox_Click (object sender, EventArgs e)
-        {
-            MessageBox.Show("You clicked the other button");
-        }
-
-        private void button1_Click (object sender, EventArgs e)
-        {
-            if (uxFolder_RadioButton.Checked == true)
-            {
-                FolderBrowserDialog fbd = new FolderBrowserDialog();
-                fbd.SelectedPath = control.conf.folderPath;
-                if (fbd.ShowDialog() == DialogResult.OK)
-                {
-                    control.conf.folderPath = fbd.SelectedPath;
-                    uxFolder_TextBox.Text = control.conf.folderPath;
-                    new LocalOp().SaveConfig(control.conf);
-                    MessageBox.Show("Default upload directory has been updated");
-                }
-            }
-            else if (uxFile_RadioButton.Checked == true || uxRapidFire_RadioButton.Checked == true)
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.InitialDirectory = control.conf.filePath;
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    control.conf.filePath = ofd.FileName;
-                    uxFolder_TextBox.Text = control.conf.filePath;
-                    new LocalOp().SaveConfig(control.conf);
-                    MessageBox.Show("Default upload file has been updated");
-                }
-            }
-            
-        }
-
         private void uxMulti_RadioButton_CheckedChanged (object sender, EventArgs e)
         {
             if (uxMulti_RadioButton.Checked == true)
@@ -183,6 +129,44 @@ namespace AddDocs_RS_GUI
                 control.SingleDocSingleFile(docid, repeat);
                 MessageBox.Show("Pages added to the document: " + docid);
             }
+            else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
+            {
+                control.SingleDocMultiFile(docid);
+                MessageBox.Show("Pages added to the document: " + docid);
+            }
+        }
+
+        private void uxFileBrowse_Button_Click (object sender, EventArgs e)
+        {
+            if (uxFolder_RadioButton.Checked == true)
+            {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.SelectedPath = control.conf.folderPath;
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    control.conf.folderPath = fbd.SelectedPath;
+                    uxFolder_TextBox.Text = control.conf.folderPath;
+                    new LocalOp().SaveConfig(control.conf);
+                    MessageBox.Show("Default upload directory has been updated");
+                }
+            }
+            else if (uxFile_RadioButton.Checked == true || uxRapidFire_RadioButton.Checked == true)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.InitialDirectory = control.conf.filePath;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    control.conf.filePath = ofd.FileName;
+                    uxFolder_TextBox.Text = control.conf.filePath;
+                    new LocalOp().SaveConfig(control.conf);
+                    MessageBox.Show("Default upload file has been updated");
+                }
+            }
+        }
+
+        private void MainForm_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            MessageBox.Show("You clicked the help button");
         }
     }
 }
