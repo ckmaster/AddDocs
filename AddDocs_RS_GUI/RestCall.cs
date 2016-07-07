@@ -79,6 +79,20 @@ namespace AddDocs_RS_GUI
             return true;
         }
 
+        public bool PostDocPageRapid (string docid, string file)
+        {
+            request.AddHeader("x-integrationserver-resource-name", "placeholder");
+            byte[] fileBytes = null; //{ 0x20 }; //space
+            request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
+                return false;
+            }
+            return true;
+        }
+
         public void DeleteConnection()
         {
             response = client.Execute(request);

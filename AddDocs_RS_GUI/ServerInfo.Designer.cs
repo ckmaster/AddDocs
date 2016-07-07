@@ -131,7 +131,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ServerInfo";
-            this.ShowIcon = false;
             this.Text = "ServerInfo";
             this.Load += new System.EventHandler(this.ServerInfo_Load);
             this.ResumeLayout(false);

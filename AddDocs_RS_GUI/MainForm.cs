@@ -35,14 +35,18 @@ namespace AddDocs_RS_GUI
             if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
                 control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt);
+                MessageBox.Show("Documents created and pages added");
             }
             else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
             {
                 control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
+                MessageBox.Show("Documents created and pages added");
             }
-            
-            ClearUI();
-            MessageBox.Show("Documents created and pages added");
+            else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
+            {
+                control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat);
+                MessageBox.Show("Documents created");
+            }
         }
 
         public void ClearUI ()
@@ -116,7 +120,7 @@ namespace AddDocs_RS_GUI
                 uxAmountSingle_NumUpDown.Enabled = true;
                 uxAmountMulti_NumUpDown.Enabled = true;
                 uxFolder_Label.Text = "File:";
-                uxFolder_TextBox.Text = control.conf.filePath;
+                uxFolder_TextBox.Text = "<Rapid Fire: No physical objects used>";
             }
         }
 
@@ -133,6 +137,11 @@ namespace AddDocs_RS_GUI
             {
                 control.SingleDocMultiFile(docid);
                 MessageBox.Show("Pages added to the document: " + docid);
+            }
+            else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
+            {
+                control.SingleDocRapidFire(docid, repeat);
+                MessageBox.Show("Fake pages added to the document: " + docid);
             }
         }
 

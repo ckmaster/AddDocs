@@ -43,6 +43,13 @@ namespace AddDocs_RS_GUI
             rest.PostDocPage(docid, file);
         }
 
+        public void PostDocPageRapid(string docid, string file)
+        {
+            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/document/" + docid + "/page";
+            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
+            rest.PostDocPageRapid(docid, file);
+        }
+
         public void DeleteConnection()
         {
             string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/connection/";
@@ -91,12 +98,33 @@ namespace AddDocs_RS_GUI
             DeleteConnection();
         }
 
+        public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
+        {
+            GetConnection();
+            for (int i = 0; i < repeat; i ++)
+            {
+                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
+                PostDoc(doc);
+            }
+            DeleteConnection();
+        }
+
         public void SingleDocSingleFile (string docid, int repeat)
         {
             GetConnection();
             for (int i = 0; i < repeat; i++)
             {
                 PostDocPage(docid, conf.filePath);
+            }
+            DeleteConnection();
+        }
+
+        public void SingleDocRapidFire (string docid, int repeat)
+        {
+            GetConnection();
+            for (int i = 0; i < repeat; i++)
+            {
+                PostDocPageRapid(docid, conf.filePath);
             }
             DeleteConnection();
         }
