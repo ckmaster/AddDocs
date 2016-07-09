@@ -17,7 +17,7 @@ namespace AddDocs_RS_GUI
             conf = new LocalOp().LoadConfig();
             if (conf == null)
             {
-                MessageBox.Show("Failed to load config file");
+                MessageBox.Show("Failed to load config file.");
             }
         }
 
@@ -35,6 +35,12 @@ namespace AddDocs_RS_GUI
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             string[] files = Directory.GetFiles(conf.folderPath);
             foreach(string s in files)
             {
@@ -42,19 +48,39 @@ namespace AddDocs_RS_GUI
                 string longFilename = Path.GetFileName(s);
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
                 string docid = rest.PostDoc(doc);
-                if (docid != null)
+                if (docid.Length != 23)
+                {
+                    MessageBox.Show($"Failed to create document.\r\n{docid}");
+                    return;
+                }
+                else
                 {
                     byte[] fileBytes = File.ReadAllBytes(s);
-                    rest.PostDocPage(docid, fileBytes, longFilename);
+                    string responseContent1 = rest.PostDocPage(docid, fileBytes, longFilename);
+                    if (!responseContent1.Equals("success"))
+                    {
+                        MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                        return;
+                    }
                 }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default they will clear themselves in one hour.\r\n{responseContent2}");
+            }
         }
         
         public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             string shortFilename = GetShortFileName(conf.filePath);
             string longFilename = Path.GetFileName(conf.filePath);
             byte[] fileBytes = File.ReadAllBytes(conf.filePath);
@@ -62,62 +88,136 @@ namespace AddDocs_RS_GUI
             {   
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
                 string docid = rest.PostDoc(doc);
-                if (docid != null)
+                if (docid.Length != 23)
                 {
-                    rest.PostDocPage(docid, fileBytes, longFilename);
+                    MessageBox.Show($"Failed to create document.\r\n{docid}");
+                    return;
+                }
+                else
+                {
+                    string responseContent1 = rest.PostDocPage(docid, fileBytes, longFilename);
+                    if (!responseContent1.Equals("success"))
+                    {
+                        MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                        return;
+                    }
                 }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
         }
 
         public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             for (int i = 0; i < repeat; i ++)
             {
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
-                rest.PostDoc(doc);
+                string docid = rest.PostDoc(doc);
+                if (docid.Length != 23)
+                {
+                    MessageBox.Show($"Failed to create document.\r\n{docid}");
+                    return;
+                }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
         }
 
         public void SingleDocSingleFile (string docid, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             string filename = Path.GetFileName(conf.filePath);
             byte[] fileBytes = File.ReadAllBytes(conf.filePath);
             for (int i = 0; i < repeat; i++)
             {
-                rest.PostDocPage(docid, fileBytes, filename);
+                string responseContent1 = rest.PostDocPage(docid, fileBytes, filename);
+                if (!responseContent1.Equals("success"))
+                {
+                    MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                    return;
+                }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
         }
 
         public void SingleDocRapidFire (string docid, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             for (int i = 0; i < repeat; i++)
             {
-                rest.PostDocPage(docid, null, "placeholder.tif");
+                string responseContent1 = rest.PostDocPage(docid, null, "placeholder.tif");
+                if (!responseContent1.Equals("success"))
+                {
+                    MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                    return;
+                }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
         }
 
         public void SingleDocMultiFile(string docid)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return;
+            }
+
             string[] files = Directory.GetFiles(conf.folderPath);
             foreach(string s in files)
             {
                 string filename = Path.GetFileName(s);
                 byte[] fileBytes = File.ReadAllBytes(s);
-                rest.PostDocPage(docid, fileBytes, filename);
+                string responseContent1 = rest.PostDocPage(docid, fileBytes, filename);
+                if (!responseContent1.Equals("success"))
+                {
+                    MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                    return;
+                }
             }
-            rest.DeleteConnection();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
         }
     }                      
 }                       

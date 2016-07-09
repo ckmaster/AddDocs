@@ -22,7 +22,6 @@ namespace AddDocs_RS_GUI
             {
                 return null;
             }
-            
         }
 
         public bool SaveConfig(Config conf)

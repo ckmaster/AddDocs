@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
-//using System.IO;
-//using System.Windows.Forms;
 
 namespace AddDocs_RS_GUI
 {
@@ -38,14 +36,12 @@ namespace AddDocs_RS_GUI
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                //MessageBox.Show("An error has occurred, failed to get connection:\r\n\r\n" + response.Content);
-                //System.Environment.Exit(1);
-                return null;
+                return response.Content;
             }
             return response.Headers[0].Value.ToString();
         }
 
-        public bool DeleteConnection()
+        public string DeleteConnection()
         {
             client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/connection/");
             request = new RestRequest(Method.DELETE);
@@ -55,10 +51,9 @@ namespace AddDocs_RS_GUI
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                //MessageBox.Show("Error deleting session\r\nBy default session will expire in 1 hour");
-                return false;
+                return response.Content;
             }
-            return true;
+            return "success";
         }
 
         public string PostDoc(ImageNowDoc doc)
@@ -72,8 +67,7 @@ namespace AddDocs_RS_GUI
 
             if (response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                //MessageBox.Show("An error has occurred, while creating the document:\r\n\r\n" + response.Content);
-                return null;
+                return response.Content;
             }
             string location = response.Headers[3].Value.ToString();
             string[] delims = { "document/" };
@@ -94,7 +88,7 @@ namespace AddDocs_RS_GUI
             return docid;
         }
 
-        public bool PostDocPage(string docid, byte[] fileBytes, string filename)
+        public string PostDocPage(string docid, byte[] fileBytes, string filename)
         {
             client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/document/{docid}/page");
             request = new RestRequest(Method.POST);
@@ -103,14 +97,11 @@ namespace AddDocs_RS_GUI
             request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
             SetCommonHeaders();
             response = client.Execute(request);
-
-            //byte[] fileBytes = File.ReadAllBytes(file);
             if (response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                //MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
-                return false;
+                return response.Content;
             }
-            return true;
+            return "success";
         }
     }
 }

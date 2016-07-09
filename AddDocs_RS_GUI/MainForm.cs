@@ -35,17 +35,17 @@ namespace AddDocs_RS_GUI
             if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
                 control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt);
-                MessageBox.Show("Documents created and pages added");
+                //MessageBox.Show("Documents created and pages added");
             }
             else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
             {
                 control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
-                MessageBox.Show("Documents created and pages added");
+                //MessageBox.Show("Documents created and pages added");
             }
             else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
             {
                 control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat);
-                MessageBox.Show("Documents created");
+                //MessageBox.Show("Documents created");
             }
         }
 
@@ -131,17 +131,17 @@ namespace AddDocs_RS_GUI
             if (uxSingle_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
             {
                 control.SingleDocSingleFile(docid, repeat);
-                MessageBox.Show("Pages added to the document: " + docid);
+                //MessageBox.Show("Pages added to the document: " + docid);
             }
             else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
                 control.SingleDocMultiFile(docid);
-                MessageBox.Show("Pages added to the document: " + docid);
+                //MessageBox.Show("Pages added to the document: " + docid);
             }
             else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
             {
                 control.SingleDocRapidFire(docid, repeat);
-                MessageBox.Show("Fake pages added to the document: " + docid);
+                //MessageBox.Show("Fake pages added to the document: " + docid);
             }
         }
 
