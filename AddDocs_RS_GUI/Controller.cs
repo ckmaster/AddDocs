@@ -17,132 +17,107 @@ namespace AddDocs_RS_GUI
             conf = new LocalOp().LoadConfig();
             if (conf == null)
             {
-                MessageBox.Show("Failed to load config file, program will now exit");
-                Environment.Exit(1);
+                MessageBox.Show("Failed to load config file");
             }
         }
 
-        public void GetConnection()
+        public string GetShortFileName(string filename)
         {
-            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/connection/";
-            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.GET, "application/xml");
-            conf.intServer.sessionHash = rest.GetConnection();
-        }
-
-        public string PostDoc(ImageNowDoc doc)
-        {
-            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/document/";
-            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.POST, "application/xml");
-            return rest.PostDoc(doc);
-        }
-
-        public void PostDocPage(string docid, string file)
-        {
-            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/document/" + docid + "/page";
-            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
-            rest.PostDocPage(docid, file);
-        }
-
-        public void PostDocPageRapid(string docid, string file)
-        {
-            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/document/" + docid + "/page";
-            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.POST, "application/octet-stream");
-            rest.PostDocPageRapid(docid, file);
-        }
-
-        public void DeleteConnection()
-        {
-            string uri = "http://" + conf.intServer.hostname + ":" + conf.intServer.port + "/integrationserver/connection/";
-            RestCall rest = new RestCall(conf.intServer.sessionHash, conf.intServer.username, conf.intServer.password, uri, RestSharp.Method.DELETE, "application/xml");
-            rest.DeleteConnection();
+            string tempFilename = Path.GetFileName(filename);
+            if (tempFilename.Length > 40)
+            {
+                tempFilename = tempFilename.Substring(0, 39);
+            }
+            return tempFilename;
         }
 
         public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt)
         {
-            GetConnection();
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
             string[] files = Directory.GetFiles(conf.folderPath);
             foreach(string s in files)
             {
-                string temp = Path.GetFileName(s);
-                if (temp.Length > 40)
-                {
-                    temp = temp.Substring(0, 39);
-                }
-                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
-                string docid = PostDoc(doc);
+                string shortFilename = GetShortFileName(s);
+                string longFilename = Path.GetFileName(s);
+                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                string docid = rest.PostDoc(doc);
                 if (docid != null)
                 {
-                    PostDocPage(docid, s);
+                    byte[] fileBytes = File.ReadAllBytes(s);
+                    rest.PostDocPage(docid, fileBytes, longFilename);
                 }
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
         
         public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
         {
-            GetConnection();
-            string temp = Path.GetFileName(conf.filePath);
-            if (temp.Length > 40)
-            {
-                temp = temp.Substring(0, 39);
-            }
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
+            string shortFilename = GetShortFileName(conf.filePath);
+            string longFilename = Path.GetFileName(conf.filePath);
+            byte[] fileBytes = File.ReadAllBytes(conf.filePath);
             for (int i = 0; i < repeat; i++)
             {   
-                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, temp, Guid.NewGuid().ToString(), dt);
-                string docid = PostDoc(doc);
+                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                string docid = rest.PostDoc(doc);
                 if (docid != null)
                 {
-                    PostDocPage(docid, conf.filePath);
+                    rest.PostDocPage(docid, fileBytes, longFilename);
                 }
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
 
         public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
         {
-            GetConnection();
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
             for (int i = 0; i < repeat; i ++)
             {
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
-                PostDoc(doc);
+                rest.PostDoc(doc);
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
 
         public void SingleDocSingleFile (string docid, int repeat)
         {
-            GetConnection();
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
+            string filename = Path.GetFileName(conf.filePath);
+            byte[] fileBytes = File.ReadAllBytes(conf.filePath);
             for (int i = 0; i < repeat; i++)
             {
-                PostDocPage(docid, conf.filePath);
+                rest.PostDocPage(docid, fileBytes, filename);
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
 
         public void SingleDocRapidFire (string docid, int repeat)
         {
-            GetConnection();
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
             for (int i = 0; i < repeat; i++)
             {
-                PostDocPageRapid(docid, conf.filePath);
+                rest.PostDocPage(docid, null, "placeholder.tif");
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
 
         public void SingleDocMultiFile(string docid)
         {
-            GetConnection();
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
             string[] files = Directory.GetFiles(conf.folderPath);
             foreach(string s in files)
             {
-                string temp = Path.GetFileName(s);
-                if (temp.Length > 40)
-                {
-                    temp = temp.Substring(0, 39);
-                }
-                PostDocPage(docid, s);
+                string filename = Path.GetFileName(s);
+                byte[] fileBytes = File.ReadAllBytes(s);
+                rest.PostDocPage(docid, fileBytes, filename);
             }
-            DeleteConnection();
+            rest.DeleteConnection();
         }
     }                      
 }                       

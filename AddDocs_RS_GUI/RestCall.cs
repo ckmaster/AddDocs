@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
-using System.IO;
-using System.Windows.Forms;
+//using System.IO;
+//using System.Windows.Forms;
 
 namespace AddDocs_RS_GUI
 {
@@ -14,35 +14,65 @@ namespace AddDocs_RS_GUI
         RestClient client;
         RestRequest request;
         IRestResponse response;
+        Config conf;
 
-        public RestCall(string hash, string user, string pw, string uri, Method httpMethod, string contentType)
+        public RestCall(Config config)
         {
-            client = new RestClient(uri);
-            request = new RestRequest(httpMethod);
-            request.AddHeader("content-type", contentType);
-            request.AddHeader("x-integrationserver-password", pw);
-            request.AddHeader("x-integrationserver-username", user);
-            request.AddHeader("x-integrationserver-session-hash", hash);
+            conf = config;
+        }
+
+        public void SetCommonHeaders()
+        {
+            request.AddHeader("x-integrationserver-password", conf.intServer.password);
+            request.AddHeader("x-integrationserver-username", conf.intServer.username);
+            request.AddHeader("x-integrationserver-session-hash", conf.intServer.sessionHash);
         }
 
         public string GetConnection()
         {
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/connection/");
+            request = new RestRequest(Method.GET);
+            request.AddHeader("content-type", "application/xml");
+            SetCommonHeaders();
             response = client.Execute(request);
+
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                MessageBox.Show("An error has occurred, failed to get connection:\r\n\r\n" + response.Content);
-                System.Environment.Exit(1);
+                //MessageBox.Show("An error has occurred, failed to get connection:\r\n\r\n" + response.Content);
+                //System.Environment.Exit(1);
+                return null;
             }
             return response.Headers[0].Value.ToString();
         }
 
+        public bool DeleteConnection()
+        {
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/connection/");
+            request = new RestRequest(Method.DELETE);
+            request.AddHeader("content-type", "application/xml");
+            SetCommonHeaders();
+            response = client.Execute(request);
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                //MessageBox.Show("Error deleting session\r\nBy default session will expire in 1 hour");
+                return false;
+            }
+            return true;
+        }
+
         public string PostDoc(ImageNowDoc doc)
         {
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/document/");
+            request = new RestRequest(Method.POST);
+            request.AddHeader("content-type", "application/xml");
             request.AddParameter("application/xml", doc.CreatePostDocXML(), ParameterType.RequestBody);
+            SetCommonHeaders();
             response = client.Execute(request);
+
             if (response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                MessageBox.Show("An error has occurred, while creating the document:\r\n\r\n" + response.Content);
+                //MessageBox.Show("An error has occurred, while creating the document:\r\n\r\n" + response.Content);
                 return null;
             }
             string location = response.Headers[3].Value.ToString();
@@ -51,7 +81,6 @@ namespace AddDocs_RS_GUI
             string docid = "";
             //After 50 documents have been added (100 operations on the same session hash)
             //A header gets added to response, Connection=close
-            //The try catch handles that, may be a better way though
             try
             {
                 docid = parts[1];
@@ -65,41 +94,23 @@ namespace AddDocs_RS_GUI
             return docid;
         }
 
-        public bool PostDocPage(string docid, string file)
+        public bool PostDocPage(string docid, byte[] fileBytes, string filename)
         {
-            request.AddHeader("x-integrationserver-resource-name", Path.GetFileName(file));
-            byte[] fileBytes = File.ReadAllBytes(file);
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/document/{docid}/page");
+            request = new RestRequest(Method.POST);
+            request.AddHeader("content-type", "application/octet-stream");
+            request.AddHeader("x-integrationserver-resource-name", filename);
             request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode != System.Net.HttpStatusCode.Created)
-            {
-                MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
-                return false;
-            }
-            return true;
-        }
-
-        public bool PostDocPageRapid (string docid, string file)
-        {
-            request.AddHeader("x-integrationserver-resource-name", "placeholder");
-            byte[] fileBytes = null; //{ 0x20 }; //space
-            request.AddParameter("application/octet-stream", fileBytes, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode != System.Net.HttpStatusCode.Created)
-            {
-                MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
-                return false;
-            }
-            return true;
-        }
-
-        public void DeleteConnection()
-        {
+            SetCommonHeaders();
             response = client.Execute(request);
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+
+            //byte[] fileBytes = File.ReadAllBytes(file);
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                MessageBox.Show("Error deleting session\r\nBy default session will expire in 1 hour");
+                //MessageBox.Show("An error has occurred, while adding a page:\r\n\r\n" + response.Content);
+                return false;
             }
+            return true;
         }
     }
 }
