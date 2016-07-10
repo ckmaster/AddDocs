@@ -47,7 +47,6 @@
             this.uxSubmitMulti_Button = new System.Windows.Forms.Button();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxHelp_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxEdit_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxServerInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxDocMode_GroupBox = new System.Windows.Forms.GroupBox();
@@ -229,18 +228,9 @@
             // 
             // uxFile_MenuItem
             // 
-            this.uxFile_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uxHelp_MenuItem});
             this.uxFile_MenuItem.Name = "uxFile_MenuItem";
-            this.uxFile_MenuItem.Size = new System.Drawing.Size(37, 20);
+            this.uxFile_MenuItem.Size = new System.Drawing.Size(94, 20);
             this.uxFile_MenuItem.Text = "File";
-            // 
-            // uxHelp_MenuItem
-            // 
-            this.uxHelp_MenuItem.Name = "uxHelp_MenuItem";
-            this.uxHelp_MenuItem.Size = new System.Drawing.Size(99, 22);
-            this.uxHelp_MenuItem.Text = "Help";
-            this.uxHelp_MenuItem.Click += new System.EventHandler(this.uxHelp_MenuItem_Click);
             // 
             // uxEdit_MenuItem
             // 
@@ -553,7 +543,6 @@
         private System.Windows.Forms.Button uxSubmitMulti_Button;
         private System.Windows.Forms.MenuStrip uxMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem uxFile_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem uxHelp_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxEdit_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxServerInfo_MenuItem;
         private System.Windows.Forms.GroupBox uxDocMode_GroupBox;

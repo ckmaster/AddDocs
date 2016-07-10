@@ -10,16 +10,18 @@ namespace AddDocs_RS_GUI
     {
         public string hostname { get; set; }
         public string port { get; set; }
+        public string webappFolder { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string sessionHash { get; set; }
 
         public IntegrationServer () { }
 
-        public IntegrationServer(string h, string p, string un, string pw, string sh)
+        public IntegrationServer(string h, string p, string waf, string un, string pw, string sh)
         {
             hostname = h;
             port = p;
+            webappFolder = waf;
             username = un;
             password = pw;
             sessionHash = sh;

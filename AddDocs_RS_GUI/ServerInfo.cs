@@ -28,6 +28,7 @@ namespace AddDocs_RS_GUI
         {
             uxServer_TextBox.Text = conf.intServer.hostname;
             uxPort_TextBox.Text = conf.intServer.port;
+            uxFolder_TextBox.Text = conf.intServer.webappFolder;
             uxUsername_TextBox.Text = conf.intServer.username;
             uxPassword_Textbox.Text = conf.intServer.password;
         }
@@ -36,12 +37,14 @@ namespace AddDocs_RS_GUI
         {
             if (!(uxServer_TextBox.Text.Trim().Equals(conf.intServer.hostname)) ||
                !(uxPort_TextBox.Text.Trim().Equals(conf.intServer.port)) ||
+               !(uxFolder_TextBox.Text.Trim().Equals(conf.intServer.webappFolder)) ||
                !(uxUsername_TextBox.Text.Trim().Equals(conf.intServer.username)) ||
                !(uxPassword_Textbox.Text.Trim().Equals(conf.intServer.password)))
             {
-                MessageBox.Show("Change in settings detected, making adjustments now");
+                MessageBox.Show("Change in settings detected, making adjustments now.");
                 conf.intServer.hostname = uxServer_TextBox.Text.Trim();
                 conf.intServer.port = uxPort_TextBox.Text.Trim();
+                conf.intServer.webappFolder = uxFolder_TextBox.Text.Trim();
                 conf.intServer.username = uxUsername_TextBox.Text.Trim();
                 conf.intServer.password = uxPassword_Textbox.Text.Trim();
                 LocalOp local = new LocalOp();
@@ -49,7 +52,7 @@ namespace AddDocs_RS_GUI
             }
             else
             {
-                MessageBox.Show("No changes were made to server configuration");
+                MessageBox.Show("No changes have been made.");
             }
             this.Close();
         }

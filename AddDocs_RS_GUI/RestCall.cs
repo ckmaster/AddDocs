@@ -28,7 +28,7 @@ namespace AddDocs_RS_GUI
 
         public string GetConnection()
         {
-            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/connection/");
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/{conf.intServer.webappFolder}/connection/");
             request = new RestRequest(Method.GET);
             request.AddHeader("content-type", "application/xml");
             SetCommonHeaders();
@@ -43,7 +43,7 @@ namespace AddDocs_RS_GUI
 
         public string DeleteConnection()
         {
-            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/connection/");
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/{conf.intServer.webappFolder}/connection/");
             request = new RestRequest(Method.DELETE);
             request.AddHeader("content-type", "application/xml");
             SetCommonHeaders();
@@ -58,7 +58,7 @@ namespace AddDocs_RS_GUI
 
         public string PostDoc(ImageNowDoc doc)
         {
-            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/document/");
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/{conf.intServer.webappFolder}/document/");
             request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/xml");
             request.AddParameter("application/xml", doc.CreatePostDocXML(), ParameterType.RequestBody);
@@ -90,7 +90,7 @@ namespace AddDocs_RS_GUI
 
         public string PostDocPage(string docid, byte[] fileBytes, string filename)
         {
-            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/integrationserver/document/{docid}/page");
+            client = new RestClient($"http://{conf.intServer.hostname}:{conf.intServer.port}/{conf.intServer.webappFolder}/document/{docid}/page");
             request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/octet-stream");
             request.AddHeader("x-integrationserver-resource-name", filename);

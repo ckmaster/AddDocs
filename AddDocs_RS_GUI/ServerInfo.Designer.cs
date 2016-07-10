@@ -38,12 +38,14 @@
             this.uxPassword_Textbox = new System.Windows.Forms.TextBox();
             this.uxSubmit_Button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.uxFolder_TextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 40);
+            this.label1.Location = new System.Drawing.Point(64, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 66);
+            this.label2.Location = new System.Drawing.Point(76, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 1;
@@ -61,7 +63,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 92);
+            this.label3.Location = new System.Drawing.Point(47, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 2;
@@ -70,7 +72,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 118);
+            this.label4.Location = new System.Drawing.Point(49, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 3;
@@ -78,35 +80,35 @@
             // 
             // uxServer_TextBox
             // 
-            this.uxServer_TextBox.Location = new System.Drawing.Point(71, 37);
+            this.uxServer_TextBox.Location = new System.Drawing.Point(109, 32);
             this.uxServer_TextBox.Name = "uxServer_TextBox";
             this.uxServer_TextBox.Size = new System.Drawing.Size(190, 20);
             this.uxServer_TextBox.TabIndex = 4;
             // 
             // uxPort_TextBox
             // 
-            this.uxPort_TextBox.Location = new System.Drawing.Point(71, 63);
+            this.uxPort_TextBox.Location = new System.Drawing.Point(109, 58);
             this.uxPort_TextBox.Name = "uxPort_TextBox";
             this.uxPort_TextBox.Size = new System.Drawing.Size(190, 20);
             this.uxPort_TextBox.TabIndex = 5;
             // 
             // uxUsername_TextBox
             // 
-            this.uxUsername_TextBox.Location = new System.Drawing.Point(71, 89);
+            this.uxUsername_TextBox.Location = new System.Drawing.Point(109, 110);
             this.uxUsername_TextBox.Name = "uxUsername_TextBox";
             this.uxUsername_TextBox.Size = new System.Drawing.Size(190, 20);
             this.uxUsername_TextBox.TabIndex = 6;
             // 
             // uxPassword_Textbox
             // 
-            this.uxPassword_Textbox.Location = new System.Drawing.Point(71, 115);
+            this.uxPassword_Textbox.Location = new System.Drawing.Point(109, 136);
             this.uxPassword_Textbox.Name = "uxPassword_Textbox";
             this.uxPassword_Textbox.Size = new System.Drawing.Size(190, 20);
             this.uxPassword_Textbox.TabIndex = 7;
             // 
             // uxSubmit_Button
             // 
-            this.uxSubmit_Button.Location = new System.Drawing.Point(71, 141);
+            this.uxSubmit_Button.Location = new System.Drawing.Point(109, 162);
             this.uxSubmit_Button.Name = "uxSubmit_Button";
             this.uxSubmit_Button.Size = new System.Drawing.Size(190, 23);
             this.uxSubmit_Button.TabIndex = 8;
@@ -123,11 +125,29 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Integration Server Connection Info:";
             // 
+            // uxFolder_TextBox
+            // 
+            this.uxFolder_TextBox.Location = new System.Drawing.Point(109, 84);
+            this.uxFolder_TextBox.Name = "uxFolder_TextBox";
+            this.uxFolder_TextBox.Size = new System.Drawing.Size(190, 20);
+            this.uxFolder_TextBox.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "WebApps Folder:";
+            // 
             // ServerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 176);
+            this.ClientSize = new System.Drawing.Size(311, 197);
+            this.Controls.Add(this.uxFolder_TextBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.uxSubmit_Button);
             this.Controls.Add(this.uxPassword_Textbox);
@@ -161,5 +181,7 @@
         private System.Windows.Forms.TextBox uxPassword_Textbox;
         private System.Windows.Forms.Button uxSubmit_Button;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox uxFolder_TextBox;
+        private System.Windows.Forms.Label label6;
     }
 }

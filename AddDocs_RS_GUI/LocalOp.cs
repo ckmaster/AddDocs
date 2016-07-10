@@ -47,7 +47,7 @@ namespace AddDocs_RS_GUI
 
         public void DefaultConfig()
         {
-            IntegrationServer intServer = new IntegrationServer("localhost", "8080", "administrator", "ImageNow!", "");
+            IntegrationServer intServer = new IntegrationServer("localhost", "8080", "integrationserver", "administrator", "ImageNow!", "");
             string folder = "C:\\Program Files (x86)\\ImageNow\\Demo Images";
             string file = "C:\\Program Files (x86)\\ImageNow\\Demo Images\\Demo 01.tif";
             Config conf = new Config(intServer, folder, file);
