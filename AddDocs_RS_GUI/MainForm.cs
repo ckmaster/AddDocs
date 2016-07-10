@@ -34,7 +34,14 @@ namespace AddDocs_RS_GUI
             int repeat = (int)uxAmountMulti_NumUpDown.Value;
             if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
-                control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat);
+                if (uxRecursive_CheckBox.Checked == true)
+                {
+                    control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true);
+                }
+                else
+                {
+                    control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false);
+                }
             }
             else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
             {
@@ -123,7 +130,15 @@ namespace AddDocs_RS_GUI
             }
             else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
-                control.SingleDocMultiFile(docid, repeat);
+                if (uxRecursive_CheckBox.Checked == true)
+                {
+                    control.SingleDocMultiFile(docid, repeat, true);
+                }
+                else
+                {
+                    control.SingleDocMultiFile(docid, repeat, false);
+                }
+                
             }
             else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
             {

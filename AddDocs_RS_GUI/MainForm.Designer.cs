@@ -502,9 +502,9 @@
             this.uxRecursive_CheckBox.AutoSize = true;
             this.uxRecursive_CheckBox.Location = new System.Drawing.Point(67, 19);
             this.uxRecursive_CheckBox.Name = "uxRecursive_CheckBox";
-            this.uxRecursive_CheckBox.Size = new System.Drawing.Size(74, 17);
+            this.uxRecursive_CheckBox.Size = new System.Drawing.Size(76, 17);
             this.uxRecursive_CheckBox.TabIndex = 23;
-            this.uxRecursive_CheckBox.Text = "Recursive";
+            this.uxRecursive_CheckBox.Text = "Subfolders";
             this.uxToolTip.SetToolTip(this.uxRecursive_CheckBox, "(Folder only) If selected will use files from all subfolders in directory");
             this.uxRecursive_CheckBox.UseVisualStyleBackColor = true;
             // 

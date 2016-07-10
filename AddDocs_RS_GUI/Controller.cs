@@ -34,7 +34,7 @@ namespace AddDocs_RS_GUI
             return tempFilename;
         }
 
-        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
+        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -43,7 +43,17 @@ namespace AddDocs_RS_GUI
                 MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
                 return;
             }
-            string[] files = Directory.GetFiles(conf.folderPath);
+
+            string[] files;
+            if (recursive)
+            {
+                files = Directory.GetFiles(conf.folderPath, "*", SearchOption.AllDirectories);
+            }
+            else
+            {
+                files = Directory.GetFiles(conf.folderPath);
+            }
+
             for (int i = 0; i < repeat; i++)
             {
                 foreach(string s in files)
@@ -201,7 +211,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Fake pages added to document: {docid}.");
         }
 
-        public void SingleDocMultiFile(string docid, int repeat)
+        public void SingleDocMultiFile(string docid, int repeat, bool recursive)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -211,7 +221,16 @@ namespace AddDocs_RS_GUI
                 return;
             }
 
-            string[] files = Directory.GetFiles(conf.folderPath);
+            string[] files;
+            if (recursive)
+            {
+                files = Directory.GetFiles(conf.folderPath, "*", SearchOption.AllDirectories);
+            }
+            else
+            {
+                files = Directory.GetFiles(conf.folderPath);
+            }
+            
             for (int i = 0; i < repeat; i ++)
             {
                 foreach (string s in files)
@@ -235,4 +254,4 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Pages added to document: {docid}.");
         }
     }                      
-}                       
+}
