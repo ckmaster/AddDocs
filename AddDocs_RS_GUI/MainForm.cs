@@ -24,33 +24,7 @@ namespace AddDocs_RS_GUI
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
-            string d = uxDrawer_TextBox.Text;
-            string f1 = uxField1_TextBox.Text;
-            string f2 = uxField2_TextBox.Text;
-            string f3 = uxField3_TextBox.Text;
-            string f4 = uxField4_TextBox.Text;
-            string f5 = uxField5_TextBox.Text;
-            string dt = uxDocType_TextBox.Text;
-            int repeat = (int)uxAmountMulti_NumUpDown.Value;
-            if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
-            {
-                if (uxRecursive_CheckBox.Checked == true)
-                {
-                    control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true);
-                }
-                else
-                {
-                    control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false);
-                }
-            }
-            else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
-            {
-                control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
-            }
-            else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
-            {
-                control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat);
-            }
+            uxBackgroundWorker.RunWorkerAsync("multi");
         }
 
         public void ClearUI ()
@@ -97,6 +71,7 @@ namespace AddDocs_RS_GUI
                 uxFolder_Label.Text = "Folder:";
                 uxFolder_TextBox.Text = control.conf.folderPath;
                 uxFileBrowse_Button.Enabled = true;
+                uxRecursive_CheckBox.Enabled = true;
             }
         }
 
@@ -107,6 +82,7 @@ namespace AddDocs_RS_GUI
                 uxFolder_Label.Text = "File:";
                 uxFolder_TextBox.Text = control.conf.filePath;
                 uxFileBrowse_Button.Enabled = true;
+                uxRecursive_CheckBox.Enabled = false;
             }
         }
 
@@ -117,33 +93,13 @@ namespace AddDocs_RS_GUI
                 uxFolder_Label.Text = "File:";
                 uxFolder_TextBox.Text = "<Rapid Fire: No physical objects used>";
                 uxFileBrowse_Button.Enabled = false;
+                uxRecursive_CheckBox.Enabled = false;
             }
         }
 
         private void uxSubmitSingle_Button_Click (object sender, EventArgs e)
         {
-            int repeat = (int)uxAmountSingle_NumUpDown.Value;
-            string docid = uxDocID_TextBox.Text;
-            if (uxSingle_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
-            {
-                control.SingleDocSingleFile(docid, repeat);
-            }
-            else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
-            {
-                if (uxRecursive_CheckBox.Checked == true)
-                {
-                    control.SingleDocMultiFile(docid, repeat, true);
-                }
-                else
-                {
-                    control.SingleDocMultiFile(docid, repeat, false);
-                }
-                
-            }
-            else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
-            {
-                control.SingleDocRapidFire(docid, repeat);
-            }
+            uxBackgroundWorker.RunWorkerAsync("single");
         }
 
         private void uxFileBrowse_Button_Click (object sender, EventArgs e)
@@ -178,5 +134,65 @@ namespace AddDocs_RS_GUI
         {
             MessageBox.Show("You clicked the help button");
         }
+
+        private void uxBackgroundWorker_DoWork (object sender, DoWorkEventArgs e)
+        {
+            if (e.Argument.Equals("multi"))
+            {
+                string d = uxDrawer_TextBox.Text;
+                string f1 = uxField1_TextBox.Text;
+                string f2 = uxField2_TextBox.Text;
+                string f3 = uxField3_TextBox.Text;
+                string f4 = uxField4_TextBox.Text;
+                string f5 = uxField5_TextBox.Text;
+                string dt = uxDocType_TextBox.Text;
+                int repeat = (int)uxAmountMulti_NumUpDown.Value;
+                if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
+                {
+                    if (uxRecursive_CheckBox.Checked == true)
+                    {
+                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true);
+                    }
+                    else
+                    {
+                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false);
+                    }
+                }
+                else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
+                {
+                    control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
+                }
+                else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
+                {
+                    control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat);
+                }
+            }
+            else if (e.Argument.Equals("single"))
+            {
+                int repeat = (int)uxAmountSingle_NumUpDown.Value;
+                string docid = uxDocID_TextBox.Text;
+                if (uxSingle_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
+                {
+                    control.SingleDocSingleFile(docid, repeat);
+                }
+                else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
+                {
+                    if (uxRecursive_CheckBox.Checked == true)
+                    {
+                        control.SingleDocMultiFile(docid, repeat, true);
+                    }
+                    else
+                    {
+                        control.SingleDocMultiFile(docid, repeat, false);
+                    }
+
+                }
+                else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
+                {
+                    control.SingleDocRapidFire(docid, repeat);
+                }
+            }
+        }
+        
     }
 }

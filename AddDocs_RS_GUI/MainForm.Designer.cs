@@ -53,6 +53,7 @@
             this.uxMulti_RadioButton = new System.Windows.Forms.RadioButton();
             this.uxSingle_RadioButton = new System.Windows.Forms.RadioButton();
             this.uxFileMode_GroupBox = new System.Windows.Forms.GroupBox();
+            this.uxRecursive_CheckBox = new System.Windows.Forms.CheckBox();
             this.uxRapidFire_RadioButton = new System.Windows.Forms.RadioButton();
             this.uxFolder_RadioButton = new System.Windows.Forms.RadioButton();
             this.uxFile_RadioButton = new System.Windows.Forms.RadioButton();
@@ -70,7 +71,7 @@
             this.uxDocID_TextBox = new System.Windows.Forms.TextBox();
             this.uxDocID_Label = new System.Windows.Forms.Label();
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
-            this.uxRecursive_CheckBox = new System.Windows.Forms.CheckBox();
+            this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -244,7 +245,7 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(130, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
@@ -297,6 +298,17 @@
             this.uxFileMode_GroupBox.TabIndex = 18;
             this.uxFileMode_GroupBox.TabStop = false;
             this.uxFileMode_GroupBox.Text = "File Mode";
+            // 
+            // uxRecursive_CheckBox
+            // 
+            this.uxRecursive_CheckBox.AutoSize = true;
+            this.uxRecursive_CheckBox.Location = new System.Drawing.Point(67, 19);
+            this.uxRecursive_CheckBox.Name = "uxRecursive_CheckBox";
+            this.uxRecursive_CheckBox.Size = new System.Drawing.Size(76, 17);
+            this.uxRecursive_CheckBox.TabIndex = 23;
+            this.uxRecursive_CheckBox.Text = "Subfolders";
+            this.uxToolTip.SetToolTip(this.uxRecursive_CheckBox, "(Folder only) If selected will use files from all subfolders in directory");
+            this.uxRecursive_CheckBox.UseVisualStyleBackColor = true;
             // 
             // uxRapidFire_RadioButton
             // 
@@ -497,16 +509,9 @@
             this.uxAmountSingle_Label.TabIndex = 26;
             this.uxAmountSingle_Label.Text = "Times To Add:";
             // 
-            // uxRecursive_CheckBox
+            // uxBackgroundWorker
             // 
-            this.uxRecursive_CheckBox.AutoSize = true;
-            this.uxRecursive_CheckBox.Location = new System.Drawing.Point(67, 19);
-            this.uxRecursive_CheckBox.Name = "uxRecursive_CheckBox";
-            this.uxRecursive_CheckBox.Size = new System.Drawing.Size(76, 17);
-            this.uxRecursive_CheckBox.TabIndex = 23;
-            this.uxRecursive_CheckBox.Text = "Subfolders";
-            this.uxToolTip.SetToolTip(this.uxRecursive_CheckBox, "(Folder only) If selected will use files from all subfolders in directory");
-            this.uxRecursive_CheckBox.UseVisualStyleBackColor = true;
+            this.uxBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.uxBackgroundWorker_DoWork);
             // 
             // MainForm
             // 
@@ -588,6 +593,7 @@
         private System.Windows.Forms.NumericUpDown uxAmountMulti_NumUpDown;
         private System.Windows.Forms.Label uxAmountMulti_Label;
         private System.Windows.Forms.CheckBox uxRecursive_CheckBox;
+        private System.ComponentModel.BackgroundWorker uxBackgroundWorker;
     }
 }
 
