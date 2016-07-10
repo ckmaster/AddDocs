@@ -11,5 +11,14 @@ namespace AddDocs_RS_GUI
         public IntegrationServer intServer { get; set; }
         public string folderPath { get; set; }
         public string filePath { get; set; }
+
+        public Config() { }
+
+        public Config(IntegrationServer intS, string fop, string fip)
+        {
+            intServer = intS;
+            folderPath = fop;
+            filePath = fip;
+        }
     }
 }

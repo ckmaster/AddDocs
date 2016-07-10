@@ -14,10 +14,13 @@ namespace AddDocs_RS_GUI
 
         public void Initialize()
         {
-            conf = new LocalOp().LoadConfig();
+            LocalOp local = new LocalOp();
+            conf = local.LoadConfig();
             if (conf == null)
             {
-                MessageBox.Show("Failed to load config file.");
+                MessageBox.Show("New config will now be created.", "Failed to find config file.");
+                local.DefaultConfig();
+                conf = local.LoadConfig();
             }
         }
 
@@ -69,6 +72,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default they will clear themselves in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show("Documents created and pages added.");
         }
         
         public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
@@ -108,6 +112,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show("Documents created and pages added.");
         }
 
         public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
@@ -135,6 +140,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show("Documents created.");
         }
 
         public void SingleDocSingleFile (string docid, int repeat)
@@ -163,6 +169,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show($"Pages added to document: {docid}.");
         }
 
         public void SingleDocRapidFire (string docid, int repeat)
@@ -189,6 +196,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show($"Fake pages added to document: {docid}.");
         }
 
         public void SingleDocMultiFile(string docid)
@@ -218,6 +226,7 @@ namespace AddDocs_RS_GUI
             {
                 MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
             }
+            MessageBox.Show($"Pages added to document: {docid}.");
         }
     }                      
 }                       

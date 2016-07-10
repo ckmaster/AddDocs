@@ -13,5 +13,16 @@ namespace AddDocs_RS_GUI
         public string username { get; set; }
         public string password { get; set; }
         public string sessionHash { get; set; }
+
+        public IntegrationServer () { }
+
+        public IntegrationServer(string h, string p, string un, string pw, string sh)
+        {
+            hostname = h;
+            port = p;
+            username = un;
+            password = pw;
+            sessionHash = sh;
+        }
     }
 }
