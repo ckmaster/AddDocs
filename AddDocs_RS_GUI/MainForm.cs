@@ -34,7 +34,7 @@ namespace AddDocs_RS_GUI
             int repeat = (int)uxAmountMulti_NumUpDown.Value;
             if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
-                control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt);
+                control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat);
             }
             else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
             {
@@ -87,8 +87,6 @@ namespace AddDocs_RS_GUI
         {
             if (uxFolder_RadioButton.Checked == true)
             {
-                uxAmountSingle_NumUpDown.Enabled = false;
-                uxAmountMulti_NumUpDown.Enabled = false;
                 uxFolder_Label.Text = "Folder:";
                 uxFolder_TextBox.Text = control.conf.folderPath;
                 uxFileBrowse_Button.Enabled = true;
@@ -99,8 +97,6 @@ namespace AddDocs_RS_GUI
         {
             if (uxFile_RadioButton.Checked == true)
             {
-                uxAmountSingle_NumUpDown.Enabled = true;
-                uxAmountMulti_NumUpDown.Enabled = true;
                 uxFolder_Label.Text = "File:";
                 uxFolder_TextBox.Text = control.conf.filePath;
                 uxFileBrowse_Button.Enabled = true;
@@ -111,8 +107,6 @@ namespace AddDocs_RS_GUI
         {
             if (uxRapidFire_RadioButton.Checked == true)
             {
-                uxAmountSingle_NumUpDown.Enabled = true;
-                uxAmountMulti_NumUpDown.Enabled = true;
                 uxFolder_Label.Text = "File:";
                 uxFolder_TextBox.Text = "<Rapid Fire: No physical objects used>";
                 uxFileBrowse_Button.Enabled = false;
@@ -129,7 +123,7 @@ namespace AddDocs_RS_GUI
             }
             else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
             {
-                control.SingleDocMultiFile(docid);
+                control.SingleDocMultiFile(docid, repeat);
             }
             else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
             {

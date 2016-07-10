@@ -70,6 +70,7 @@
             this.uxDocID_TextBox = new System.Windows.Forms.TextBox();
             this.uxDocID_Label = new System.Windows.Forms.Label();
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
+            this.uxRecursive_CheckBox = new System.Windows.Forms.CheckBox();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -229,7 +230,7 @@
             // uxFile_MenuItem
             // 
             this.uxFile_MenuItem.Name = "uxFile_MenuItem";
-            this.uxFile_MenuItem.Size = new System.Drawing.Size(94, 20);
+            this.uxFile_MenuItem.Size = new System.Drawing.Size(37, 20);
             this.uxFile_MenuItem.Text = "File";
             // 
             // uxEdit_MenuItem
@@ -243,7 +244,7 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(130, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
@@ -286,6 +287,7 @@
             // 
             // uxFileMode_GroupBox
             // 
+            this.uxFileMode_GroupBox.Controls.Add(this.uxRecursive_CheckBox);
             this.uxFileMode_GroupBox.Controls.Add(this.uxRapidFire_RadioButton);
             this.uxFileMode_GroupBox.Controls.Add(this.uxFolder_RadioButton);
             this.uxFileMode_GroupBox.Controls.Add(this.uxFile_RadioButton);
@@ -390,7 +392,6 @@
             // 
             // uxAmountMulti_NumUpDown
             // 
-            this.uxAmountMulti_NumUpDown.Enabled = false;
             this.uxAmountMulti_NumUpDown.Location = new System.Drawing.Point(89, 19);
             this.uxAmountMulti_NumUpDown.Maximum = new decimal(new int[] {
             2147483647,
@@ -400,15 +401,20 @@
             this.uxAmountMulti_NumUpDown.Name = "uxAmountMulti_NumUpDown";
             this.uxAmountMulti_NumUpDown.Size = new System.Drawing.Size(202, 20);
             this.uxAmountMulti_NumUpDown.TabIndex = 29;
+            this.uxAmountMulti_NumUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // uxAmountMulti_Label
             // 
             this.uxAmountMulti_Label.AutoSize = true;
-            this.uxAmountMulti_Label.Location = new System.Drawing.Point(38, 21);
+            this.uxAmountMulti_Label.Location = new System.Drawing.Point(7, 21);
             this.uxAmountMulti_Label.Name = "uxAmountMulti_Label";
-            this.uxAmountMulti_Label.Size = new System.Drawing.Size(45, 13);
+            this.uxAmountMulti_Label.Size = new System.Drawing.Size(76, 13);
             this.uxAmountMulti_Label.TabIndex = 28;
-            this.uxAmountMulti_Label.Text = "Repeat:";
+            this.uxAmountMulti_Label.Text = "Times To Add:";
             // 
             // groupBox3
             // 
@@ -441,7 +447,6 @@
             // 
             // uxAmountSingle_NumUpDown
             // 
-            this.uxAmountSingle_NumUpDown.Enabled = false;
             this.uxAmountSingle_NumUpDown.Location = new System.Drawing.Point(89, 19);
             this.uxAmountSingle_NumUpDown.Maximum = new decimal(new int[] {
             2147483647,
@@ -451,6 +456,11 @@
             this.uxAmountSingle_NumUpDown.Name = "uxAmountSingle_NumUpDown";
             this.uxAmountSingle_NumUpDown.Size = new System.Drawing.Size(202, 20);
             this.uxAmountSingle_NumUpDown.TabIndex = 27;
+            this.uxAmountSingle_NumUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // uxSubmitSingle_Button
             // 
@@ -481,11 +491,22 @@
             // uxAmountSingle_Label
             // 
             this.uxAmountSingle_Label.AutoSize = true;
-            this.uxAmountSingle_Label.Location = new System.Drawing.Point(38, 21);
+            this.uxAmountSingle_Label.Location = new System.Drawing.Point(7, 21);
             this.uxAmountSingle_Label.Name = "uxAmountSingle_Label";
-            this.uxAmountSingle_Label.Size = new System.Drawing.Size(45, 13);
+            this.uxAmountSingle_Label.Size = new System.Drawing.Size(76, 13);
             this.uxAmountSingle_Label.TabIndex = 26;
-            this.uxAmountSingle_Label.Text = "Repeat:";
+            this.uxAmountSingle_Label.Text = "Times To Add:";
+            // 
+            // uxRecursive_CheckBox
+            // 
+            this.uxRecursive_CheckBox.AutoSize = true;
+            this.uxRecursive_CheckBox.Location = new System.Drawing.Point(67, 19);
+            this.uxRecursive_CheckBox.Name = "uxRecursive_CheckBox";
+            this.uxRecursive_CheckBox.Size = new System.Drawing.Size(74, 17);
+            this.uxRecursive_CheckBox.TabIndex = 23;
+            this.uxRecursive_CheckBox.Text = "Recursive";
+            this.uxToolTip.SetToolTip(this.uxRecursive_CheckBox, "(Folder only) If selected will use files from all subfolders in directory");
+            this.uxRecursive_CheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -566,6 +587,7 @@
         private System.Windows.Forms.Label uxAmountSingle_Label;
         private System.Windows.Forms.NumericUpDown uxAmountMulti_NumUpDown;
         private System.Windows.Forms.Label uxAmountMulti_Label;
+        private System.Windows.Forms.CheckBox uxRecursive_CheckBox;
     }
 }
 

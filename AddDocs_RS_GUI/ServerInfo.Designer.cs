@@ -105,6 +105,7 @@
             this.uxPassword_Textbox.Name = "uxPassword_Textbox";
             this.uxPassword_Textbox.Size = new System.Drawing.Size(190, 20);
             this.uxPassword_Textbox.TabIndex = 7;
+            this.uxPassword_Textbox.UseSystemPasswordChar = true;
             // 
             // uxSubmit_Button
             // 

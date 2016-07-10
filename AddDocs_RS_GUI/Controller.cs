@@ -34,7 +34,7 @@ namespace AddDocs_RS_GUI
             return tempFilename;
         }
 
-        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt)
+        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -43,27 +43,29 @@ namespace AddDocs_RS_GUI
                 MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
                 return;
             }
-
             string[] files = Directory.GetFiles(conf.folderPath);
-            foreach(string s in files)
+            for (int i = 0; i < repeat; i++)
             {
-                string shortFilename = GetShortFileName(s);
-                string longFilename = Path.GetFileName(s);
-                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
-                string docid = rest.PostDoc(doc);
-                if (docid.Length != 23)
+                foreach(string s in files)
                 {
-                    MessageBox.Show($"Failed to create document.\r\n{docid}");
-                    return;
-                }
-                else
-                {
-                    byte[] fileBytes = File.ReadAllBytes(s);
-                    string responseContent1 = rest.PostDocPage(docid, fileBytes, longFilename);
-                    if (!responseContent1.Equals("success"))
+                    string shortFilename = GetShortFileName(s);
+                    string longFilename = Path.GetFileName(s);
+                    ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                    string docid = rest.PostDoc(doc);
+                    if (docid.Length != 23)
                     {
-                        MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                        MessageBox.Show($"Failed to create document.\r\n{docid}");
                         return;
+                    }
+                    else
+                    {
+                        byte[] fileBytes = File.ReadAllBytes(s);
+                        string responseContent1 = rest.PostDocPage(docid, fileBytes, longFilename);
+                        if (!responseContent1.Equals("success"))
+                        {
+                            MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                            return;
+                        }
                     }
                 }
             }
@@ -199,7 +201,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Fake pages added to document: {docid}.");
         }
 
-        public void SingleDocMultiFile(string docid)
+        public void SingleDocMultiFile(string docid, int repeat)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -210,17 +212,21 @@ namespace AddDocs_RS_GUI
             }
 
             string[] files = Directory.GetFiles(conf.folderPath);
-            foreach(string s in files)
+            for (int i = 0; i < repeat; i ++)
             {
-                string filename = Path.GetFileName(s);
-                byte[] fileBytes = File.ReadAllBytes(s);
-                string responseContent1 = rest.PostDocPage(docid, fileBytes, filename);
-                if (!responseContent1.Equals("success"))
+                foreach (string s in files)
                 {
-                    MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
-                    return;
+                    string filename = Path.GetFileName(s);
+                    byte[] fileBytes = File.ReadAllBytes(s);
+                    string responseContent1 = rest.PostDocPage(docid, fileBytes, filename);
+                    if (!responseContent1.Equals("success"))
+                    {
+                        MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
+                        return;
+                    }
                 }
             }
+            
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
             {
