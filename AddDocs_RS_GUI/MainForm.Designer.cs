@@ -29,7 +29,6 @@
         private void InitializeComponent ()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.uxDrawer_Label = new System.Windows.Forms.Label();
             this.uxField1_Label = new System.Windows.Forms.Label();
             this.uxField2_Label = new System.Windows.Forms.Label();
@@ -545,7 +544,6 @@
             this.Controls.Add(this.uxMenuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.HelpButton = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.uxMenuStrip;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

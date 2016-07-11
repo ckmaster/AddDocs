@@ -17,9 +17,6 @@ namespace AddDocs_RS_GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm form = new MainForm();
-            //form.HelpButton = true;
-            //form.MaximizeBox = false;
-            //form.MinimizeBox = false;
             Application.Run(form);
         }
     }

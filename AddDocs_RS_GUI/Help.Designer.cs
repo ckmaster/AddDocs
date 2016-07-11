@@ -48,8 +48,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Help";
-            this.ShowIcon = false;
             this.Text = "Help";
+            this.Load += new System.EventHandler(this.Help_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

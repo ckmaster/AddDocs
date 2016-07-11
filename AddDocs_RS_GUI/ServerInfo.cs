@@ -26,6 +26,7 @@ namespace AddDocs_RS_GUI
 
         private void ServerInfo_Load (object sender, EventArgs e)
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             uxServer_TextBox.Text = conf.intServer.hostname;
             uxPort_TextBox.Text = conf.intServer.port;
             uxFolder_TextBox.Text = conf.intServer.webappFolder;

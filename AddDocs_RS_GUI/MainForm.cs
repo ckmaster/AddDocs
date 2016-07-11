@@ -24,6 +24,7 @@ namespace AddDocs_RS_GUI
         {
             control.Initialize();
             uxFolder_TextBox.Text = control.conf.folderPath;
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)

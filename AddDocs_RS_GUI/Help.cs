@@ -45,5 +45,9 @@ Regarding the UI:
             uxLabel.Text = readme;
         }
 
+        private void Help_Load (object sender, EventArgs e)
+        {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        }
     }
 }
