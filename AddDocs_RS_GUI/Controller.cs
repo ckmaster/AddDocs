@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace AddDocs_RS_GUI
 {
@@ -34,7 +35,7 @@ namespace AddDocs_RS_GUI
             return tempFilename;
         }
 
-        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive)
+        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -54,6 +55,8 @@ namespace AddDocs_RS_GUI
                 files = Directory.GetFiles(conf.folderPath);
             }
 
+            decimal total = files.Length * repeat;
+            decimal count = 0;
             for (int i = 0; i < repeat; i++)
             {
                 foreach(string s in files)
@@ -77,6 +80,8 @@ namespace AddDocs_RS_GUI
                             return;
                         }
                     }
+                    count++;
+                    bw.ReportProgress((int)((count/total)*100));
                 }
             }
             string responseContent2 = rest.DeleteConnection();
@@ -87,7 +92,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
         
-        public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
+        public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -100,6 +105,8 @@ namespace AddDocs_RS_GUI
             string shortFilename = GetShortFileName(conf.filePath);
             string longFilename = Path.GetFileName(conf.filePath);
             byte[] fileBytes = File.ReadAllBytes(conf.filePath);
+            
+            decimal count = 0;
             for (int i = 0; i < repeat; i++)
             {   
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
@@ -118,6 +125,8 @@ namespace AddDocs_RS_GUI
                         return;
                     }
                 }
+                count++;
+                bw.ReportProgress((int)((count / repeat) * 100));
             }
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
@@ -127,7 +136,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
 
-        public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat)
+        public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -137,6 +146,7 @@ namespace AddDocs_RS_GUI
                 return;
             }
 
+            decimal count = 0;
             for (int i = 0; i < repeat; i ++)
             {
                 ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
@@ -146,6 +156,8 @@ namespace AddDocs_RS_GUI
                     MessageBox.Show($"Failed to create document.\r\n{docid}");
                     return;
                 }
+                count++;
+                bw.ReportProgress((int)((count / repeat) * 100));
             }
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
@@ -155,7 +167,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created.");
         }
 
-        public void SingleDocSingleFile (string docid, int repeat)
+        public void SingleDocSingleFile (string docid, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -167,6 +179,7 @@ namespace AddDocs_RS_GUI
 
             string filename = Path.GetFileName(conf.filePath);
             byte[] fileBytes = File.ReadAllBytes(conf.filePath);
+            decimal count = 0;
             for (int i = 0; i < repeat; i++)
             {
                 string responseContent1 = rest.PostDocPage(docid, fileBytes, filename);
@@ -175,6 +188,8 @@ namespace AddDocs_RS_GUI
                     MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
                     return;
                 }
+                count++;
+                bw.ReportProgress((int)((count / repeat) * 100));
             }
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
@@ -184,7 +199,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Pages added to document: {docid}.");
         }
 
-        public void SingleDocRapidFire (string docid, int repeat)
+        public void SingleDocRapidFire (string docid, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -194,6 +209,7 @@ namespace AddDocs_RS_GUI
                 return;
             }
 
+            decimal count = 0;
             for (int i = 0; i < repeat; i++)
             {
                 string responseContent1 = rest.PostDocPage(docid, null, "placeholder.tif");
@@ -202,6 +218,8 @@ namespace AddDocs_RS_GUI
                     MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
                     return;
                 }
+                count++;
+                bw.ReportProgress((int)((count / repeat) * 100));
             }
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
@@ -211,7 +229,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Fake pages added to document: {docid}.");
         }
 
-        public void SingleDocMultiFile(string docid, int repeat, bool recursive)
+        public void SingleDocMultiFile(string docid, int repeat, bool recursive, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -230,7 +248,9 @@ namespace AddDocs_RS_GUI
             {
                 files = Directory.GetFiles(conf.folderPath);
             }
-            
+
+            decimal total = files.Length * repeat;
+            decimal count = 0;
             for (int i = 0; i < repeat; i ++)
             {
                 foreach (string s in files)
@@ -243,6 +263,8 @@ namespace AddDocs_RS_GUI
                         MessageBox.Show($"Failed to add page to document.\r\n{responseContent1}");
                         return;
                     }
+                    count++;
+                    bw.ReportProgress((int)((count / total) * 100));
                 }
             }
             

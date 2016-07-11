@@ -72,6 +72,7 @@
             this.uxDocID_Label = new System.Windows.Forms.Label();
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.uxProgressBar = new System.Windows.Forms.ProgressBar();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -224,7 +225,7 @@
             this.uxEdit_MenuItem});
             this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(355, 24);
+            this.uxMenuStrip.Size = new System.Drawing.Size(354, 24);
             this.uxMenuStrip.TabIndex = 16;
             this.uxMenuStrip.Text = "exMenuStrip";
             // 
@@ -511,13 +512,23 @@
             // 
             // uxBackgroundWorker
             // 
+            this.uxBackgroundWorker.WorkerReportsProgress = true;
             this.uxBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.uxBackgroundWorker_DoWork);
+            this.uxBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.uxBackgroundWorker_ProgressChanged);
+            // 
+            // uxProgressBar
+            // 
+            this.uxProgressBar.Location = new System.Drawing.Point(12, 450);
+            this.uxProgressBar.Name = "uxProgressBar";
+            this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
+            this.uxProgressBar.TabIndex = 26;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 455);
+            this.ClientSize = new System.Drawing.Size(354, 476);
+            this.Controls.Add(this.uxProgressBar);
             this.Controls.Add(this.uxImageNowSingle_GroupBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.uxImageNowMulti_GroupBox);
@@ -594,6 +605,7 @@
         private System.Windows.Forms.Label uxAmountMulti_Label;
         private System.Windows.Forms.CheckBox uxRecursive_CheckBox;
         private System.ComponentModel.BackgroundWorker uxBackgroundWorker;
+        private System.Windows.Forms.ProgressBar uxProgressBar;
     }
 }
 

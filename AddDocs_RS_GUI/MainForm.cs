@@ -48,9 +48,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxMulti_RadioButton.Checked == true)
             {
-                this.Height = 494;
+                this.Height = 515;
                 uxImageNowMulti_GroupBox.Visible = true;
                 uxImageNowSingle_GroupBox.Visible = false;
+                uxProgressBar.Location = new Point(12, 450);
             }
         }
 
@@ -58,9 +59,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxSingle_RadioButton.Checked == true)
             {
-                this.Height = 332;
+                this.Height = 354;
                 uxImageNowMulti_GroupBox.Visible = false;
                 uxImageNowSingle_GroupBox.Visible = true;
+                uxProgressBar.Location = new Point(12, 290);
             }
         }
 
@@ -151,20 +153,20 @@ namespace AddDocs_RS_GUI
                 {
                     if (uxRecursive_CheckBox.Checked == true)
                     {
-                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true);
+                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true, uxBackgroundWorker);
                     }
                     else
                     {
-                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false);
+                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false, uxBackgroundWorker);
                     }
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
                 {
-                    control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat);
+                    control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
                 {
-                    control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat);
+                    control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
                 }
             }
             else if (e.Argument.Equals("single"))
@@ -173,26 +175,31 @@ namespace AddDocs_RS_GUI
                 string docid = uxDocID_TextBox.Text;
                 if (uxSingle_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
                 {
-                    control.SingleDocSingleFile(docid, repeat);
+                    control.SingleDocSingleFile(docid, repeat, uxBackgroundWorker);
                 }
                 else if (uxSingle_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
                 {
                     if (uxRecursive_CheckBox.Checked == true)
                     {
-                        control.SingleDocMultiFile(docid, repeat, true);
+                        control.SingleDocMultiFile(docid, repeat, true, uxBackgroundWorker);
                     }
                     else
                     {
-                        control.SingleDocMultiFile(docid, repeat, false);
+                        control.SingleDocMultiFile(docid, repeat, false, uxBackgroundWorker);
                     }
 
                 }
                 else if (uxSingle_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
                 {
-                    control.SingleDocRapidFire(docid, repeat);
+                    control.SingleDocRapidFire(docid, repeat, uxBackgroundWorker);
                 }
             }
         }
-        
+
+        private void uxBackgroundWorker_ProgressChanged (object sender, ProgressChangedEventArgs e)
+        {
+            uxProgressBar.Value = e.ProgressPercentage;
+        }
+
     }
 }
