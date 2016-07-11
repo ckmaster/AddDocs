@@ -73,6 +73,7 @@
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -231,6 +232,8 @@
             // 
             // uxFile_MenuItem
             // 
+            this.uxFile_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
             this.uxFile_MenuItem.Name = "uxFile_MenuItem";
             this.uxFile_MenuItem.Size = new System.Drawing.Size(37, 20);
             this.uxFile_MenuItem.Text = "File";
@@ -246,7 +249,7 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(130, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
@@ -523,6 +526,13 @@
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,6 +552,7 @@
             this.Name = "MainForm";
             this.Text = "AddDocs";
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.MainForm_HelpButtonClicked);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.uxMenuStrip.ResumeLayout(false);
             this.uxMenuStrip.PerformLayout();
             this.uxDocMode_GroupBox.ResumeLayout(false);
@@ -606,6 +617,7 @@
         private System.Windows.Forms.CheckBox uxRecursive_CheckBox;
         private System.ComponentModel.BackgroundWorker uxBackgroundWorker;
         private System.Windows.Forms.ProgressBar uxProgressBar;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 

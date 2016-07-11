@@ -18,6 +18,10 @@ namespace AddDocs_RS_GUI
         public MainForm ()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load (object sender, EventArgs e)
+        {
             control.Initialize();
             uxFolder_TextBox.Text = control.conf.folderPath;
         }
@@ -25,6 +29,11 @@ namespace AddDocs_RS_GUI
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
             uxBackgroundWorker.RunWorkerAsync("multi");
+        }
+
+        private void uxSubmitSingle_Button_Click (object sender, EventArgs e)
+        {
+            uxBackgroundWorker.RunWorkerAsync("single");
         }
 
         public void ClearUI ()
@@ -99,11 +108,6 @@ namespace AddDocs_RS_GUI
             }
         }
 
-        private void uxSubmitSingle_Button_Click (object sender, EventArgs e)
-        {
-            uxBackgroundWorker.RunWorkerAsync("single");
-        }
-
         private void uxFileBrowse_Button_Click (object sender, EventArgs e)
         {
             if (uxFolder_RadioButton.Checked == true)
@@ -134,7 +138,8 @@ namespace AddDocs_RS_GUI
 
         private void MainForm_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("You clicked the help button");
+            Help help = new Help();
+            help.Show();
         }
 
         private void uxBackgroundWorker_DoWork (object sender, DoWorkEventArgs e)
@@ -199,6 +204,14 @@ namespace AddDocs_RS_GUI
         private void uxBackgroundWorker_ProgressChanged (object sender, ProgressChangedEventArgs e)
         {
             uxProgressBar.Value = e.ProgressPercentage;
+        }
+
+        private void helpToolStripMenuItem_Click (object sender, EventArgs e)
+        {
+            MessageBox.Show("For assistance please see the '?' in the upper right corner" +
+                "\r\nIf that does not answer your question please email Corey Kidd" +
+                "\r\ncorey.kidd@lexmark.com",
+                "Help Box");
         }
 
     }

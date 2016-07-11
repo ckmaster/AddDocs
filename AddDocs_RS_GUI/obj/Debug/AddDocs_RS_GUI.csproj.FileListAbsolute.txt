@@ -12,3 +12,4 @@ c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_G
 c:\users\ckidd\documents\visual studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Debug\AddDocs_RS_GUI.ServerInfo.resources
 C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Debug\Newtonsoft.Json.dll
 C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs_RS_GUI\AddDocs_RS_GUI\obj\Debug\AddDocs_RS_GUI.Help.resources

@@ -76,6 +76,12 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageNowDoc.cs" />
     <Compile Include="IntegrationServer.cs" />
     <Compile Include="LocalOp.cs" />
@@ -94,6 +100,9 @@
     <Compile Include="ServerInfo.Designer.cs">
       <DependentUpon>ServerInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
