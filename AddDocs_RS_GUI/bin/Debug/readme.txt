@@ -1,3 +1,4 @@
+All files must be kept in the same folder.
 This program works by making POST Document calls to Integration Server.
 Your Integration Server and ImageNow Server must be running when you attempt to use this program.  However the ImageNow Client is not a requirement.
 The credentials set in the Config menu must be a user that has capture permissions for the Drawer/ Doc Type you intend to use.

@@ -52,6 +52,7 @@ namespace AddDocs_RS_GUI
         {
             ServerInfo form = new ServerInfo(control);
             form.Show();
+            control.Initialize();
         }
 
         private void uxMulti_RadioButton_CheckedChanged (object sender, EventArgs e)
