@@ -51,8 +51,12 @@ namespace AddDocs_RS_GUI
         private void uxServerInfo_MenuItem_Click (object sender, EventArgs e)
         {
             ServerInfo form = new ServerInfo(control);
-            form.Show();
-            control.Initialize();
+            DialogResult result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                control.Initialize();
+            }
         }
 
         private void uxMulti_RadioButton_CheckedChanged (object sender, EventArgs e)
