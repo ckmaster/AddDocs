@@ -27,25 +27,19 @@ namespace AddDocs_RS_GUI
         private void ServerInfo_Load (object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            uxServer_TextBox.Text = conf.intServer.hostname;
-            uxPort_TextBox.Text = conf.intServer.port;
-            uxFolder_TextBox.Text = conf.intServer.webappFolder;
+            uxUrl_TextBox.Text = conf.intServer.uri;
             uxUsername_TextBox.Text = conf.intServer.username;
             uxPassword_Textbox.Text = conf.intServer.password;
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
-            if (!(uxServer_TextBox.Text.Trim().Equals(conf.intServer.hostname)) ||
-               !(uxPort_TextBox.Text.Trim().Equals(conf.intServer.port)) ||
-               !(uxFolder_TextBox.Text.Trim().Equals(conf.intServer.webappFolder)) ||
+            if (!(uxUrl_TextBox.Text.Trim().Equals(conf.intServer.uri)) ||
                !(uxUsername_TextBox.Text.Trim().Equals(conf.intServer.username)) ||
                !(uxPassword_Textbox.Text.Trim().Equals(conf.intServer.password)))
             {
                 MessageBox.Show("Change in settings detected, making adjustments now.");
-                conf.intServer.hostname = uxServer_TextBox.Text.Trim();
-                conf.intServer.port = uxPort_TextBox.Text.Trim();
-                conf.intServer.webappFolder = uxFolder_TextBox.Text.Trim();
+                conf.intServer.uri = uxUrl_TextBox.Text.Trim();
                 conf.intServer.username = uxUsername_TextBox.Text.Trim();
                 conf.intServer.password = uxPassword_Textbox.Text.Trim();
                 LocalOp local = new LocalOp();

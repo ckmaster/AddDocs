@@ -1,1 +1,1 @@
-{"intServer":{"hostname":"localhost","port":"8080","webappFolder":"integrationserver","username":"ckidd","password":"dwa","sessionHash":"0b64257efd7cbe7c70c4d0fa9ea7b5590375ab3bd"},"folderPath":"C:\\Import","filePath":"C:\\Import\\Demo 01.tif"}
+{"intServer":{"uri":"https://ckidd-webserver:8443/integrationserver","username":"ckidd","password":"dwa","sessionHash":"0a1a9d8994950ed78646b8543086618d210f15b83"},"folderPath":"C:\\Import","filePath":"C:\\Program Files (x86)\\ImageNow\\Demo Images\\Demo 01.tif"}
