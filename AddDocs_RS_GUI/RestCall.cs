@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace AddDocs_RS_GUI
 {
@@ -102,6 +103,23 @@ namespace AddDocs_RS_GUI
                 return response.Content;
             }
             return "success";
+        }
+
+        public drawerTop GetDrawers()
+        {
+            client = new RestClient($"{conf.intServer.uri}/drawer");
+            request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+            SetCommonHeaders();
+            response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return null;
+            }
+            string responseJson = "";
+            responseJson = response.Content;
+            drawerTop topLevel = JsonConvert.DeserializeObject<drawerTop>(responseJson);
+            return topLevel;
         }
     }
 }
