@@ -14,6 +14,7 @@ namespace AddDocs_RS_GUI
     public partial class MainForm : Form
     {
         public Controller control = new Controller();
+        string drawer = "";
 
         public MainForm ()
         {
@@ -25,21 +26,28 @@ namespace AddDocs_RS_GUI
             control.Initialize();
             uxFolder_TextBox.Text = control.conf.folderPath;
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            drawerTop drawers = control.GetDrawers();
+            foreach (drawer d in drawers.drawers)
+            {
+                uxDrawer_ComboBox.Items.Add(d.name);
+            }
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
+            drawer = uxDrawer_ComboBox.SelectedItem.ToString();
             uxBackgroundWorker.RunWorkerAsync("multi");
         }
 
         private void uxSubmitSingle_Button_Click (object sender, EventArgs e)
         {
+            drawer = uxDrawer_ComboBox.SelectedItem.ToString();
             uxBackgroundWorker.RunWorkerAsync("single");
         }
 
         public void ClearUI ()
         {
-            this.uxDrawer_TextBox.Text = "Default";
+            //this.uxDrawer_ComboBox.SelectedIndex = 1;
             this.uxField1_TextBox.Clear();
             this.uxField2_TextBox.Clear();
             this.uxField3_TextBox.Clear();
@@ -152,7 +160,7 @@ namespace AddDocs_RS_GUI
         {
             if (e.Argument.Equals("multi"))
             {
-                string d = uxDrawer_TextBox.Text;
+                string d = drawer;
                 string f1 = uxField1_TextBox.Text;
                 string f2 = uxField2_TextBox.Text;
                 string f3 = uxField3_TextBox.Text;

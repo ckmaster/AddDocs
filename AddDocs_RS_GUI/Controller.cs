@@ -275,5 +275,23 @@ namespace AddDocs_RS_GUI
             }
             MessageBox.Show($"Pages added to document: {docid}.");
         }
+
+        public drawerTop GetDrawers()
+        {
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return null;
+            }
+            drawerTop drawers = rest.GetDrawers();
+            string responseContent2 = rest.DeleteConnection();
+            if (!responseContent2.Equals("success"))
+            {
+                MessageBox.Show($"Failed to clear sessions.\r\nNo reason to be alarmed, by default the sessions will clear in one hour.\r\n{responseContent2}");
+            }
+            return drawers;  
+        }
     }                      
 }

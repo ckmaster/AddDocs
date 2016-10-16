@@ -8,15 +8,15 @@ namespace AddDocs_RS_GUI
 {
     public class drawerTop
     {
-        public List<drawers> drawers { get; set; } = new List<drawers>();
+        public List<drawer> drawers { get; set; } = new List<drawer>();
     }
 
-    public class drawers
+    public class drawer
     {
         public string name { get; set; }
         public string id { get; set; }
 
-        public drawers (string n, string i)
+        public drawer (string n, string i)
         {
             name = n;
             id = i;

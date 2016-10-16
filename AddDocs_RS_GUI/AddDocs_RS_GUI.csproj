@@ -76,7 +76,7 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="drawers.cs" />
+    <Compile Include="drawer.cs" />
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>

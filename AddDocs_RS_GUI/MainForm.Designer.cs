@@ -36,7 +36,6 @@
             this.uxField4_Label = new System.Windows.Forms.Label();
             this.uxField5_Label = new System.Windows.Forms.Label();
             this.uxDocType_Label = new System.Windows.Forms.Label();
-            this.uxDrawer_TextBox = new System.Windows.Forms.TextBox();
             this.uxField1_TextBox = new System.Windows.Forms.TextBox();
             this.uxField2_TextBox = new System.Windows.Forms.TextBox();
             this.uxField5_TextBox = new System.Windows.Forms.TextBox();
@@ -46,6 +45,7 @@
             this.uxSubmitMulti_Button = new System.Windows.Forms.Button();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxEdit_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxServerInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxDocMode_GroupBox = new System.Windows.Forms.GroupBox();
@@ -72,7 +72,7 @@
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxDrawer_ComboBox = new System.Windows.Forms.ComboBox();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -145,15 +145,6 @@
             this.uxDocType_Label.Size = new System.Drawing.Size(54, 13);
             this.uxDocType_Label.TabIndex = 7;
             this.uxDocType_Label.Text = "DocType:";
-            // 
-            // uxDrawer_TextBox
-            // 
-            this.uxDrawer_TextBox.Location = new System.Drawing.Point(89, 45);
-            this.uxDrawer_TextBox.MaxLength = 40;
-            this.uxDrawer_TextBox.Name = "uxDrawer_TextBox";
-            this.uxDrawer_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxDrawer_TextBox.TabIndex = 8;
-            this.uxDrawer_TextBox.Text = "Default";
             // 
             // uxField1_TextBox
             // 
@@ -237,6 +228,13 @@
             this.uxFile_MenuItem.Size = new System.Drawing.Size(37, 20);
             this.uxFile_MenuItem.Text = "File";
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
             // uxEdit_MenuItem
             // 
             this.uxEdit_MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -248,7 +246,7 @@
             // uxServerInfo_MenuItem
             // 
             this.uxServerInfo_MenuItem.Name = "uxServerInfo_MenuItem";
-            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uxServerInfo_MenuItem.Size = new System.Drawing.Size(130, 22);
             this.uxServerInfo_MenuItem.Text = "Server Info";
             this.uxServerInfo_MenuItem.Click += new System.EventHandler(this.uxServerInfo_MenuItem_Click);
             // 
@@ -381,6 +379,7 @@
             // 
             // uxImageNowMulti_GroupBox
             // 
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_ComboBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_NumUpDown);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxSubmitMulti_Button);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_Label);
@@ -390,7 +389,6 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField3_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField2_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField1_TextBox);
-            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDocType_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField5_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField4_Label);
@@ -525,12 +523,13 @@
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
             // 
-            // helpToolStripMenuItem
+            // uxDrawer_ComboBox
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            this.uxDrawer_ComboBox.FormattingEnabled = true;
+            this.uxDrawer_ComboBox.Location = new System.Drawing.Point(89, 45);
+            this.uxDrawer_ComboBox.Name = "uxDrawer_ComboBox";
+            this.uxDrawer_ComboBox.Size = new System.Drawing.Size(202, 21);
+            this.uxDrawer_ComboBox.TabIndex = 27;
             // 
             // MainForm
             // 
@@ -579,7 +578,6 @@
         private System.Windows.Forms.Label uxField4_Label;
         private System.Windows.Forms.Label uxField5_Label;
         private System.Windows.Forms.Label uxDocType_Label;
-        private System.Windows.Forms.TextBox uxDrawer_TextBox;
         private System.Windows.Forms.TextBox uxField1_TextBox;
         private System.Windows.Forms.TextBox uxField2_TextBox;
         private System.Windows.Forms.TextBox uxField5_TextBox;
@@ -616,6 +614,7 @@
         private System.ComponentModel.BackgroundWorker uxBackgroundWorker;
         private System.Windows.Forms.ProgressBar uxProgressBar;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ComboBox uxDrawer_ComboBox;
     }
 }
 
