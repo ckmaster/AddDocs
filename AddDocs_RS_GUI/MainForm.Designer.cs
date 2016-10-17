@@ -77,6 +77,8 @@
             this.uxName_Label = new System.Windows.Forms.Label();
             this.uxFolderID_TextBox = new System.Windows.Forms.TextBox();
             this.uxFolderID_Label = new System.Windows.Forms.Label();
+            this.uxWorkflow_TextBox = new System.Windows.Forms.TextBox();
+            this.uxWorkflow_Label = new System.Windows.Forms.Label();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -205,7 +207,7 @@
             // 
             // uxSubmitMulti_Button
             // 
-            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 280);
+            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 306);
             this.uxSubmitMulti_Button.Name = "uxSubmitMulti_Button";
             this.uxSubmitMulti_Button.Size = new System.Drawing.Size(202, 23);
             this.uxSubmitMulti_Button.TabIndex = 15;
@@ -383,6 +385,8 @@
             // 
             // uxImageNowMulti_GroupBox
             // 
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxWorkflow_TextBox);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxWorkflow_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxFolderID_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxFolderID_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxName_TextBox);
@@ -406,7 +410,7 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_Label);
             this.uxImageNowMulti_GroupBox.Location = new System.Drawing.Point(12, 180);
             this.uxImageNowMulti_GroupBox.Name = "uxImageNowMulti_GroupBox";
-            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 324);
+            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 340);
             this.uxImageNowMulti_GroupBox.TabIndex = 22;
             this.uxImageNowMulti_GroupBox.TabStop = false;
             this.uxImageNowMulti_GroupBox.Text = "ImageNow Info";
@@ -526,7 +530,7 @@
             // 
             // uxProgressBar
             // 
-            this.uxProgressBar.Location = new System.Drawing.Point(12, 510);
+            this.uxProgressBar.Location = new System.Drawing.Point(12, 526);
             this.uxProgressBar.Name = "uxProgressBar";
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
@@ -573,11 +577,28 @@
             this.uxFolderID_Label.TabIndex = 32;
             this.uxFolderID_Label.Text = "Folder ID:";
             // 
+            // uxWorkflow_TextBox
+            // 
+            this.uxWorkflow_TextBox.Location = new System.Drawing.Point(89, 280);
+            this.uxWorkflow_TextBox.MaxLength = 40;
+            this.uxWorkflow_TextBox.Name = "uxWorkflow_TextBox";
+            this.uxWorkflow_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxWorkflow_TextBox.TabIndex = 35;
+            // 
+            // uxWorkflow_Label
+            // 
+            this.uxWorkflow_Label.AutoSize = true;
+            this.uxWorkflow_Label.Location = new System.Drawing.Point(14, 283);
+            this.uxWorkflow_Label.Name = "uxWorkflow_Label";
+            this.uxWorkflow_Label.Size = new System.Drawing.Size(69, 13);
+            this.uxWorkflow_Label.TabIndex = 34;
+            this.uxWorkflow_Label.Text = "Workflow ID:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 537);
+            this.ClientSize = new System.Drawing.Size(354, 551);
             this.Controls.Add(this.uxProgressBar);
             this.Controls.Add(this.uxImageNowSingle_GroupBox);
             this.Controls.Add(this.groupBox3);
@@ -661,6 +682,8 @@
         private System.Windows.Forms.Label uxFolderID_Label;
         private System.Windows.Forms.TextBox uxName_TextBox;
         private System.Windows.Forms.Label uxName_Label;
+        private System.Windows.Forms.TextBox uxWorkflow_TextBox;
+        private System.Windows.Forms.Label uxWorkflow_Label;
     }
 }
 

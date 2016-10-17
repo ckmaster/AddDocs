@@ -121,5 +121,28 @@ namespace AddDocs_RS_GUI
             drawerTop topLevel = JsonConvert.DeserializeObject<drawerTop>(responseJson);
             return topLevel;
         }
+
+        public void RouteDoc(string docid, string queueid)
+        {
+            client = new RestClient($"{conf.intServer.uri}/workflowItem");
+            request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+
+            string jsonBody = $@"
+            {{
+                ""objectId"": ""{docid}"",
+                ""itemType"": ""DOCUMENT"",
+                ""workflowQueueId"": ""{queueid}"",
+                ""itemPriority"": ""MEDIUM""
+            }}";
+
+            SetCommonHeaders ();
+            response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.Created)
+            {
+                return;
+            }
+        }
+        
     }
 }

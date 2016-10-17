@@ -71,10 +71,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxMulti_RadioButton.Checked == true)
             {
-                this.Height = 576;
+                this.Height = 590;
                 uxImageNowMulti_GroupBox.Visible = true;
                 uxImageNowSingle_GroupBox.Visible = false;
-                uxProgressBar.Location = new Point(12, 510);
+                uxProgressBar.Location = new Point(12, 526);
             }
         }
 
