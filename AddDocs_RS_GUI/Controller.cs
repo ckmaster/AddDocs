@@ -35,7 +35,7 @@ namespace AddDocs_RS_GUI
             return tempFilename;
         }
 
-        public void MultiDocMultiFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive, BackgroundWorker bw)
+        public void MultiDocMultiFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive, string queueid, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -89,6 +89,12 @@ namespace AddDocs_RS_GUI
                             return;
                         }
                     }
+
+                    if (!string.IsNullOrEmpty(queueid))
+                    {
+                        rest.RouteDoc(docid, queueid);
+                    }
+
                     count++;
                     bw.ReportProgress((int)((count/total)*100));
                 }
@@ -101,7 +107,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
         
-        public void MultiDocSingleFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
+        public void MultiDocSingleFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, string queueid, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -143,6 +149,12 @@ namespace AddDocs_RS_GUI
                         return;
                     }
                 }
+
+                if (!string.IsNullOrEmpty(queueid))
+                {
+                    rest.RouteDoc(docid, queueid);
+                }
+
                 count++;
                 bw.ReportProgress((int)((count / repeat) * 100));
             }
@@ -154,7 +166,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
 
-        public void MultiDocRapidFire (string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
+        public void MultiDocRapidFire (string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, string queueid, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -183,6 +195,12 @@ namespace AddDocs_RS_GUI
                     MessageBox.Show($"Failed to create document.\r\n{docid}");
                     return;
                 }
+
+                if (!string.IsNullOrEmpty(queueid))
+                {
+                    rest.RouteDoc(docid, queueid);
+                }
+
                 count++;
                 bw.ReportProgress((int)((count / repeat) * 100));
             }

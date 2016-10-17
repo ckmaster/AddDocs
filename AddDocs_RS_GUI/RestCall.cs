@@ -125,7 +125,8 @@ namespace AddDocs_RS_GUI
         public void RouteDoc(string docid, string queueid)
         {
             client = new RestClient($"{conf.intServer.uri}/workflowItem");
-            request = new RestRequest(Method.GET);
+            request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Accept", "application/json");
 
             string jsonBody = $@"
@@ -136,6 +137,7 @@ namespace AddDocs_RS_GUI
                 ""itemPriority"": ""MEDIUM""
             }}";
 
+            request.AddParameter("application/json", jsonBody, ParameterType.RequestBody);
             SetCommonHeaders ();
             response = client.Execute(request);
             if (response.StatusCode != System.Net.HttpStatusCode.Created)

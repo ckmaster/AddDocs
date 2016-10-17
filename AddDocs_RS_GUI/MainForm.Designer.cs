@@ -61,6 +61,13 @@
             this.uxFileBrowse_Button = new System.Windows.Forms.Button();
             this.uxToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uxImageNowMulti_GroupBox = new System.Windows.Forms.GroupBox();
+            this.uxWorkflow_TextBox = new System.Windows.Forms.TextBox();
+            this.uxWorkflow_Label = new System.Windows.Forms.Label();
+            this.uxFolderID_TextBox = new System.Windows.Forms.TextBox();
+            this.uxFolderID_Label = new System.Windows.Forms.Label();
+            this.uxName_TextBox = new System.Windows.Forms.TextBox();
+            this.uxName_Label = new System.Windows.Forms.Label();
+            this.uxDrawer_ComboBox = new System.Windows.Forms.ComboBox();
             this.uxAmountMulti_NumUpDown = new System.Windows.Forms.NumericUpDown();
             this.uxAmountMulti_Label = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -72,13 +79,6 @@
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxProgressBar = new System.Windows.Forms.ProgressBar();
-            this.uxDrawer_ComboBox = new System.Windows.Forms.ComboBox();
-            this.uxName_TextBox = new System.Windows.Forms.TextBox();
-            this.uxName_Label = new System.Windows.Forms.Label();
-            this.uxFolderID_TextBox = new System.Windows.Forms.TextBox();
-            this.uxFolderID_Label = new System.Windows.Forms.Label();
-            this.uxWorkflow_TextBox = new System.Windows.Forms.TextBox();
-            this.uxWorkflow_Label = new System.Windows.Forms.Label();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -415,6 +415,65 @@
             this.uxImageNowMulti_GroupBox.TabStop = false;
             this.uxImageNowMulti_GroupBox.Text = "ImageNow Info";
             // 
+            // uxWorkflow_TextBox
+            // 
+            this.uxWorkflow_TextBox.Location = new System.Drawing.Point(89, 280);
+            this.uxWorkflow_TextBox.MaxLength = 40;
+            this.uxWorkflow_TextBox.Name = "uxWorkflow_TextBox";
+            this.uxWorkflow_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxWorkflow_TextBox.TabIndex = 35;
+            // 
+            // uxWorkflow_Label
+            // 
+            this.uxWorkflow_Label.AutoSize = true;
+            this.uxWorkflow_Label.Location = new System.Drawing.Point(27, 283);
+            this.uxWorkflow_Label.Name = "uxWorkflow_Label";
+            this.uxWorkflow_Label.Size = new System.Drawing.Size(56, 13);
+            this.uxWorkflow_Label.TabIndex = 34;
+            this.uxWorkflow_Label.Text = "Queue ID:";
+            // 
+            // uxFolderID_TextBox
+            // 
+            this.uxFolderID_TextBox.Location = new System.Drawing.Point(89, 72);
+            this.uxFolderID_TextBox.MaxLength = 40;
+            this.uxFolderID_TextBox.Name = "uxFolderID_TextBox";
+            this.uxFolderID_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxFolderID_TextBox.TabIndex = 33;
+            // 
+            // uxFolderID_Label
+            // 
+            this.uxFolderID_Label.AutoSize = true;
+            this.uxFolderID_Label.Location = new System.Drawing.Point(30, 75);
+            this.uxFolderID_Label.Name = "uxFolderID_Label";
+            this.uxFolderID_Label.Size = new System.Drawing.Size(53, 13);
+            this.uxFolderID_Label.TabIndex = 32;
+            this.uxFolderID_Label.Text = "Folder ID:";
+            // 
+            // uxName_TextBox
+            // 
+            this.uxName_TextBox.Location = new System.Drawing.Point(89, 98);
+            this.uxName_TextBox.MaxLength = 40;
+            this.uxName_TextBox.Name = "uxName_TextBox";
+            this.uxName_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxName_TextBox.TabIndex = 31;
+            // 
+            // uxName_Label
+            // 
+            this.uxName_Label.AutoSize = true;
+            this.uxName_Label.Location = new System.Drawing.Point(45, 101);
+            this.uxName_Label.Name = "uxName_Label";
+            this.uxName_Label.Size = new System.Drawing.Size(38, 13);
+            this.uxName_Label.TabIndex = 30;
+            this.uxName_Label.Text = "Name:";
+            // 
+            // uxDrawer_ComboBox
+            // 
+            this.uxDrawer_ComboBox.FormattingEnabled = true;
+            this.uxDrawer_ComboBox.Location = new System.Drawing.Point(89, 45);
+            this.uxDrawer_ComboBox.Name = "uxDrawer_ComboBox";
+            this.uxDrawer_ComboBox.Size = new System.Drawing.Size(202, 21);
+            this.uxDrawer_ComboBox.TabIndex = 27;
+            // 
             // uxAmountMulti_NumUpDown
             // 
             this.uxAmountMulti_NumUpDown.Location = new System.Drawing.Point(89, 19);
@@ -534,65 +593,6 @@
             this.uxProgressBar.Name = "uxProgressBar";
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
-            // 
-            // uxDrawer_ComboBox
-            // 
-            this.uxDrawer_ComboBox.FormattingEnabled = true;
-            this.uxDrawer_ComboBox.Location = new System.Drawing.Point(89, 45);
-            this.uxDrawer_ComboBox.Name = "uxDrawer_ComboBox";
-            this.uxDrawer_ComboBox.Size = new System.Drawing.Size(202, 21);
-            this.uxDrawer_ComboBox.TabIndex = 27;
-            // 
-            // uxName_TextBox
-            // 
-            this.uxName_TextBox.Location = new System.Drawing.Point(89, 98);
-            this.uxName_TextBox.MaxLength = 40;
-            this.uxName_TextBox.Name = "uxName_TextBox";
-            this.uxName_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxName_TextBox.TabIndex = 31;
-            // 
-            // uxName_Label
-            // 
-            this.uxName_Label.AutoSize = true;
-            this.uxName_Label.Location = new System.Drawing.Point(45, 101);
-            this.uxName_Label.Name = "uxName_Label";
-            this.uxName_Label.Size = new System.Drawing.Size(38, 13);
-            this.uxName_Label.TabIndex = 30;
-            this.uxName_Label.Text = "Name:";
-            // 
-            // uxFolderID_TextBox
-            // 
-            this.uxFolderID_TextBox.Location = new System.Drawing.Point(89, 72);
-            this.uxFolderID_TextBox.MaxLength = 40;
-            this.uxFolderID_TextBox.Name = "uxFolderID_TextBox";
-            this.uxFolderID_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxFolderID_TextBox.TabIndex = 33;
-            // 
-            // uxFolderID_Label
-            // 
-            this.uxFolderID_Label.AutoSize = true;
-            this.uxFolderID_Label.Location = new System.Drawing.Point(30, 75);
-            this.uxFolderID_Label.Name = "uxFolderID_Label";
-            this.uxFolderID_Label.Size = new System.Drawing.Size(53, 13);
-            this.uxFolderID_Label.TabIndex = 32;
-            this.uxFolderID_Label.Text = "Folder ID:";
-            // 
-            // uxWorkflow_TextBox
-            // 
-            this.uxWorkflow_TextBox.Location = new System.Drawing.Point(89, 280);
-            this.uxWorkflow_TextBox.MaxLength = 40;
-            this.uxWorkflow_TextBox.Name = "uxWorkflow_TextBox";
-            this.uxWorkflow_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxWorkflow_TextBox.TabIndex = 35;
-            // 
-            // uxWorkflow_Label
-            // 
-            this.uxWorkflow_Label.AutoSize = true;
-            this.uxWorkflow_Label.Location = new System.Drawing.Point(14, 283);
-            this.uxWorkflow_Label.Name = "uxWorkflow_Label";
-            this.uxWorkflow_Label.Size = new System.Drawing.Size(69, 13);
-            this.uxWorkflow_Label.TabIndex = 34;
-            this.uxWorkflow_Label.Text = "Workflow ID:";
             // 
             // MainForm
             // 

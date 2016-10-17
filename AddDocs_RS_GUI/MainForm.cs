@@ -169,25 +169,26 @@ namespace AddDocs_RS_GUI
                 string f4 = uxField4_TextBox.Text;
                 string f5 = uxField5_TextBox.Text;
                 string dt = uxDocType_TextBox.Text;
+                string q = uxWorkflow_TextBox.Text;
                 int repeat = (int)uxAmountMulti_NumUpDown.Value;
                 if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
                 {
                     if (uxRecursive_CheckBox.Checked == true)
                     {
-                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, true, uxBackgroundWorker);     
+                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, true, q, uxBackgroundWorker);     
                     }
                     else
                     {
-                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, false, uxBackgroundWorker);
+                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, false, q, uxBackgroundWorker);
                     }
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
                 {
-                    control.MultiDocSingleFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
+                    control.MultiDocSingleFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, q, uxBackgroundWorker);
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
                 {
-                    control.MultiDocRapidFire(n, l, d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
+                    control.MultiDocRapidFire(n, l, d, f1, f2, f3, f4, f5, dt, repeat, q, uxBackgroundWorker);
                 }
             }
             else if (e.Argument.Equals("single"))
