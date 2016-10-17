@@ -9,6 +9,7 @@ namespace AddDocs_RS_GUI
     public class ImageNowDoc
     {
         public string name { get; set; }
+        public string locationID { get; set; }
         public string drawer { get; set; }
         public string field1 { get; set; }
         public string field2 { get; set; }
@@ -17,9 +18,10 @@ namespace AddDocs_RS_GUI
         public string field5 { get; set; }
         public string docType { get; set; }
 
-        public ImageNowDoc(string n, string d, string f1, string f2, string f3, string f4, string f5, string dt)
+        public ImageNowDoc(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt)
         {
             name = n;
+            locationID = l;
             drawer = d;
             field1 = f1;
             field2 = f2;
@@ -35,7 +37,7 @@ namespace AddDocs_RS_GUI
             "<document>" +
                 "<info>" +
 		            "<name>" + name + "</name>" +
-		            "<locationId></locationId>" +
+		            "<locationId>" + locationID + "</locationId>" +
 		                "<keys>" +
 			                "<drawer>" + drawer + "</drawer>" +
 			                "<field1>" + field1 + "</field1>" +

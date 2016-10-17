@@ -71,10 +71,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxMulti_RadioButton.Checked == true)
             {
-                this.Height = 515;
+                this.Height = 576;
                 uxImageNowMulti_GroupBox.Visible = true;
                 uxImageNowSingle_GroupBox.Visible = false;
-                uxProgressBar.Location = new Point(12, 450);
+                uxProgressBar.Location = new Point(12, 510);
             }
         }
 
@@ -161,6 +161,8 @@ namespace AddDocs_RS_GUI
             if (e.Argument.Equals("multi"))
             {
                 string d = drawer;
+                string n = uxName_TextBox.Text;
+                string l = uxFolderID_TextBox.Text;
                 string f1 = uxField1_TextBox.Text;
                 string f2 = uxField2_TextBox.Text;
                 string f3 = uxField3_TextBox.Text;
@@ -172,20 +174,20 @@ namespace AddDocs_RS_GUI
                 {
                     if (uxRecursive_CheckBox.Checked == true)
                     {
-                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, true, uxBackgroundWorker);
+                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, true, uxBackgroundWorker);     
                     }
                     else
                     {
-                        control.MultiDocMultiFile(d, f1, f2, f3, f4, f5, dt, repeat, false, uxBackgroundWorker);
+                        control.MultiDocMultiFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, false, uxBackgroundWorker);
                     }
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxFile_RadioButton.Checked == true)
                 {
-                    control.MultiDocSingleFile(d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
+                    control.MultiDocSingleFile(n, l, d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
                 }
                 else if (uxMulti_RadioButton.Checked == true && uxRapidFire_RadioButton.Checked == true)
                 {
-                    control.MultiDocRapidFire(d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
+                    control.MultiDocRapidFire(n, l, d, f1, f2, f3, f4, f5, dt, repeat, uxBackgroundWorker);
                 }
             }
             else if (e.Argument.Equals("single"))

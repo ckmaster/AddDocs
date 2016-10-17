@@ -73,6 +73,10 @@
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxProgressBar = new System.Windows.Forms.ProgressBar();
             this.uxDrawer_ComboBox = new System.Windows.Forms.ComboBox();
+            this.uxName_TextBox = new System.Windows.Forms.TextBox();
+            this.uxName_Label = new System.Windows.Forms.Label();
+            this.uxFolderID_TextBox = new System.Windows.Forms.TextBox();
+            this.uxFolderID_Label = new System.Windows.Forms.Label();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -95,7 +99,7 @@
             // uxField1_Label
             // 
             this.uxField1_Label.AutoSize = true;
-            this.uxField1_Label.Location = new System.Drawing.Point(39, 74);
+            this.uxField1_Label.Location = new System.Drawing.Point(42, 127);
             this.uxField1_Label.Name = "uxField1_Label";
             this.uxField1_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField1_Label.TabIndex = 1;
@@ -104,7 +108,7 @@
             // uxField2_Label
             // 
             this.uxField2_Label.AutoSize = true;
-            this.uxField2_Label.Location = new System.Drawing.Point(39, 100);
+            this.uxField2_Label.Location = new System.Drawing.Point(42, 153);
             this.uxField2_Label.Name = "uxField2_Label";
             this.uxField2_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField2_Label.TabIndex = 3;
@@ -113,7 +117,7 @@
             // uxField3_Label
             // 
             this.uxField3_Label.AutoSize = true;
-            this.uxField3_Label.Location = new System.Drawing.Point(39, 126);
+            this.uxField3_Label.Location = new System.Drawing.Point(42, 179);
             this.uxField3_Label.Name = "uxField3_Label";
             this.uxField3_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField3_Label.TabIndex = 4;
@@ -122,7 +126,7 @@
             // uxField4_Label
             // 
             this.uxField4_Label.AutoSize = true;
-            this.uxField4_Label.Location = new System.Drawing.Point(39, 152);
+            this.uxField4_Label.Location = new System.Drawing.Point(42, 205);
             this.uxField4_Label.Name = "uxField4_Label";
             this.uxField4_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField4_Label.TabIndex = 5;
@@ -131,7 +135,7 @@
             // uxField5_Label
             // 
             this.uxField5_Label.AutoSize = true;
-            this.uxField5_Label.Location = new System.Drawing.Point(39, 178);
+            this.uxField5_Label.Location = new System.Drawing.Point(42, 231);
             this.uxField5_Label.Name = "uxField5_Label";
             this.uxField5_Label.Size = new System.Drawing.Size(41, 13);
             this.uxField5_Label.TabIndex = 6;
@@ -140,7 +144,7 @@
             // uxDocType_Label
             // 
             this.uxDocType_Label.AutoSize = true;
-            this.uxDocType_Label.Location = new System.Drawing.Point(26, 204);
+            this.uxDocType_Label.Location = new System.Drawing.Point(29, 257);
             this.uxDocType_Label.Name = "uxDocType_Label";
             this.uxDocType_Label.Size = new System.Drawing.Size(54, 13);
             this.uxDocType_Label.TabIndex = 7;
@@ -148,7 +152,7 @@
             // 
             // uxField1_TextBox
             // 
-            this.uxField1_TextBox.Location = new System.Drawing.Point(89, 71);
+            this.uxField1_TextBox.Location = new System.Drawing.Point(89, 124);
             this.uxField1_TextBox.MaxLength = 40;
             this.uxField1_TextBox.Name = "uxField1_TextBox";
             this.uxField1_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -156,7 +160,7 @@
             // 
             // uxField2_TextBox
             // 
-            this.uxField2_TextBox.Location = new System.Drawing.Point(89, 97);
+            this.uxField2_TextBox.Location = new System.Drawing.Point(89, 150);
             this.uxField2_TextBox.MaxLength = 40;
             this.uxField2_TextBox.Name = "uxField2_TextBox";
             this.uxField2_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -164,7 +168,7 @@
             // 
             // uxField5_TextBox
             // 
-            this.uxField5_TextBox.Location = new System.Drawing.Point(89, 175);
+            this.uxField5_TextBox.Location = new System.Drawing.Point(89, 228);
             this.uxField5_TextBox.MaxLength = 40;
             this.uxField5_TextBox.Name = "uxField5_TextBox";
             this.uxField5_TextBox.ReadOnly = true;
@@ -174,7 +178,7 @@
             // 
             // uxField4_TextBox
             // 
-            this.uxField4_TextBox.Location = new System.Drawing.Point(89, 149);
+            this.uxField4_TextBox.Location = new System.Drawing.Point(89, 202);
             this.uxField4_TextBox.MaxLength = 40;
             this.uxField4_TextBox.Name = "uxField4_TextBox";
             this.uxField4_TextBox.ReadOnly = true;
@@ -184,7 +188,7 @@
             // 
             // uxField3_TextBox
             // 
-            this.uxField3_TextBox.Location = new System.Drawing.Point(89, 123);
+            this.uxField3_TextBox.Location = new System.Drawing.Point(89, 176);
             this.uxField3_TextBox.MaxLength = 40;
             this.uxField3_TextBox.Name = "uxField3_TextBox";
             this.uxField3_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -192,7 +196,7 @@
             // 
             // uxDocType_TextBox
             // 
-            this.uxDocType_TextBox.Location = new System.Drawing.Point(89, 201);
+            this.uxDocType_TextBox.Location = new System.Drawing.Point(89, 254);
             this.uxDocType_TextBox.MaxLength = 40;
             this.uxDocType_TextBox.Name = "uxDocType_TextBox";
             this.uxDocType_TextBox.Size = new System.Drawing.Size(202, 20);
@@ -201,7 +205,7 @@
             // 
             // uxSubmitMulti_Button
             // 
-            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 227);
+            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 280);
             this.uxSubmitMulti_Button.Name = "uxSubmitMulti_Button";
             this.uxSubmitMulti_Button.Size = new System.Drawing.Size(202, 23);
             this.uxSubmitMulti_Button.TabIndex = 15;
@@ -379,6 +383,10 @@
             // 
             // uxImageNowMulti_GroupBox
             // 
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxFolderID_TextBox);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxFolderID_Label);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxName_TextBox);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxName_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_ComboBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_NumUpDown);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxSubmitMulti_Button);
@@ -398,7 +406,7 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_Label);
             this.uxImageNowMulti_GroupBox.Location = new System.Drawing.Point(12, 180);
             this.uxImageNowMulti_GroupBox.Name = "uxImageNowMulti_GroupBox";
-            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 264);
+            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 324);
             this.uxImageNowMulti_GroupBox.TabIndex = 22;
             this.uxImageNowMulti_GroupBox.TabStop = false;
             this.uxImageNowMulti_GroupBox.Text = "ImageNow Info";
@@ -518,7 +526,7 @@
             // 
             // uxProgressBar
             // 
-            this.uxProgressBar.Location = new System.Drawing.Point(12, 450);
+            this.uxProgressBar.Location = new System.Drawing.Point(12, 510);
             this.uxProgressBar.Name = "uxProgressBar";
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
@@ -531,11 +539,45 @@
             this.uxDrawer_ComboBox.Size = new System.Drawing.Size(202, 21);
             this.uxDrawer_ComboBox.TabIndex = 27;
             // 
+            // uxName_TextBox
+            // 
+            this.uxName_TextBox.Location = new System.Drawing.Point(89, 98);
+            this.uxName_TextBox.MaxLength = 40;
+            this.uxName_TextBox.Name = "uxName_TextBox";
+            this.uxName_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxName_TextBox.TabIndex = 31;
+            // 
+            // uxName_Label
+            // 
+            this.uxName_Label.AutoSize = true;
+            this.uxName_Label.Location = new System.Drawing.Point(45, 101);
+            this.uxName_Label.Name = "uxName_Label";
+            this.uxName_Label.Size = new System.Drawing.Size(38, 13);
+            this.uxName_Label.TabIndex = 30;
+            this.uxName_Label.Text = "Name:";
+            // 
+            // uxFolderID_TextBox
+            // 
+            this.uxFolderID_TextBox.Location = new System.Drawing.Point(89, 72);
+            this.uxFolderID_TextBox.MaxLength = 40;
+            this.uxFolderID_TextBox.Name = "uxFolderID_TextBox";
+            this.uxFolderID_TextBox.Size = new System.Drawing.Size(202, 20);
+            this.uxFolderID_TextBox.TabIndex = 33;
+            // 
+            // uxFolderID_Label
+            // 
+            this.uxFolderID_Label.AutoSize = true;
+            this.uxFolderID_Label.Location = new System.Drawing.Point(30, 75);
+            this.uxFolderID_Label.Name = "uxFolderID_Label";
+            this.uxFolderID_Label.Size = new System.Drawing.Size(53, 13);
+            this.uxFolderID_Label.TabIndex = 32;
+            this.uxFolderID_Label.Text = "Folder ID:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 476);
+            this.ClientSize = new System.Drawing.Size(354, 537);
             this.Controls.Add(this.uxProgressBar);
             this.Controls.Add(this.uxImageNowSingle_GroupBox);
             this.Controls.Add(this.groupBox3);
@@ -615,6 +657,10 @@
         private System.Windows.Forms.ProgressBar uxProgressBar;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ComboBox uxDrawer_ComboBox;
+        private System.Windows.Forms.TextBox uxFolderID_TextBox;
+        private System.Windows.Forms.Label uxFolderID_Label;
+        private System.Windows.Forms.TextBox uxName_TextBox;
+        private System.Windows.Forms.Label uxName_Label;
     }
 }
 

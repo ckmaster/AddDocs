@@ -35,7 +35,7 @@ namespace AddDocs_RS_GUI
             return tempFilename;
         }
 
-        public void MultiDocMultiFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive, BackgroundWorker bw)
+        public void MultiDocMultiFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, bool recursive, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -63,7 +63,16 @@ namespace AddDocs_RS_GUI
                 {
                     string shortFilename = GetShortFileName(s);
                     string longFilename = Path.GetFileName(s);
-                    ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                    ImageNowDoc doc;
+                    if (d.Contains("Folder"))
+                    {
+                        doc = new ImageNowDoc(Guid.NewGuid().ToString(), l, d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                    }
+                    else
+                    {
+                        doc = new ImageNowDoc(n, l, d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                    }
+                    
                     string docid = rest.PostDoc(doc);
                     if (docid.Length != 23)
                     {
@@ -92,7 +101,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
         
-        public void MultiDocSingleFile(string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
+        public void MultiDocSingleFile(string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -108,8 +117,17 @@ namespace AddDocs_RS_GUI
             
             decimal count = 0;
             for (int i = 0; i < repeat; i++)
-            {   
-                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+            {
+                ImageNowDoc doc;
+                if (d.Contains("Folder"))
+                {
+                    doc = new ImageNowDoc(Guid.NewGuid().ToString(), l, d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                }
+                else
+                {
+                    doc = new ImageNowDoc(n, l, d, f1, f2, f3, shortFilename, Guid.NewGuid().ToString(), dt);
+                }
+
                 string docid = rest.PostDoc(doc);
                 if (docid.Length != 23)
                 {
@@ -136,7 +154,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show("Documents created and pages added.");
         }
 
-        public void MultiDocRapidFire (string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
+        public void MultiDocRapidFire (string n, string l, string d, string f1, string f2, string f3, string f4, string f5, string dt, int repeat, BackgroundWorker bw)
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -149,7 +167,16 @@ namespace AddDocs_RS_GUI
             decimal count = 0;
             for (int i = 0; i < repeat; i ++)
             {
-                ImageNowDoc doc = new ImageNowDoc("", d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
+                ImageNowDoc doc;
+                if (d.Contains("Folder"))
+                {
+                    doc = new ImageNowDoc(Guid.NewGuid().ToString(), l, d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
+                }
+                else
+                {
+                    doc = new ImageNowDoc(n, l, d, f1, f2, f3, f4, Guid.NewGuid().ToString(), dt);
+                }
+
                 string docid = rest.PostDoc(doc);
                 if (docid.Length != 23)
                 {
@@ -293,5 +320,5 @@ namespace AddDocs_RS_GUI
             }
             return drawers;  
         }
-    }                      
+    }
 }
