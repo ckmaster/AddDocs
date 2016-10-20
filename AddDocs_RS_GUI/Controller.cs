@@ -90,9 +90,15 @@ namespace AddDocs_RS_GUI
                         }
                     }
 
+                    string queueResponse = "";
                     if (!string.IsNullOrEmpty(queueid))
                     {
-                        rest.RouteDoc(docid, queueid);
+                        queueResponse = rest.RouteDoc(docid, queueid);
+                    }
+
+                    if (!queueResponse.Equals("success"))
+                    {
+                        MessageBox.Show($"Failed to route document.\r\n{queueResponse}");
                     }
 
                     count++;
@@ -150,9 +156,15 @@ namespace AddDocs_RS_GUI
                     }
                 }
 
+                string queueResponse = "";
                 if (!string.IsNullOrEmpty(queueid))
                 {
-                    rest.RouteDoc(docid, queueid);
+                    queueResponse = rest.RouteDoc(docid, queueid);
+                }
+
+                if (!queueResponse.Equals("success"))
+                {
+                    MessageBox.Show($"Failed to route document.\r\n{queueResponse}");
                 }
 
                 count++;
@@ -196,9 +208,15 @@ namespace AddDocs_RS_GUI
                     return;
                 }
 
+                string queueResponse = "";
                 if (!string.IsNullOrEmpty(queueid))
                 {
-                    rest.RouteDoc(docid, queueid);
+                    queueResponse = rest.RouteDoc(docid, queueid);
+                }
+
+                if (!queueResponse.Equals("success"))
+                {
+                    MessageBox.Show($"Failed to route document.\r\n{queueResponse}");
                 }
 
                 count++;
@@ -321,7 +339,7 @@ namespace AddDocs_RS_GUI
             MessageBox.Show($"Pages added to document: {docid}.");
         }
 
-        public drawerTop GetDrawers()
+        public DrawerRoot GetDrawers()
         {
             RestCall rest = new RestCall(conf);
             conf.intServer.sessionHash = rest.GetConnection();
@@ -330,7 +348,7 @@ namespace AddDocs_RS_GUI
                 MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
                 return null;
             }
-            drawerTop drawers = rest.GetDrawers();
+            DrawerRoot drawers = rest.GetDrawers();
             string responseContent2 = rest.DeleteConnection();
             if (!responseContent2.Equals("success"))
             {

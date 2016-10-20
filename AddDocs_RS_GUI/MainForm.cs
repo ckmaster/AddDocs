@@ -26,8 +26,8 @@ namespace AddDocs_RS_GUI
             control.Initialize();
             uxFolder_TextBox.Text = control.conf.folderPath;
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            drawerTop drawers = control.GetDrawers();
-            foreach (drawer d in drawers.drawers)
+            DrawerRoot drawers = control.GetDrawers();
+            foreach (DrawerInfo d in drawers.drawers)
             {
                 uxDrawer_ComboBox.Items.Add(d.name);
             }

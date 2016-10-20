@@ -105,7 +105,7 @@ namespace AddDocs_RS_GUI
             return "success";
         }
 
-        public drawerTop GetDrawers()
+        public DrawerRoot GetDrawers()
         {
             client = new RestClient($"{conf.intServer.uri}/drawer");
             request = new RestRequest(Method.GET);
@@ -118,11 +118,11 @@ namespace AddDocs_RS_GUI
             }
             string responseJson = "";
             responseJson = response.Content;
-            drawerTop topLevel = JsonConvert.DeserializeObject<drawerTop>(responseJson);
+            DrawerRoot topLevel = JsonConvert.DeserializeObject<DrawerRoot>(responseJson);
             return topLevel;
         }
 
-        public void RouteDoc(string docid, string queueid)
+        public string RouteDoc(string docid, string queueid)
         {
             client = new RestClient($"{conf.intServer.uri}/workflowItem");
             request = new RestRequest(Method.POST);
@@ -142,8 +142,9 @@ namespace AddDocs_RS_GUI
             response = client.Execute(request);
             if (response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                return;
+                return response.Content;
             }
+            return "success";
         }
         
     }

@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace AddDocs_RS_GUI
 {
-    public class DrawerRoot
+    public class DocTypeRoot
     {
-        public List<DrawerInfo> drawers { get; set; } = new List<DrawerInfo>();
+        public List<DocTypeInfo> documentTypes { get; set; } = new List<DocTypeInfo>();
     }
 
-    public class DrawerInfo
+    public class DocTypeInfo
     {
         public string name { get; set; }
         public string id { get; set; }
-
-        public DrawerInfo (string n, string i)
-        {
-            name = n;
-            id = i;
-        }
+        public string description { get; set; }
     }
 }
