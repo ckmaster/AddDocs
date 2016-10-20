@@ -77,6 +77,12 @@
     <Compile Include="Config.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="CustomProperty.cs" />
+    <Compile Include="CustomPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomPropertyForm.Designer.cs">
+      <DependentUpon>CustomPropertyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DocumentType.cs" />
     <Compile Include="Drawer.cs" />
     <Compile Include="Help.cs">
@@ -103,6 +109,9 @@
     <Compile Include="ServerInfo.Designer.cs">
       <DependentUpon>ServerInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomPropertyForm.resx">
+      <DependentUpon>CustomPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>

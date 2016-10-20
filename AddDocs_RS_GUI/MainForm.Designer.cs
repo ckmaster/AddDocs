@@ -41,7 +41,6 @@
             this.uxField5_TextBox = new System.Windows.Forms.TextBox();
             this.uxField4_TextBox = new System.Windows.Forms.TextBox();
             this.uxField3_TextBox = new System.Windows.Forms.TextBox();
-            this.uxDocType_TextBox = new System.Windows.Forms.TextBox();
             this.uxSubmitMulti_Button = new System.Windows.Forms.Button();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +60,7 @@
             this.uxFileBrowse_Button = new System.Windows.Forms.Button();
             this.uxToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.uxImageNowMulti_GroupBox = new System.Windows.Forms.GroupBox();
+            this.uxCustomProperty_Button = new System.Windows.Forms.Button();
             this.uxWorkflow_TextBox = new System.Windows.Forms.TextBox();
             this.uxWorkflow_Label = new System.Windows.Forms.Label();
             this.uxFolderID_TextBox = new System.Windows.Forms.TextBox();
@@ -79,6 +79,7 @@
             this.uxAmountSingle_Label = new System.Windows.Forms.Label();
             this.uxBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.uxProgressBar = new System.Windows.Forms.ProgressBar();
+            this.uxDocType_ComboBox = new System.Windows.Forms.ComboBox();
             this.uxMenuStrip.SuspendLayout();
             this.uxDocMode_GroupBox.SuspendLayout();
             this.uxFileMode_GroupBox.SuspendLayout();
@@ -196,18 +197,9 @@
             this.uxField3_TextBox.Size = new System.Drawing.Size(202, 20);
             this.uxField3_TextBox.TabIndex = 11;
             // 
-            // uxDocType_TextBox
-            // 
-            this.uxDocType_TextBox.Location = new System.Drawing.Point(89, 254);
-            this.uxDocType_TextBox.MaxLength = 40;
-            this.uxDocType_TextBox.Name = "uxDocType_TextBox";
-            this.uxDocType_TextBox.Size = new System.Drawing.Size(202, 20);
-            this.uxDocType_TextBox.TabIndex = 14;
-            this.uxDocType_TextBox.Text = "Default";
-            // 
             // uxSubmitMulti_Button
             // 
-            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 306);
+            this.uxSubmitMulti_Button.Location = new System.Drawing.Point(89, 335);
             this.uxSubmitMulti_Button.Name = "uxSubmitMulti_Button";
             this.uxSubmitMulti_Button.Size = new System.Drawing.Size(202, 23);
             this.uxSubmitMulti_Button.TabIndex = 15;
@@ -385,6 +377,8 @@
             // 
             // uxImageNowMulti_GroupBox
             // 
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDocType_ComboBox);
+            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxCustomProperty_Button);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxWorkflow_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxWorkflow_Label);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxFolderID_TextBox);
@@ -395,7 +389,6 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_NumUpDown);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxSubmitMulti_Button);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxAmountMulti_Label);
-            this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDocType_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField5_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField4_TextBox);
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxField3_TextBox);
@@ -410,10 +403,20 @@
             this.uxImageNowMulti_GroupBox.Controls.Add(this.uxDrawer_Label);
             this.uxImageNowMulti_GroupBox.Location = new System.Drawing.Point(12, 180);
             this.uxImageNowMulti_GroupBox.Name = "uxImageNowMulti_GroupBox";
-            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 340);
+            this.uxImageNowMulti_GroupBox.Size = new System.Drawing.Size(330, 368);
             this.uxImageNowMulti_GroupBox.TabIndex = 22;
             this.uxImageNowMulti_GroupBox.TabStop = false;
             this.uxImageNowMulti_GroupBox.Text = "ImageNow Info";
+            // 
+            // uxCustomProperty_Button
+            // 
+            this.uxCustomProperty_Button.Location = new System.Drawing.Point(89, 306);
+            this.uxCustomProperty_Button.Name = "uxCustomProperty_Button";
+            this.uxCustomProperty_Button.Size = new System.Drawing.Size(202, 23);
+            this.uxCustomProperty_Button.TabIndex = 36;
+            this.uxCustomProperty_Button.Text = "Set Custom Properties";
+            this.uxCustomProperty_Button.UseVisualStyleBackColor = true;
+            this.uxCustomProperty_Button.Click += new System.EventHandler(this.uxCustomProperty_Button_Click);
             // 
             // uxWorkflow_TextBox
             // 
@@ -589,16 +592,24 @@
             // 
             // uxProgressBar
             // 
-            this.uxProgressBar.Location = new System.Drawing.Point(12, 526);
+            this.uxProgressBar.Location = new System.Drawing.Point(12, 554);
             this.uxProgressBar.Name = "uxProgressBar";
             this.uxProgressBar.Size = new System.Drawing.Size(330, 15);
             this.uxProgressBar.TabIndex = 26;
+            // 
+            // uxDocType_ComboBox
+            // 
+            this.uxDocType_ComboBox.FormattingEnabled = true;
+            this.uxDocType_ComboBox.Location = new System.Drawing.Point(89, 254);
+            this.uxDocType_ComboBox.Name = "uxDocType_ComboBox";
+            this.uxDocType_ComboBox.Size = new System.Drawing.Size(202, 21);
+            this.uxDocType_ComboBox.TabIndex = 37;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 551);
+            this.ClientSize = new System.Drawing.Size(354, 579);
             this.Controls.Add(this.uxProgressBar);
             this.Controls.Add(this.uxImageNowSingle_GroupBox);
             this.Controls.Add(this.groupBox3);
@@ -646,7 +657,6 @@
         private System.Windows.Forms.TextBox uxField5_TextBox;
         private System.Windows.Forms.TextBox uxField4_TextBox;
         private System.Windows.Forms.TextBox uxField3_TextBox;
-        private System.Windows.Forms.TextBox uxDocType_TextBox;
         private System.Windows.Forms.Button uxSubmitMulti_Button;
         private System.Windows.Forms.MenuStrip uxMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem uxFile_MenuItem;
@@ -684,6 +694,8 @@
         private System.Windows.Forms.Label uxName_Label;
         private System.Windows.Forms.TextBox uxWorkflow_TextBox;
         private System.Windows.Forms.Label uxWorkflow_Label;
+        private System.Windows.Forms.Button uxCustomProperty_Button;
+        private System.Windows.Forms.ComboBox uxDocType_ComboBox;
     }
 }
 

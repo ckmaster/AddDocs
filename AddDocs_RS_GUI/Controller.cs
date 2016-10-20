@@ -356,5 +356,18 @@ namespace AddDocs_RS_GUI
             }
             return drawers;  
         }
+
+        public DocTypeRoot GetDocTypes()
+        {
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return null;
+            }
+            DocTypeRoot docTypes = rest.GetDocType();
+            return docTypes;
+        }
     }
 }

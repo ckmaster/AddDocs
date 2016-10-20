@@ -146,6 +146,22 @@ namespace AddDocs_RS_GUI
             }
             return "success";
         }
+
+        public DocTypeRoot GetDocType()
+        {
+            client = new RestClient($"{conf.intServer.uri}/documentType");
+            request = new RestRequest(Method.GET);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+            SetCommonHeaders();
+            response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return null;
+            }
+            DocTypeRoot topLevel = JsonConvert.DeserializeObject<DocTypeRoot>(response.Content);
+            return topLevel;
+        }
         
     }
 }

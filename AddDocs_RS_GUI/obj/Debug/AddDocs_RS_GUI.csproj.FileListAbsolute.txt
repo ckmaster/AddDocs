@@ -28,3 +28,4 @@ C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs\AddDocs_RS_GUI\bin\
 C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs\AddDocs_RS_GUI\bin\Debug\RestSharp.dll
 C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs\AddDocs_RS_GUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs\AddDocs_RS_GUI\bin\Debug\RestSharp.xml
+C:\Users\ckidd\Documents\Visual Studio 2015\Projects\AddDocs\AddDocs_RS_GUI\obj\Debug\AddDocs_RS_GUI.CustomPropertyForm.resources

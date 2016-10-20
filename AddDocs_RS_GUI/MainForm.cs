@@ -15,6 +15,7 @@ namespace AddDocs_RS_GUI
     {
         public Controller control = new Controller();
         string drawer = "";
+        string docType = "";
 
         public MainForm ()
         {
@@ -31,11 +32,17 @@ namespace AddDocs_RS_GUI
             {
                 uxDrawer_ComboBox.Items.Add(d.name);
             }
+            DocTypeRoot docTypes = control.GetDocTypes();
+            foreach (DocTypeInfo d in docTypes.documentTypes)
+            {
+                uxDocType_ComboBox.Items.Add(d.name);
+            }
         }
 
         private void uxSubmit_Button_Click (object sender, EventArgs e)
         {
             drawer = uxDrawer_ComboBox.SelectedItem.ToString();
+            docType = uxDocType_ComboBox.SelectedItem.ToString();
             uxBackgroundWorker.RunWorkerAsync("multi");
         }
 
@@ -53,7 +60,7 @@ namespace AddDocs_RS_GUI
             this.uxField3_TextBox.Clear();
             //this.uxField4_TextBox.Clear();
             //this.uxField5_TextBox.Clear();
-            this.uxDocType_TextBox.Text = "Default";
+            //this.uxDocType_TextBox.Text = "Default";
         }
 
         private void uxServerInfo_MenuItem_Click (object sender, EventArgs e)
@@ -71,10 +78,10 @@ namespace AddDocs_RS_GUI
         {
             if (uxMulti_RadioButton.Checked == true)
             {
-                this.Height = 590;
+                this.Height = 618;
                 uxImageNowMulti_GroupBox.Visible = true;
                 uxImageNowSingle_GroupBox.Visible = false;
-                uxProgressBar.Location = new Point(12, 526);
+                uxProgressBar.Location = new Point(12, 554);
             }
         }
 
@@ -168,7 +175,7 @@ namespace AddDocs_RS_GUI
                 string f3 = uxField3_TextBox.Text;
                 string f4 = uxField4_TextBox.Text;
                 string f5 = uxField5_TextBox.Text;
-                string dt = uxDocType_TextBox.Text;
+                string dt = docType;
                 string q = uxWorkflow_TextBox.Text;
                 int repeat = (int)uxAmountMulti_NumUpDown.Value;
                 if (uxMulti_RadioButton.Checked == true && uxFolder_RadioButton.Checked == true)
@@ -231,5 +238,11 @@ namespace AddDocs_RS_GUI
                 "Help Box");
         }
 
+        private void uxCustomProperty_Button_Click (object sender, EventArgs e)
+        {
+            docType = uxDocType_ComboBox.SelectedItem.ToString();
+            CustomPropertyForm cpf = new CustomPropertyForm();
+            cpf.Show();
+        }
     }
 }
