@@ -369,5 +369,18 @@ namespace AddDocs_RS_GUI
             DocTypeRoot docTypes = rest.GetDocType();
             return docTypes;
         }
+
+        public CustPropRoot GetCustProps(string docTypeID)
+        {
+            RestCall rest = new RestCall(conf);
+            conf.intServer.sessionHash = rest.GetConnection();
+            if (conf.intServer.sessionHash.Length != 41)
+            {
+                MessageBox.Show($"Failed to get connection.\r\n{conf.intServer.sessionHash}");
+                return null;
+            }
+            CustPropRoot temp = rest.GetCustProps(docTypeID);
+            return temp;
+        }
     }
 }

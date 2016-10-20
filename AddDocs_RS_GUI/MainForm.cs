@@ -241,7 +241,7 @@ namespace AddDocs_RS_GUI
         private void uxCustomProperty_Button_Click (object sender, EventArgs e)
         {
             docType = uxDocType_ComboBox.SelectedItem.ToString();
-            CustomPropertyForm cpf = new CustomPropertyForm();
+            CustomPropertyForm cpf = new CustomPropertyForm(docType);
             cpf.Show();
         }
     }

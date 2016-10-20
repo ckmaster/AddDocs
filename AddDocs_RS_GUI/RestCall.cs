@@ -162,6 +162,22 @@ namespace AddDocs_RS_GUI
             DocTypeRoot topLevel = JsonConvert.DeserializeObject<DocTypeRoot>(response.Content);
             return topLevel;
         }
+
+        public CustPropRoot GetCustProps(string docTypeID)
+        {
+            client = new RestClient($"{conf.intServer.uri}/documentType/{docTypeID}");
+            request = new RestRequest(Method.GET);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+            SetCommonHeaders();
+            response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return null;
+            }
+            CustPropRoot topLevel = JsonConvert.DeserializeObject<CustPropRoot>(response.Content);
+            return topLevel;
+        }
         
     }
 }
