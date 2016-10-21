@@ -13,17 +13,19 @@ namespace AddDocs_RS_GUI
     public partial class CustomPropertyForm : Form
     {
         string docTypeID = "";
-        public CustomPropertyForm (string d)
+        public Controller controller;
+
+        public CustomPropertyForm (string d, Controller c)
         {
             InitializeComponent();
             docTypeID = d;
+            controller = c;
         }
 
         private void CustomPropertyForm_Load (object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            Controller control = new Controller();
-            CustPropRoot customProps = control.GetCustProps(docTypeID);
+            CustPropRoot customProps = controller.GetCustProps(docTypeID);
             foreach (CustPropInfo c in customProps.properties)
             {
                 uxCustomProperty_DataGrid.Rows.Add(c.name);

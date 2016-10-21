@@ -14,8 +14,10 @@ namespace AddDocs_RS_GUI
     public partial class MainForm : Form
     {
         public Controller control = new Controller();
+        public DocTypeRoot docTypeRoot = new DocTypeRoot();
         string drawer = "";
         string docType = "";
+        string docTypeID = "";
 
         public MainForm ()
         {
@@ -32,8 +34,8 @@ namespace AddDocs_RS_GUI
             {
                 uxDrawer_ComboBox.Items.Add(d.name);
             }
-            DocTypeRoot docTypes = control.GetDocTypes();
-            foreach (DocTypeInfo d in docTypes.documentTypes)
+            docTypeRoot = control.GetDocTypes();
+            foreach (DocTypeInfo d in docTypeRoot.documentTypes)
             {
                 uxDocType_ComboBox.Items.Add(d.name);
             }
@@ -241,7 +243,10 @@ namespace AddDocs_RS_GUI
         private void uxCustomProperty_Button_Click (object sender, EventArgs e)
         {
             docType = uxDocType_ComboBox.SelectedItem.ToString();
-            CustomPropertyForm cpf = new CustomPropertyForm(docType);
+            DocTypeInfo temp = docTypeRoot.documentTypes.Find(docTypeRoot => docTypeRoot.name.Equals(docType));
+            docTypeID = temp.id;
+            //DocTypeInfo tempDocTypeInfo = docTypes.documentTypes.Find(docType => docType.name.Equals(uxDocType_ComboBox.SelectedItem.ToString()));
+            CustomPropertyForm cpf = new CustomPropertyForm(docTypeID, control);
             cpf.Show();
         }
     }
