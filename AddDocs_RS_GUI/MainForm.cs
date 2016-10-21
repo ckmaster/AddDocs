@@ -245,9 +245,9 @@ namespace AddDocs_RS_GUI
             docType = uxDocType_ComboBox.SelectedItem.ToString();
             DocTypeInfo temp = docTypeRoot.documentTypes.Find(docTypeRoot => docTypeRoot.name.Equals(docType));
             docTypeID = temp.id;
-            //DocTypeInfo tempDocTypeInfo = docTypes.documentTypes.Find(docType => docType.name.Equals(uxDocType_ComboBox.SelectedItem.ToString()));
             CustomPropertyForm cpf = new CustomPropertyForm(docTypeID, control);
-            cpf.Show();
+            if (cpf.ShowDialog() != DialogResult.OK) return;
+            List<List<string>> values = cpf.values;
         }
     }
 }

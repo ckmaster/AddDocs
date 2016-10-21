@@ -14,6 +14,8 @@ namespace AddDocs_RS_GUI
     {
         string docTypeID = "";
         public Controller controller;
+        CustPropRoot customProps;
+        List<List<string>> returnList = new List<List<string>>();
 
         public CustomPropertyForm (string d, Controller c)
         {
@@ -25,10 +27,29 @@ namespace AddDocs_RS_GUI
         private void CustomPropertyForm_Load (object sender, EventArgs e)
         {
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            CustPropRoot customProps = controller.GetCustProps(docTypeID);
+            customProps = controller.GetCustProps(docTypeID);
             foreach (CustPropInfo c in customProps.properties)
             {
                 uxCustomProperty_DataGrid.Rows.Add(c.name);
+            }
+        }
+
+        public List<List<string>> values
+        {
+            get { return returnList; }
+        }
+
+        private void uxSubmit_Button_Click (object sender, EventArgs e)
+        {
+            for (int i = 0; i < customProps.properties.Count; i++)
+            {
+                if (uxCustomProperty_DataGrid.Rows[i].Cells[1].Value != null)
+                {
+                    List<string> temp = new List<string>();
+                    temp.Add(uxCustomProperty_DataGrid.Rows[i].Cells[0].Value.ToString());
+                    temp.Add(uxCustomProperty_DataGrid.Rows[i].Cells[1].Value.ToString());
+                    returnList.Add(temp);
+                }
             }
         }
     }
